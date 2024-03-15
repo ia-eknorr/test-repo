@@ -1,0 +1,96 @@
+services:
+  gateway:
+    image: inductiveautomation/ignition:8.1.38
+    container_name: ${GATEWAY_NAME}-${ENV}
+    user: 0:0
+    volumes:
+      # Gateway backup
+      - ./gw-init/gateway.gwbk:/restore.gwbk
+      # Ignition data
+      - ignition-data:/usr/local/bin/ignition/data
+      # Ignition project
+      - ./gw-projects/${IGNITION_PROJECT}:/usr/local/bin/ignition/data/projects/${IGNITION_PROJECT}
+    labels:
+      - traefik.enable=true
+      - traefik.hostname=${GATEWAY_NAME}-${ENV}
+    environment:
+      - ACCEPT_IGNITION_EULA=Y
+      - IGNITION_EDITION=standard
+      - DISABLE_QUICKSTART=true
+      - IGNITION_UID=2003
+      - IGNITION_GID=2003
+      - TZ=America/Los_Angeles
+      - GATEWAY_MODULES_ENABLED=perspective,tag-historian,web-developer,opc-ua,alarm-notification,reporting,sfc
+    command: >
+      -n ${GATEWAY_NAME}-${ENV}
+      -h 80
+      -s 443
+      -r /restore.gwbk
+      -a ${GATEWAY_NAME}-${ENV}.localtest.me
+      --
+      -Dignition.projects.scanFrequency=10
+    networks:
+      - default
+  
+  db:
+    image: mariadb:11.3
+    hostname: db-${GATEWAY_NAME}-${ENV}
+    container_name: db-${GATEWAY_NAME}-${ENV}
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./db-init/db-setup:/docker-entrypoint-initdb.d
+    environment:
+      - MARIADB_ROOT_PASSWORD=${DB_PASSWORD}
+      - MARIADB_PASSWORD=${DB_PASSWORD}
+      - MARIADB_USER=${DB_USER}
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "healthcheck.sh",
+          "--su-mysql",
+          "--connect",
+          "--innodb_initialized"
+        ]
+      interval: 10s
+      timeout: 20s
+      retries: 10
+    # Uncomment for database management. Connections can be made at <hostname>.localtest.me:3307, or whichever port has been set
+    # ports:
+    #   - 3307:3306
+    networks:
+      default:
+        aliases: 
+          - db-${GATEWAY_NAME}-${ENV}
+    command: 
+      --sql_mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"
+      --lower_case_table_names=1
+      --log-bin-trust-function-creators=ON
+
+  liquibase:
+    image: liquibase/liquibase:4.26
+    depends_on:
+      gateway:
+        condition: service_healthy
+      db:
+        condition: service_healthy
+    environment:
+      - INSTALL_MYSQL=true
+      - LIQUIBASE_COMMAND_URL=jdbc:mariadb://db:3306/${DB_NAME}
+      - LIQUIBASE_COMMAND_USERNAME=root
+      - LIQUIBASE_COMMAND_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ./db-init:/db-init
+    entrypoint: ["liquibase", "--defaultsFile=/db-init/liquibase/liquibase.docker.properties", "update"]
+    networks:
+      default:
+
+networks:
+  default:
+    external: true
+    name: proxy
+
+volumes:
+  ignition-data:
+  db-data:
+
