@@ -1,0 +1,183 @@
+{
+  "custom": {},
+  "params": {
+    "name": "Plant Influent",
+    "odd": false,
+    "tagPath": "[default]Exchange/Water/Flows/Backwash",
+    "units": "gpm"
+  },
+  "propConfig": {
+    "params.data": {
+      "paramDirection": "input"
+    },
+    "params.filt": {
+      "paramDirection": "input"
+    },
+    "params.filter": {
+      "paramDirection": "input"
+    },
+    "params.key": {
+      "paramDirection": "input"
+    },
+    "params.max": {
+      "paramDirection": "input"
+    },
+    "params.name": {
+      "paramDirection": "input"
+    },
+    "params.odd": {
+      "paramDirection": "input"
+    },
+    "params.tag": {
+      "paramDirection": "input"
+    },
+    "params.tagP": {
+      "paramDirection": "input"
+    },
+    "params.tagPat": {
+      "paramDirection": "input"
+    },
+    "params.tagPath": {
+      "paramDirection": "input"
+    },
+    "params.tank": {
+      "paramDirection": "input"
+    },
+    "params.uni": {
+      "paramDirection": "input"
+    },
+    "params.unit": {
+      "paramDirection": "input"
+    },
+    "params.units": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 30,
+      "width": 659
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "320px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.odd},\r\n\t\"exchange/water/odd-row\",\r\n\t\"exchange/water/value-disp\")"
+              },
+              "type": "expr"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.name} + \":\""
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderBottomStyle": "none",
+            "borderLeftStyle": "none",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "1px",
+            "borderTopStyle": "none",
+            "fontWeight": "500",
+            "overflow": "hidden",
+            "paddingRight": "5px",
+            "textAlign": "right"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "FlowValue"
+        },
+        "position": {
+          "basis": "210px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.odd},\r\n\t\"exchange/water/odd-row\",\r\n\t\"exchange/water/value-disp\")"
+              },
+              "type": "expr"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "tag": "{view.params.tagPath}"
+                },
+                "tagPath": "{tag}"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value} \u003e 1000000,\r\n\t\tnumberFormat({value} / 1000000.0, \"#,##0.0\") + \u0027 MGal\u0027,\r\n\t\tif({view.params.units} \u003d \"gpm\", numberFormat({value}, \"#,##0.0\") + \u0027 \u0027 + {view.params.units},\r\n\t\tnumberFormat({value} / 1000.0, \"#,##0.0\") + \u0027 KGal\u0027))",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderStyle": "none",
+            "fontWeight": "500",
+            "overflow": "hidden",
+            "paddingLeft": "5px",
+            "textAlign": "left"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "script": "\tif \u0027Backwash\u0027 in self.getChild(\"Label\").props.text:\n\t\tsystem.perspective.sendMessage(\"exchange.water.menuChange\", payload \u003d {\u0027page\u0027:\u0027Filters\u0027}, scope \u003d \u0027session\u0027)\n\t\tsystem.perspective.navigate(page \u003d \"/filters\")\n\telse:\n\t\tsystem.perspective.sendMessage(\"exchange.water.menuChange\", payload \u003d {\u0027page\u0027:\u0027Overview\u0027}, scope \u003d \u0027session\u0027)\n\t\tsystem.perspective.navigate(page \u003d \"/overview\")"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "borderBottomStyle": "none",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "1px",
+        "borderRightStyle": "none",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "1px",
+        "classes": "exchange/water/primary",
+        "fontSize": "0.8em",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

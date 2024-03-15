@@ -1,0 +1,73 @@
+{
+  "custom": {},
+  "params": {
+    "filterNum": 1
+  },
+  "propConfig": {
+    "params.filterNum": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1117
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "FiltersFull"
+        },
+        "position": {
+          "size": "large"
+        },
+        "propConfig": {
+          "props.params.filterNum": {
+            "binding": {
+              "config": {
+                "path": "view.params.filterNum"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "path": "Exchange/Water/EmbeddedViews/FiltersFull"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "FiltersMobile"
+        },
+        "propConfig": {
+          "props.params.filterNum": {
+            "binding": {
+              "config": {
+                "path": "view.params.filterNum"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "size": "xl",
+            "title": "Filters"
+          },
+          "path": "Exchange/Water/EmbeddedViews/FiltersMobile"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "breakpoint": 960
+    },
+    "type": "ia.container.breakpt"
+  }
+}

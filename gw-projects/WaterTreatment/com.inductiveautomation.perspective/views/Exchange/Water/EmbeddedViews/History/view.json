@@ -1,0 +1,193 @@
+{
+  "custom": {},
+  "params": {
+    "alias": "",
+    "enabled": true,
+    "friendly": "Name",
+    "path": "[default]Exchange/Water/Flows/PlantInfluent"
+  },
+  "propConfig": {
+    "params.alias": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.enabled": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.friendly": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.path": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "PowerChart"
+        },
+        "position": {
+          "basis": "600px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.pens[0].data.source": {
+            "binding": {
+              "config": {
+                "path": "view.params.path"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn \"histprov:WaterTreatment:/drv:demo-water-wastewater-dev:default:/tag:\" + value.replace(\u0027[default]\u0027,\u0027\u0027).lower()",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.pens[0].enabled": {
+            "binding": {
+              "config": {
+                "path": "view.params.enabled"
+              },
+              "type": "property"
+            }
+          },
+          "props.pens[0].name": {
+            "binding": {
+              "config": {
+                "path": "view.params.path"
+              },
+              "transforms": [
+                {
+                  "code": "\ttry:\n\t\treturn value.split(\"/\")[-1]\n\texcept:\n\t\treturn self.view.params.friendly\n\t\n\treturn \"Tag\"",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "config": {
+            "measureOfTime": "days",
+            "rangeEndDate": {
+              "$": [
+                "ts",
+                0,
+                1710268571486
+              ],
+              "$ts": 1710267995461
+            },
+            "rangeStartDate": {
+              "$": [
+                "ts",
+                0,
+                1710268571486
+              ],
+              "$ts": 1710095771461
+            },
+            "unitOfTime": 2
+          },
+          "interaction": {
+            "chartZoomLevel": 1,
+            "rangeZoomLevel": 1
+          },
+          "pens": [
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 0.8
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 0.8,
+                      "width": 1
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            }
+          ],
+          "plots": [
+            {
+              "color": "#00000000",
+              "markers": [],
+              "relativeWeight": 1,
+              "style": {
+                "classes": ""
+              }
+            }
+          ],
+          "timeAxis": {
+            "color": ""
+          }
+        },
+        "type": "ia.chart.powerchart"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

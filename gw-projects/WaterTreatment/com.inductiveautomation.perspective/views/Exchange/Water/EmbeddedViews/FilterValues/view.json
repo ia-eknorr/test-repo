@@ -1,0 +1,531 @@
+{
+  "custom": {},
+  "params": {
+    "selectedFilter": 2
+  },
+  "propConfig": {
+    "params.selectedFilter": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 364
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "FlexRepeater"
+        },
+        "position": {
+          "basis": "364px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.instances[0].indicator.processValue": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "1": "{view.params.selectedFilter}"
+                },
+                "tagPath": "[default]Exchange/Water/Filters/Filter{1}/Level"
+              },
+              "type": "tag"
+            }
+          },
+          "props.instances[1].indicator.processValue": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "1": "{view.params.selectedFilter}"
+                },
+                "tagPath": "[default]Exchange/Water/Filters/Filter{1}/LOH"
+              },
+              "type": "tag"
+            }
+          },
+          "props.instances[2].indicator.processValue": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "filter": "{view.params.selectedFilter}"
+                },
+                "tagPath": "[default]Exchange/Water/Filters/Filter{filter}/Backwash/RunTime"
+              },
+              "type": "tag"
+            }
+          },
+          "props.instances[3].indicator.desiredHigh": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "1": "{view.params.selectedFilter}"
+                },
+                "tagPath": "[default]Exchange/Water/Filters/Filter{1}/Backwash/Step"
+              },
+              "transforms": [
+                {
+                  "expression": "// Use different value when backwashing\r\nif({value} \u003e 0 \u0026\u0026 {value} \u003c 23, 5250, 1600)",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "props.instances[3].indicator.desiredLow": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "1": "{view.params.selectedFilter}"
+                },
+                "tagPath": "[default]Exchange/Water/Filters/Filter{1}/Backwash/Step"
+              },
+              "transforms": [
+                {
+                  "expression": "// Use different value when backwashing\r\nif({value} \u003e 0 \u0026\u0026 {value} \u003c 23, 5200, 1125)",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "props.instances[3].indicator.highAlarm": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "alarmSP": "tag(\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Alarms/FlowHighSP\")",
+                  "filterStatus": "tag(\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Control/Value\")"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "expression": "// Use different value when backwashing\r\ncase({value}[\u0027filterStatus\u0027],\r\n\t// Filter off\r\n\t0, 10000,\r\n\t// Filter running normally\r\n\t1, ({value}[\u0027alarmSP\u0027] * 0.95),\r\n\t// Filter backwashing\r\n\t2, 5300,\r\n\t// Filter faulted\r\n\t4, ({value}[\u0027alarmSP\u0027] * 0.95),\r\n\t0)\t// Fallback value",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[3].indicator.highHighAlarm": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "alarmSP": "tag(\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Alarms/FlowHighSP\")",
+                  "filterStatus": "tag(\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Control/Value\")"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "expression": "// Use different value when backwashing\r\ncase({value}[\u0027filterStatus\u0027],\r\n\t// Filter off\r\n\t0, 10000,\r\n\t// Filter running normally\r\n\t1, {value}[\u0027alarmSP\u0027],\r\n\t// Filter backwashing\r\n\t2, 5300,\r\n\t// Filter faulted\r\n\t4, {value}[\u0027alarmSP\u0027],\r\n\t0)\t// Fallback value",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[3].indicator.lowAlarm": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "alarmSP": "tag(\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Alarms/FlowLowSP\")",
+                  "filterStatus": "tag(\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Control/Value\")"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "expression": "// Use different value when backwashing\r\ncase({value}[\u0027filterStatus\u0027],\r\n\t// Filter off\r\n\t0, -1,\r\n\t// Filter running normally\r\n\t1, ({value}[\u0027alarmSP\u0027] * 1.05),\r\n\t// Filter backwashing\r\n\t2, 5300,\r\n\t// Filter faulted\r\n\t4, ({value}[\u0027alarmSP\u0027] * 1.05),\r\n\t0)\t// Fallback value",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[3].indicator.lowLowAlarm": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "alarmSP": "tag(\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Alarms/FlowLowSP\")",
+                  "filterStatus": "tag(\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Control/Value\")"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "expression": "// Use different value when backwashing\r\ncase({value}[\u0027filterStatus\u0027],\r\n\t// Filter off\r\n\t0, -1,\r\n\t// Filter running normally\r\n\t1, {value}[\u0027alarmSP\u0027],\r\n\t// Filter backwashing\r\n\t2, 5300,\r\n\t// Filter faulted\r\n\t4, {value}[\u0027alarmSP\u0027],\r\n\t0)\t// Fallback value",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[3].indicator.maxValue": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "1": "{view.params.selectedFilter}"
+                },
+                "tagPath": "[default]Exchange/Water/Filters/Filter{1}/Backwash/Step"
+              },
+              "transforms": [
+                {
+                  "expression": "// Use different value when backwashing\r\nif({value} \u003e 0 \u0026\u0026 {value} \u003c 23, 5400, 2100)",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "props.instances[3].indicator.minValue": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "1": "{view.params.selectedFilter}"
+                },
+                "tagPath": "[default]Exchange/Water/Filters/Filter{1}/Backwash/Step"
+              },
+              "transforms": [
+                {
+                  "expression": "// Use different value when backwashing\r\nif({value} \u003e 0 \u0026\u0026 {value} \u003c 23, 4500, 1000)",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "props.instances[3].indicator.processValue": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "filter": "{view.params.selectedFilter}"
+                },
+                "tagPath": "[default]Exchange/Water/Filters/Filter{filter}/Flow"
+              },
+              "type": "tag"
+            }
+          },
+          "props.instances[3].text": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "1": "{view.params.selectedFilter}"
+                },
+                "tagPath": "[default]Exchange/Water/Filters/Filter{1}/Backwash/Step"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value} \u003e 0 \u0026\u0026 {value} \u003c 23, \u0027Backwash\u0027, \u0027Effluent\u0027) + \u0027 Flow\u0027",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "props.instances[4].indicator.desiredHigh": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "1": "{view.params.selectedFilter}"
+                },
+                "tagPath": "[default]Exchange/Water/Filters/Filter{1}/Backwash/Step"
+              },
+              "transforms": [
+                {
+                  "expression": "// Use different value when backwashing\r\nif({value} \u003e 0 \u0026\u0026 {value} \u003c 23, 10.5, 0.15)",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "props.instances[4].indicator.desiredLow": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "1": "{view.params.selectedFilter}"
+                },
+                "tagPath": "[default]Exchange/Water/Filters/Filter{1}/Backwash/Step"
+              },
+              "transforms": [
+                {
+                  "expression": "// Use different value when backwashing\r\nif({value} \u003e 0 \u0026\u0026 {value} \u003c 23, 10.0, 0.07)",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "props.instances[4].indicator.highAlarm": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "1": "{view.params.selectedFilter}"
+                },
+                "tagPath": "[default]Exchange/Water/Filters/Filter{1}/Backwash/Step"
+              },
+              "transforms": [
+                {
+                  "expression": "// Use different value when backwashing\r\nif({value} \u003e 0 \u0026\u0026 {value} \u003c 23, 13, 0.25)",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "props.instances[4].indicator.highHighAlarm": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "1": "{view.params.selectedFilter}"
+                },
+                "tagPath": "[default]Exchange/Water/Filters/Filter{1}/Backwash/Step"
+              },
+              "transforms": [
+                {
+                  "expression": "// Use different value when backwashing\r\nif({value} \u003e 0 \u0026\u0026 {value} \u003c 23, 15, 0.3)",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "props.instances[4].indicator.lowAlarm": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "alarmSP": "tag(\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Alarms/TurbLowSP\")",
+                  "filterStatus": "tag(\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Control/Value\")"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "expression": "// Use different value when backwashing\r\ncase({value}[\u0027filterStatus\u0027],\r\n\t// Filter off\r\n\t0, -1,\r\n\t// Filter running normally\r\n\t1, {value}[\u0027alarmSP\u0027] * 1.1,\r\n\t// Filter backwashing\r\n\t2, 0,\r\n\t// Filter faulted\r\n\t4, {value}[\u0027alarmSP\u0027],\r\n\t0)\t// Fallback value",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[4].indicator.lowLowAlarm": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "alarmSP": "tag(\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Alarms/TurbLowSP\")",
+                  "filterStatus": "tag(\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Control/Value\")"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "expression": "// Use different value when backwashing\r\ncase({value}[\u0027filterStatus\u0027],\r\n\t// Filter off\r\n\t0, -1,\r\n\t// Filter running normally\r\n\t1, {value}[\u0027alarmSP\u0027],\r\n\t// Filter backwashing\r\n\t2, 0,\r\n\t// Filter faulted\r\n\t4, {value}[\u0027alarmSP\u0027],\r\n\t0)\t// Fallback value",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[4].indicator.maxValue": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "1": "{view.params.selectedFilter}"
+                },
+                "tagPath": "[default]Exchange/Water/Filters/Filter{1}/Backwash/Step"
+              },
+              "transforms": [
+                {
+                  "expression": "// Use different value when backwashing\r\nif({value} \u003e 0 \u0026\u0026 {value} \u003c 23, 11, 0.4)",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "props.instances[4].indicator.processValue": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "filter": "{view.params.selectedFilter}"
+                },
+                "tagPath": "[default]Exchange/Water/Filters/Filter{filter}/Turb"
+              },
+              "type": "tag"
+            }
+          },
+          "props.instances[4].indicator.setpointValue": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "1": "{view.params.selectedFilter}"
+                },
+                "tagPath": "[default]Exchange/Water/Filters/Filter{1}/Backwash/Step"
+              },
+              "transforms": [
+                {
+                  "expression": "// Use different value when backwashing\r\nif({value} \u003e 0 \u0026\u0026 {value} \u003c 23, 10.2, 0.1)",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "props.instances[4].text": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "1": "{view.params.selectedFilter}"
+                },
+                "tagPath": "[default]Exchange/Water/Filters/Filter{1}/Backwash/Step"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value} \u003e 0 \u0026\u0026 {value} \u003c 23, \u0027Backwash\u0027, \u0027Effluent\u0027) + \u0027 Turbidity\u0027",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "instances": [
+            {
+              "indicator": {
+                "desiredHigh": 95,
+                "desiredLow": 85,
+                "highAlarm": 100,
+                "highHighAlarm": 102,
+                "lowAlarm": 80,
+                "lowLowAlarm": 75,
+                "maxValue": 105,
+                "minValue": 0,
+                "processValueFormat": "#,##0\"",
+                "setpointValue": 90
+              },
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "text": "Level"
+            },
+            {
+              "indicator": {
+                "desiredHigh": "",
+                "desiredLow": "",
+                "highAlarm": 108,
+                "highHighAlarm": 114,
+                "lowAlarm": -0.1,
+                "lowLowAlarm": -0.1,
+                "maxValue": 120,
+                "minValue": 0,
+                "processValueFormat": "#,##0.0\"",
+                "setpointValue": ""
+              },
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "text": "Loss of Head"
+            },
+            {
+              "indicator": {
+                "desiredHigh": 100,
+                "desiredLow": "",
+                "highAlarm": 110,
+                "highHighAlarm": 120,
+                "lowAlarm": -0.1,
+                "lowLowAlarm": -0.1,
+                "maxValue": 130,
+                "minValue": 0,
+                "processValueFormat": "#,##0.00 hr",
+                "setpointValue": ""
+              },
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "text": "Run Time"
+            },
+            {
+              "indicator": {
+                "processValueFormat": "#,##0 gpm",
+                "setpointValue": ""
+              },
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              }
+            },
+            {
+              "indicator": {
+                "minValue": 0,
+                "processValueFormat": "#,##0.00 ntu"
+              },
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              }
+            }
+          ],
+          "path": "Exchange/Water/EmbeddedViews/FilterValue",
+          "style": {
+            "borderStyle": "solid",
+            "borderWidth": "0.1vw",
+            "classes": "exchange/water/border-radius exchange/water/primary"
+          },
+          "useDefaultViewHeight": false,
+          "useDefaultViewWidth": false
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

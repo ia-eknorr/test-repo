@@ -1,0 +1,106 @@
+<?xml version="1.0" ?>
+<sfc zoom="1.0" canvas="13 16" execution-mode="Callable" hot-editable="false" persist-state="true" redundant-sync="false">
+	<onstart>def onStart(chart): # WARNING: This resource was generated in a newer version of Ignition. For the best editing experience, recreate it in the current version.
+	pass</onstart>
+	<step id="6fc2851b-22d0-4fe9-9d44-8a35c2f3bce7" location="5 0" name="__begin" factory-id="begin-step">
+<parameters>
+	<parameter><name>timeout</name><expression>10</expression></parameter>
+	<parameter><name>desiredState</name><expression>1</expression></parameter>
+	<parameter><name>timer</name><expression>0</expression></parameter>
+	<parameter><name>proceed</name><expression>false</expression></parameter>
+	<parameter><name>abort</name><expression>false</expression></parameter>
+	<parameter><name>tagPath</name><expression>""</expression></parameter>
+	<parameter><name>abortMessage</name><expression>""</expression></parameter>
+	<parameter><name>tagKey</name><expression>""</expression></parameter>
+	<parameter><name>messagePath</name><expression>""</expression></parameter>
+</parameters>
+	</step>
+	<step id="2186586b-741a-4727-adc8-7ac5dbe07812" location="5 1" name="Init" factory-id="action-step">
+		<start-script>def onStart(chart, step): # WARNING: This resource was generated in a newer version of Ignition. For the best editing experience, recreate it in the current version.
+	# Set Chart HOA tag
+	chart.HOA = exchange.water.udt.getHoa(chart.tagPath)
+	
+	chart.state = chart.HOA.get(chart.tagKey)</start-script>
+	</step>
+	<step id="0e953654-6150-4b71-8db2-7ef98b637e0c" location="5 4" name="User" factory-id="action-step">
+		<start-script>def onStart(chart, step): # WARNING: This resource was generated in a newer version of Ignition. For the best editing experience, recreate it in the current version.
+	# Build message text
+	if 'Valves' in chart.tagPath:
+		if chart.desiredState == 0:
+			desiredTxt = "'closed'"
+		else:
+			desiredTxt = "'open'"
+	else:
+		if chart.desiredState == 0:
+			desiredTxt = "'stopped'"
+		else:
+			desiredTxt = "'running'"		
+	msg = "Manually set " + chart.HOA.device + " to " + desiredTxt
+	
+	# Write to message tag
+	system.tag.writeBlocking([chart.messagePath], [msg])</start-script>
+	<timer-script interval="1000">def onTimer(chart, step):
+	# Read value &amp; compare to desired
+	if chart.HOA.get(chart.tagKey) == chart.desiredState:
+		chart.proceed = True
+	else:
+		# Increment timer
+		chart.timer += 1</timer-script>
+	</step>
+	<step id="2bbdf998-62a8-470f-ac9e-9e225d8b836a" location="5 8" name="OK" factory-id="action-step">
+		<start-script>def onStart(chart, step): # WARNING: This resource was generated in a newer version of Ignition. For the best editing experience, recreate it in the current version.
+	chart.abort = False
+	
+	# Clear message
+	system.tag.writeBlocking([chart.messagePath], [''])</start-script>
+	</step>
+	<step id="72ca1965-34cf-40dc-a698-61b9c738c488" location="7 7" name="Abort" factory-id="action-step">
+		<start-script>def onStart(chart, step): # WARNING: This resource was generated in a newer version of Ignition. For the best editing experience, recreate it in the current version.
+	# Write to message tag
+	system.tag.writeBlocking([chart.messagePath], [chart.abortMessage])
+	
+	# Set 'abort' flag = True
+	chart.abort = True</start-script>
+	</step>
+	<step id="baf4efd2-5b1d-486a-9f04-59fc899f2265" location="5 10" name="__end1" factory-id="end-step">	</step>
+	<transition id="a2c0f9a8-435e-4be0-be41-57ab92e36574" location="4 3">toInt({state}) = toInt({desiredState})</transition>
+	<transition id="4b138054-9ceb-4e9a-ae9e-6be069d04be2" location="5 3">toInt({state}) != toInt({desiredState})</transition>
+	<transition id="b32c732d-6ed2-4cfa-84e4-7fe0c788b14a" location="5 6">{proceed}</transition>
+	<transition id="00d723ac-d8a5-4ee8-bbd5-ba5f3d182bba" location="7 6">{timer} &gt;= {timeout}</transition>
+	<note id="be5816f8-e46d-4a0c-9301-5327bc64bb8e" location="2 3" size="2 1">Device in correct state</note>
+	<note id="d9de86bc-cafe-4c22-b18e-517e44be98e2" location="2 6" size="2 1">Proceed flag is TRUE</note>
+	<note id="35ff600c-801c-4674-9544-eeb09fd70223" location="6 3" size="2 1">Device in HAND and
+in wrong state</note>
+	<note id="4237e897-540f-4a1b-8220-43cce3451f59" location="6 4" size="2 1">Prompt user to change 
+state and wait for timeout</note>
+	<note id="dde35e0b-79bf-4e3e-b594-e0ec17630fcb" location="8 0" size="4 4" note-background="color(128,0,128,255)" note-foreground="color(255,255,255,255)">Params:
+*abortMessage = message to write out in case of abort
+*messagePath = path to message tag to write to
+*tagPath = path to tag to check state of (HOA UDT instance)
+*tagKey = udt tag name to get value of
+*desiredState = desired device state
+*timeout = seconds to wait for state change
+proceed = flag to indicate state has changed
+timer = increments per second
+abort = return True or False to calling chart
+
+* denotes params supplied by calling chart</note>
+	<note id="095cb29b-6b00-4acb-91f7-e6f6425244c6" location="8 6" size="2 1">Timeout reached</note>
+	<note id="111fa684-1798-4be7-bca5-4d2cd1e94d76" location="8 7" size="2 1">Set abort flag = True;
+Inform user</note>
+	<link id="430ba4ca-414b-4a6b-83d4-f2c08d6dbaf6" location="4 2"><left/><down/><right/></link>
+	<link id="49c7e46c-286b-464e-9b32-f6988b1e2251" location="5 2"><up/><left/><down/></link>
+	<link id="d96dea0f-f879-48b2-b81b-2514f9ccf6ce" location="4 4"><up/><down/></link>
+	<link id="1c655c72-f493-4cbb-94e2-79c36afc3451" location="4 5"><up/><down/></link>
+	<link id="e41fd8f5-3411-42b7-8043-d239042c0b53" location="5 5"><up/><down/><right/></link>
+	<link id="b5eb5244-9ac0-4f55-8790-95fed9fbd3b5" location="4 6"><up/><down/></link>
+	<link id="32aec387-37f8-43c1-b9e4-66c54f727838" location="6 5"><left/><right/></link>
+	<link id="0075df29-a8fe-4ee8-bfe7-f7a4341b3bb2" location="4 7"><up/><down/><right/></link>
+	<link id="20eae274-2936-41ef-8662-0bfc038df4cd" location="7 5"><left/><down/><right/></link>
+	<link id="2e09992b-7cf5-4cf9-9b9e-f35a8e271cd2" location="5 7"><up/><left/><down/></link>
+	<link id="1adb35a0-cff9-4014-abb4-43370444ab30" location="5 9"><up/><down/><right/></link>
+	<link id="07788dd3-73ab-42d0-8521-d8a6edd0e218" location="7 8"><up/><down/></link>
+	<link id="d40ffd86-d462-41bd-b61b-27419d42300c" location="6 9"><left/><right/></link>
+	<link id="a293bcf1-77fa-47e0-ba2f-94adffce7aef" location="7 9"><up/><left/><down/></link>
+
+</sfc>

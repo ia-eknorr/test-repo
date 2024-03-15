@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<sfc zoom="1.0" canvas="13 16" execution-mode="Callable" hot-editable="false" persist-state="true" redundant-sync="false">
+	<onstart>def onStart(chart): # WARNING: This resource was generated in a newer version of Ignition. For the best editing experience, recreate it in the current version.
+	pass</onstart>
+	<step id="6fc2851b-22d0-4fe9-9d44-8a35c2f3bce7" location="4 1" name="__begin" factory-id="begin-step">
+<parameters>
+	<parameter><name>timeout</name><expression>10</expression></parameter>
+	<parameter><name>desiredState</name><expression>1</expression></parameter>
+	<parameter><name>device</name><expression>"/Valves/BT1"</expression></parameter>
+	<parameter><name>abort</name><expression>false</expression></parameter>
+	<parameter><name>filterNumber</name><expression>0</expression></parameter>
+</parameters>
+	</step>
+	<step id="b209854b-c5e1-4519-b690-7b16330cc170" location="4 2" name="Init" factory-id="action-step">
+		<start-script>def onStart(chart, step): # WARNING: This resource was generated in a newer version of Ignition. For the best editing experience, recreate it in the current version.
+	# Initialize chart
+	chart.tagPath = '[default]Exchange/Water/Filters/Filter{0}/{1}'.format(chart.filterNumber, chart.device)
+	chart.messagePath = '[default]Exchange/Water/Filters/Filter{0}/Backwash/Message'.format(chart.filterNumber)</start-script>
+	</step>
+	<step id="43873f0b-9420-4cc5-b525-32a72876d51a" location="4 3" name="CheckState" factory-id="enclosing-step" chart-path="./_CheckHoaState" execution-mode="RunUntilCompletion">
+<parameters>
+	<parameter><name>messagePath</name><expression>{messagePath}</expression></parameter>
+	<parameter><name>abortMessage</name><expression>"Timeout reached; Backwash aborted"</expression></parameter>
+	<parameter><name>tagPath</name><expression>{tagPath}</expression></parameter>
+	<parameter><name>tagKey</name><expression>"Value"</expression></parameter>
+	<parameter><name>desiredState</name><expression>{desiredState}</expression></parameter>
+	<parameter><name>timeout</name><expression>{timeout}</expression></parameter>
+</parameters>
+
+<return-parameters>
+	<return-parameter><enclosed-name>abort</enclosed-name><local-name>abort</local-name></return-parameter>
+</return-parameters>
+	</step>
+	<step id="7fb47da4-a17b-4576-b2a6-dadd482fd61b" location="4 4" name="__end2" factory-id="end-step">	</step>
+
+</sfc>

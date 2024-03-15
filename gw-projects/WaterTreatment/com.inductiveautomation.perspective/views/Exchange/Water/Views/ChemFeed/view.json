@@ -1,0 +1,47 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 1150
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "ChemFeedMobile"
+        },
+        "props": {
+          "params": {
+            "title": "Chem Feed"
+          },
+          "path": "Exchange/Water/EmbeddedViews/ChemFeedMobile"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "ChemFeedFull"
+        },
+        "position": {
+          "size": "large"
+        },
+        "props": {
+          "params": {
+            "title": "Chem Feed"
+          },
+          "path": "Exchange/Water/EmbeddedViews/ChemFeedFull"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "breakpoint": 961
+    },
+    "type": "ia.container.breakpt"
+  }
+}

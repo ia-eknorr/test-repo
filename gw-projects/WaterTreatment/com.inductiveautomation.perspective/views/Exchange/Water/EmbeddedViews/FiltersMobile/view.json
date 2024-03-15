@@ -1,0 +1,482 @@
+{
+  "custom": {
+    "selectedFilter": 1
+  },
+  "params": {
+    "filterNum": 1
+  },
+  "propConfig": {
+    "custom.selectedFilter": {
+      "binding": {
+        "config": {
+          "bidirectional": true,
+          "path": "view.params.filterNum"
+        },
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "params.filterNum": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1353
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "66px",
+              "shrink": 0
+            },
+            "props": {
+              "text": "Filter:",
+              "textStyle": {
+                "fontSize": 22
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Row1"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.instances[0].selected": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.custom.selectedFilter} \u003d 1"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.instances[1].selected": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.custom.selectedFilter} \u003d 2"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.instances[2].selected": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.custom.selectedFilter} \u003d 3"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.instances[3].selected": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.custom.selectedFilter} \u003d 4"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.instances[4].selected": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.custom.selectedFilter} \u003d 5"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.instances[5].selected": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.custom.selectedFilter} \u003d 6"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.instances[6].selected": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.custom.selectedFilter} \u003d 7"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.instances[7].selected": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.custom.selectedFilter} \u003d 8"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.instances[8].selected": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.custom.selectedFilter} \u003d 9"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "elementPosition": {
+                "basis": "auto"
+              },
+              "instances": [
+                {
+                  "filterNum": 1,
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "filterNum": 2,
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "filterNum": 3,
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "filterNum": 4,
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "filterNum": 5,
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "filterNum": 6,
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "filterNum": 7,
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "filterNum": 8,
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "filterNum": 9,
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  }
+                }
+              ],
+              "justify": "space-evenly",
+              "path": "Exchange/Water/EmbeddedViews/FilterButton",
+              "useDefaultViewHeight": false,
+              "useDefaultViewWidth": false
+            },
+            "type": "ia.display.flex-repeater"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "66px",
+          "shrink": 0
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Accordion"
+        },
+        "position": {
+          "basis": "734px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.items[0].body.viewParams.selectedFilter": {
+            "binding": {
+              "config": {
+                "path": "view.custom.selectedFilter"
+              },
+              "type": "property"
+            }
+          },
+          "props.items[1].body.viewParams.selectedFilter": {
+            "binding": {
+              "config": {
+                "path": "view.custom.selectedFilter"
+              },
+              "type": "property"
+            }
+          },
+          "props.items[2].body.viewParams.selectedFilter": {
+            "binding": {
+              "config": {
+                "path": "view.custom.selectedFilter"
+              },
+              "type": "property"
+            }
+          },
+          "props.items[3].body.viewParams.selectedFilter": {
+            "binding": {
+              "config": {
+                "path": "view.custom.selectedFilter"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "items": [
+            {
+              "body": {
+                "height": "auto",
+                "style": {
+                  "classes": "",
+                  "margin": "10px"
+                },
+                "useDefaultViewHeight": true,
+                "useDefaultViewWidth": false,
+                "viewParams": {},
+                "viewPath": "Exchange/Water/EmbeddedViews/FilterControls"
+              },
+              "expanded": true,
+              "header": {
+                "content": {
+                  "style": {
+                    "classes": ""
+                  },
+                  "text": "Status \u0026 Control",
+                  "type": "text",
+                  "useDefaultViewHeight": false,
+                  "useDefaultViewWidth": false,
+                  "viewParams": {},
+                  "viewPath": ""
+                },
+                "height": "36px",
+                "reverse": false,
+                "style": {
+                  "classes": ""
+                },
+                "toggle": {
+                  "collapsedIcon": {
+                    "color": "",
+                    "path": "material/expand_more",
+                    "style": {
+                      "classes": ""
+                    }
+                  },
+                  "enabled": true,
+                  "expandedIcon": {
+                    "color": "",
+                    "path": "material/expand_less",
+                    "style": {
+                      "classes": ""
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "body": {
+                "height": "auto",
+                "style": {
+                  "classes": "",
+                  "margin": "16px"
+                },
+                "useDefaultViewHeight": false,
+                "useDefaultViewWidth": false,
+                "viewParams": {},
+                "viewPath": "Exchange/Water/EmbeddedViews/FilterBackwashMobile"
+              },
+              "expanded": true,
+              "header": {
+                "content": {
+                  "style": {
+                    "classes": ""
+                  },
+                  "text": "Backwash",
+                  "type": "text",
+                  "useDefaultViewHeight": false,
+                  "useDefaultViewWidth": false,
+                  "viewParams": {},
+                  "viewPath": ""
+                },
+                "height": "40px",
+                "reverse": false,
+                "style": {
+                  "classes": ""
+                },
+                "toggle": {
+                  "collapsedIcon": {
+                    "color": "",
+                    "path": "material/expand_more",
+                    "style": {
+                      "classes": ""
+                    }
+                  },
+                  "enabled": true,
+                  "expandedIcon": {
+                    "color": "",
+                    "path": "material/expand_less",
+                    "style": {
+                      "classes": ""
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "body": {
+                "height": "auto",
+                "style": {
+                  "classes": "",
+                  "margin": "10px"
+                },
+                "useDefaultViewHeight": false,
+                "useDefaultViewWidth": false,
+                "viewParams": {},
+                "viewPath": "Exchange/Water/EmbeddedViews/FilterValues"
+              },
+              "expanded": true,
+              "header": {
+                "content": {
+                  "style": {
+                    "classes": ""
+                  },
+                  "text": "Operating Values",
+                  "type": "text",
+                  "useDefaultViewHeight": false,
+                  "useDefaultViewWidth": false,
+                  "viewParams": {},
+                  "viewPath": ""
+                },
+                "height": "36px",
+                "reverse": false,
+                "style": {
+                  "classes": ""
+                },
+                "toggle": {
+                  "collapsedIcon": {
+                    "color": "",
+                    "path": "material/expand_more",
+                    "style": {
+                      "classes": ""
+                    }
+                  },
+                  "enabled": true,
+                  "expandedIcon": {
+                    "color": "",
+                    "path": "material/expand_less",
+                    "style": {
+                      "classes": ""
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "body": {
+                "height": "auto",
+                "style": {
+                  "classes": "",
+                  "margin": "16px"
+                },
+                "useDefaultViewHeight": false,
+                "useDefaultViewWidth": false,
+                "viewParams": {},
+                "viewPath": "Exchange/Water/EmbeddedViews/FilterChart"
+              },
+              "expanded": true,
+              "header": {
+                "content": {
+                  "style": {
+                    "classes": ""
+                  },
+                  "text": "Chart",
+                  "type": "text",
+                  "useDefaultViewHeight": false,
+                  "useDefaultViewWidth": false,
+                  "viewParams": {},
+                  "viewPath": ""
+                },
+                "height": "40px",
+                "reverse": false,
+                "style": {
+                  "classes": ""
+                },
+                "toggle": {
+                  "collapsedIcon": {
+                    "color": "",
+                    "path": "material/expand_more",
+                    "style": {
+                      "classes": ""
+                    }
+                  },
+                  "enabled": true,
+                  "expandedIcon": {
+                    "color": "",
+                    "path": "material/expand_less",
+                    "style": {
+                      "classes": ""
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "type": "ia.display.accordion"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "Filter-Selection",
+          "pageScope": true,
+          "script": "\t\t# Set selectedFilter\n\t\tself.view.custom.selectedFilter \u003d payload[\u0027filterNum\u0027]\n\t\t\n\t\t# Set filter history\n\t\tproject.water.setFilterHistory(payload[\u0027filterNum\u0027])",
+          "sessionScope": true,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

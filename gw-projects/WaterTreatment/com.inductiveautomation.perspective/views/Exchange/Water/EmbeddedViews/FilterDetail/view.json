@@ -1,0 +1,412 @@
+{
+  "custom": {
+    "backwashStep": 7
+  },
+  "params": {
+    "filter": 1,
+    "max": 100,
+    "pipeThemeAir": {
+      "fill": "var(--callToAction--disabled)",
+      "stroke": "var(--neutral-90)"
+    },
+    "pipeThemeBed": {
+      "fill": "var(--callToAction--disabled)",
+      "stroke": "var(--neutral-90)"
+    }
+  },
+  "propConfig": {
+    "custom.backwashStep": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "filterNum": "{view.params.filter}"
+          },
+          "tagPath": "[default]Exchange/Water/Filters/Filter{filterNum}/Backwash/Step"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "params.filter": {
+      "paramDirection": "input"
+    },
+    "params.pipeThemeAir": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.pipeThemeBed": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 400,
+      "width": 288
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Spacing"
+            },
+            "position": {
+              "grow": 1
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Level"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "position.basis": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "1": "{view.params.filter}"
+                    },
+                    "tagPath": "[default]Exchange/Water/Filters/Filter{1}/Level"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "({value} / {view.params.max} * 70) + \u0027%\u0027",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "rgba(0, 100, 255, 0.3)"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Filter Air"
+            },
+            "position": {
+              "basis": "30%",
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.params.pipeTheme": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.pipeThemeAir"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "path": "Exchange/Water/EmbeddedViews/FilterAir"
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "height": 0.75,
+          "width": 1,
+          "y": 0.1667
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "background": "rgba(100,100,100,0.1)",
+            "borderBottomStyle": "none",
+            "borderBottomWidth": "2px",
+            "borderLeftStyle": "none",
+            "borderLeftWidth": "2px",
+            "borderRightStyle": "none",
+            "borderRightWidth": "2px",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "2px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "Heading"
+        },
+        "position": {
+          "height": 0.101,
+          "width": 0.9444,
+          "x": 0.0303,
+          "y": 0.0303
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "\"Filter \" + {view.params.filter} + \" Level\""
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderColor": "--neutral-90",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "classes": "exchange/water/border-radius exchange/water/secondary-title",
+            "fontSize": "max(1vw,1vh)",
+            "fontWeight": "bold",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Spacer"
+            },
+            "position": {
+              "grow": 1
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "custom": {
+              "tagPath": null
+            },
+            "meta": {
+              "name": "Sparkline"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "custom.refresh": {
+                "binding": {
+                  "config": {
+                    "expression": "now(60000)"
+                  },
+                  "type": "expr"
+                },
+                "onChange": {
+                  "enabled": null,
+                  "script": "\ttry:\n\t\tif self.custom.tagPath:\n\t\t\t#max \u003d self.view.params.max\n\t\t\t#min \u003d 0\n\t\t\tpath \u003d self.custom.tagPath\n\t\t\n\t\t\tds \u003d system.dataset.toPyDataSet(system.tag.queryTagHistory(paths\u003d[path], rangeHours\u003d24, returnSize\u003d100))\n\t\t\tdata \u003d [0]\n\t\t\tfor i in range(len(ds)):\n\t\t\t\tval \u003d ds[i][1] if ds[i][1] is not None else 0.0\n\t\t\t\t\n\t\t\t\t#r \u003d 100.0 / float(max - min)\n\t\t\t\t#offset \u003d 0.0 - float(min * r)\n\t\t\t\t#val \u003d float(val * r) + offset\n\t\t\t\t\n\t\t\t\tif val !\u003d None:\n\t\t\t\t\tdata.append(val)\n\t\t\tself.props.points \u003d data\n\t\telse:\n\t\t\tself.props.points \u003d []\n\texcept:\n\t\tself.props.points \u003d []\n"
+                }
+              },
+              "custom.tagPath": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.params.tagPath}"
+                  },
+                  "enabled": false,
+                  "type": "expr"
+                },
+                "onChange": {
+                  "enabled": null,
+                  "script": "\ttry:\n\t\tif self.custom.tagPath:\n\t\t\t#max \u003d self.view.params.max\n\t\t\t#min \u003d 0\n\t\t\tpath \u003d self.custom.tagPath\n\t\t\t\n\t\t\tds \u003d system.dataset.toPyDataSet(system.tag.queryTagHistory(paths\u003d[path], rangeHours\u003d24, returnSize\u003d100))\n\t\t\tdata \u003d [0]\n\t\t\tfor i in range(len(ds)):\n\t\t\t\tval \u003d ds[i][1] if ds[i][1] is not None else 0.0\n\t\t\t\t\n\t\t\t\t#r \u003d 100.0 / float(max - min)\n\t\t\t\t#offset \u003d 0.0 - float(min * r)\n\t\t\t\t#val \u003d float(val * r) + offset\n\t\t\t\t\n\t\t\t\tif val !\u003d None:\n\t\t\t\t\tdata.append(val)\n\t\t\tself.props.points \u003d data\n\t\telse:\n\t\t\tself.props.points \u003d []\n\texcept:\n\t\tself.props.points \u003d []\n"
+                }
+              },
+              "position.basis": {
+                "binding": {
+                  "config": {
+                    "expression": "now(1000)"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{this.props.points}",
+                      "type": "expression"
+                    },
+                    {
+                      "code": "\tif value is None and len(value) \u003c\u003d 0:\n\t\tself.custom.update \u003d false\n\t\treturn \u0027100%\u0027\n\ttry:\n\t\ttop \u003d 100.0 * max(value) / self.view.params.max\n\t\treturn \u0027%f%%\u0027 %top\n\texcept:\n\t\treturn \u0027100%\u0027",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr"
+                }
+              },
+              "props.strokeWidth": {
+                "binding": {
+                  "config": {
+                    "expression": "{this.props.points}"
+                  },
+                  "enabled": false,
+                  "transforms": [
+                    {
+                      "code": "\tif value is None and len(value) \u003c\u003d 0:\n\t\treturn 1\n\ttry:\n\t\treturn (self.view.params.max) / 50.0#stroke width will essentially be set to relative size of 2%\n\texcept:\n\t\treturn 1",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "points": [],
+              "strokeWidth": 1
+            },
+            "type": "ia.display.sparkline"
+          }
+        ],
+        "meta": {
+          "name": "Sparkline"
+        },
+        "position": {
+          "height": 0.5151,
+          "width": 0.9343,
+          "x": 0.0409,
+          "y": 0.1751
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.pipes[0].fill": {
+        "binding": {
+          "config": {
+            "path": "view.params.pipeThemeBed.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[0].lineVariant": {
+        "binding": {
+          "config": {
+            "path": "view.custom.backwashStep"
+          },
+          "transforms": [
+            {
+              "fallback": "solid",
+              "inputType": "range",
+              "mappings": [
+                {
+                  "input": {
+                    "max": 1,
+                    "min": 0
+                  },
+                  "output": "midArrow"
+                },
+                {
+                  "input": {
+                    "max": 3,
+                    "min": 2
+                  },
+                  "output": "solid"
+                },
+                {
+                  "input": {
+                    "max": 5,
+                    "min": 4
+                  },
+                  "output": "midArrow"
+                },
+                {
+                  "input": {
+                    "max": 6,
+                    "min": 6
+                  },
+                  "output": "solid"
+                }
+              ],
+              "outputType": "scalar",
+              "type": "map"
+            }
+          ],
+          "type": "property"
+        }
+      },
+      "props.pipes[0].start": {
+        "binding": {
+          "config": {
+            "fallbackDelay": 2.5,
+            "mode": "indirect",
+            "references": {
+              "filterNum": "{view.params.filter}"
+            },
+            "tagPath": "[default]Exchange/Water/Filters/Filter{filterNum}/Backwash/Step"
+          },
+          "transforms": [
+            {
+              "fallback": "none",
+              "inputType": "scalar",
+              "mappings": [
+                {
+                  "input": 4,
+                  "output": "arrowOutward"
+                }
+              ],
+              "outputType": "scalar",
+              "type": "map"
+            }
+          ],
+          "type": "tag"
+        }
+      },
+      "props.pipes[0].stroke": {
+        "binding": {
+          "config": {
+            "path": "view.params.pipeThemeBed.stroke"
+          },
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "mode": "percent",
+      "pipes": [
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "name": "bed",
+          "origin": {
+            "connections": [
+              {
+                "connections": [],
+                "x": 1,
+                "y": 0.96
+              }
+            ],
+            "x": 0,
+            "y": 0.96
+          },
+          "visible": false,
+          "width": 10
+        }
+      ],
+      "style": {
+        "backgroundColor": "#FFFFFF00",
+        "borderStyle": "solid",
+        "borderWidth": "2px",
+        "classes": "exchange/water/border-radius"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

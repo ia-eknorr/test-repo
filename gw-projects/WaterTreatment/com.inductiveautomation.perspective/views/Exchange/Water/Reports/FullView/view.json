@@ -1,0 +1,270 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 900
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "EmbeddedViewtTab0"
+            },
+            "props": {
+              "params": {
+                "headerStyle": {
+                  "classes": "exchange/water/Card_Title"
+                },
+                "name": "Monthly Operating Report",
+                "params": {
+                  "month": 1,
+                  "year": 2019
+                },
+                "path": "Exchange/Water/MonthlyOperating",
+                "project": "OnlineDemo",
+                "reportStyle": {
+                  "background": "white",
+                  "classes": ""
+                }
+              },
+              "path": "Exchange/Water/Reports/ReportView",
+              "style": {
+                "classes": "exchange/water/Card",
+                "maxWidth": "auto"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "EmbeddedViewtTab2"
+            },
+            "position": {
+              "tabIndex": 1
+            },
+            "props": {
+              "params": {
+                "headerStyle": {
+                  "classes": "exchange/water/Card_Title"
+                },
+                "name": "Compliance Report",
+                "path": "Exchange/Water/ComplianceReport",
+                "project": "OnlineDemo",
+                "reportStyle": {
+                  "background": "white",
+                  "classes": ""
+                }
+              },
+              "path": "Exchange/Water/Reports/ReportView",
+              "style": {
+                "classes": "exchange/water/Card",
+                "maxWidth": "auto"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "EmbeddedViewtTab3"
+            },
+            "position": {
+              "tabIndex": 2
+            },
+            "props": {
+              "params": {
+                "headerStyle": {
+                  "classes": "exchange/water/Card_Title"
+                },
+                "name": "Pump Runtime Report",
+                "path": "Exchange/Water/PumpRuntimeReport",
+                "project": "OnlineDemo",
+                "reportStyle": {
+                  "background": "white",
+                  "classes": ""
+                }
+              },
+              "path": "Exchange/Water/Reports/ReportView",
+              "style": {
+                "classes": "exchange/water/Card",
+                "maxWidth": "auto"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "BackwashByFilter"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "endTime": {
+                      "$": [
+                        "ts",
+                        192,
+                        1709845366166
+                      ],
+                      "$ts": 1709845366165
+                    },
+                    "headerStyle": {
+                      "classes": "exchange/water/Card_Title"
+                    },
+                    "name": "Backwash Report by Filter",
+                    "options": true,
+                    "params": {
+                      "backwashNum": 1,
+                      "endTime": {
+                        "$": [
+                          "ts",
+                          192,
+                          1708986659595
+                        ],
+                        "$ts": 1708986659595
+                      },
+                      "filterNum": 2,
+                      "startTime": {
+                        "$": [
+                          "ts",
+                          192,
+                          1708986659595
+                        ],
+                        "$ts": 1706567459595
+                      }
+                    },
+                    "path": "Exchange/Water/FilterBackwash",
+                    "project": "OnlineDemo",
+                    "reportStyle": {
+                      "background": "white",
+                      "classes": ""
+                    },
+                    "startTime": {
+                      "$": [
+                        "ts",
+                        192,
+                        1709845366166
+                      ],
+                      "$ts": 1707426166166
+                    }
+                  },
+                  "path": "Exchange/Water/Reports/ReportViewBackwash",
+                  "style": {
+                    "classes": "exchange/water/Card",
+                    "maxWidth": "auto"
+                  }
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "BackwashByTrain"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "backwashNum": 0,
+                    "endTime": {
+                      "$": [
+                        "ts",
+                        192,
+                        1709845366166
+                      ],
+                      "$ts": 1709845366166
+                    },
+                    "headerStyle": {
+                      "classes": "exchange/water/Card_Title"
+                    },
+                    "name": "Backwash Report by Filter Train",
+                    "options": true,
+                    "path": "Exchange/Water/TrainBackwash",
+                    "project": "OnlineDemo",
+                    "reportStyle": {
+                      "background": "white",
+                      "classes": ""
+                    },
+                    "startTime": {
+                      "$": [
+                        "ts",
+                        192,
+                        1709845366166
+                      ],
+                      "$ts": 1707426166166
+                    },
+                    "trainNum": 1
+                  },
+                  "path": "Exchange/Water/Reports/ReportViewBackwashTrain",
+                  "style": {
+                    "classes": "exchange/water/Card",
+                    "maxWidth": "auto"
+                  }
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "events": {
+              "system": {
+                "onStartup": {
+                  "config": {
+                    "script": "\tself.getChild(\"BackwashByFilter\").props.params.endTime \u003d system.date.now()\n\tself.getChild(\"BackwashByFilter\").props.params.startTime \u003d system.date.addWeeks(system.date.now(), -4)\n\t\n\tself.getChild(\"BackwashByTrain\").props.params.endTime \u003d system.date.now()\n\tself.getChild(\"BackwashByTrain\").props.params.startTime \u003d system.date.addWeeks(system.date.now(), -4)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "tabIndex": 3
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "TabContainer"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "menuType": "modern",
+          "style": {
+            "height": "100%"
+          },
+          "tabSize": {
+            "height": 50,
+            "width": 300
+          },
+          "tabs": [
+            "Monthly Operating Report",
+            "Compliance Report",
+            "Pump Runtime Report",
+            "Backwash Reports"
+          ]
+        },
+        "type": "ia.container.tab"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "alignItems": "flex-start",
+      "style": {
+        "overflow": "hidden"
+      },
+      "wrap": "wrap"
+    },
+    "type": "ia.container.flex"
+  }
+}

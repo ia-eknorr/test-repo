@@ -1,0 +1,17 @@
+{
+  "base": {
+    "animation": {
+      "duration": "750ms",
+      "timingFunction": "ease-in-out",
+      "keyframes": {
+        "0%": {
+          "color": "var(--neutral-100)"
+        },
+        "100%": {
+          "backgroundColor": "var(--error)",
+          "color": "var(--neutral-100)"
+        }
+      }
+    }
+  }
+}

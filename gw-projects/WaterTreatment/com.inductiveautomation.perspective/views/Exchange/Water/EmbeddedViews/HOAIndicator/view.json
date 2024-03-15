@@ -1,0 +1,128 @@
+{
+  "custom": {},
+  "params": {
+    "id": 1,
+    "state": 2,
+    "tagPath": "[default]Water/Pumps/AlumPump1"
+  },
+  "propConfig": {
+    "custom.mode": {
+      "binding": {
+        "config": {
+          "mode": "indirect",
+          "references": {
+            "tag": "{view.params.tagPath}"
+          },
+          "tagPath": "{tag}/Mode"
+        },
+        "type": "tag"
+      }
+    },
+    "custom.state": {
+      "binding": {
+        "config": {
+          "mode": "indirect",
+          "references": {
+            "tag": "{view.params.tagPath}"
+          },
+          "tagPath": "{tag}./Value"
+        },
+        "type": "tag"
+      }
+    },
+    "params.font": {
+      "paramDirection": "input"
+    },
+    "params.fontSiz": {
+      "paramDirection": "input"
+    },
+    "params.fontSize": {
+      "paramDirection": "input"
+    },
+    "params.id": {
+      "paramDirection": "input"
+    },
+    "params.key": {
+      "paramDirection": "input"
+    },
+    "params.sta": {
+      "paramDirection": "input"
+    },
+    "params.state": {
+      "paramDirection": "input"
+    },
+    "params.tag": {
+      "paramDirection": "input"
+    },
+    "params.tagP": {
+      "paramDirection": "input"
+    },
+    "params.tagPa": {
+      "paramDirection": "input"
+    },
+    "params.tagPath": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 80,
+      "width": 80
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "height": 1,
+          "width": 1
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "mode": "{view.custom.mode}",
+                  "state": "{view.custom.state}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "expression": "case({value}[\u0027state\u0027],\r\n\t0, \u0027exchange/water/indicator/state-off\u0027,\r\n\t1, \u0027exchange/water/indicator/state-on\u0027,\r\n\t\u0027exchange/water/error\u0027)\r\n+ \u0027 \u0027 +\r\ncase({value}[\u0027mode\u0027],\r\n\t0, \u0027exchange/water/indicator/mode-off\u0027,\r\n\t1, \u0027exchange/water/indicator/mode-auto\u0027,\r\n\t2, \u0027exchange/water/indicator/mode-hand\u0027,\r\n\t\u0027exchange/water/error\u0027)",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.id"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderWidth": "3px",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "mode": "percent"
+    },
+    "type": "ia.container.coord"
+  }
+}

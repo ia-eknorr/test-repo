@@ -1,0 +1,603 @@
+{
+  "custom": {
+    "params": {},
+    "train": [
+      "(0,0,0)",
+      "(1,2,3)",
+      "(4,5,6)",
+      "(7,8,9)"
+    ]
+  },
+  "params": {
+    "backwashNum": 0,
+    "endTime": {
+      "$": [
+        "ts",
+        192,
+        1706545114103
+      ],
+      "$ts": 1706564595000
+    },
+    "headerStyle": {
+      "classes": "exchange/water/Card_Title"
+    },
+    "name": "Backwash Report",
+    "options": true,
+    "path": "Exchange/Water/FilterBackwash",
+    "project": "OnlineDemo",
+    "reportStyle": {
+      "background": "white",
+      "classes": ""
+    },
+    "startTime": {
+      "$": [
+        "ts",
+        192,
+        1706545101004
+      ],
+      "$ts": 1703799795535
+    },
+    "trainNum": 0
+  },
+  "propConfig": {
+    "custom.params": {
+      "persistent": true
+    },
+    "custom.params.backwashNum": {
+      "binding": {
+        "config": {
+          "path": "view.params.backwashNum"
+        },
+        "type": "property"
+      }
+    },
+    "custom.params.endTime": {
+      "binding": {
+        "config": {
+          "path": "view.params.endTime"
+        },
+        "type": "property"
+      }
+    },
+    "custom.params.filterA": {
+      "binding": {
+        "config": {
+          "path": "view.params.trainNum"
+        },
+        "transforms": [
+          {
+            "code": "\tif value \u003c 4:\n\t\treturn self.custom.train[value][1]\n\telse:\n\t\treturn 0",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.params.filterB": {
+      "binding": {
+        "config": {
+          "path": "view.params.trainNum"
+        },
+        "transforms": [
+          {
+            "code": "\tif value \u003c 4:\n\t\treturn self.custom.train[value][3]\n\telse:\n\t\treturn 0",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.params.filterC": {
+      "binding": {
+        "config": {
+          "path": "view.params.trainNum"
+        },
+        "transforms": [
+          {
+            "code": "\tif value \u003c 4:\n\t\treturn self.custom.train[value][5]\n\telse:\n\t\treturn 0",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      }
+    },
+    "custom.params.startTime": {
+      "binding": {
+        "config": {
+          "path": "view.params.startTime"
+        },
+        "type": "property"
+      }
+    },
+    "custom.params.trainNum": {
+      "binding": {
+        "config": {
+          "path": "view.params.trainNum"
+        },
+        "type": "property"
+      }
+    },
+    "custom.train": {
+      "persistent": true
+    },
+    "params.backwashNum": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.endTime": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.headerStyle": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.name": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.options": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.path": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.project": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.reportStyle": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.startTime": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.trainNum": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 928
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "32px"
+        },
+        "propConfig": {
+          "props.style": {
+            "binding": {
+              "config": {
+                "path": "view.params.headerStyle"
+              },
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.name"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Train"
+                },
+                "position": {
+                  "basis": "32px"
+                },
+                "props": {
+                  "text": "Filter Train",
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "NumericEntryField"
+                },
+                "position": {
+                  "basis": "32px"
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.params.trainNum"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "mode": "button"
+                },
+                "type": "ia.input.numeric-entry-field"
+              }
+            ],
+            "meta": {
+              "name": "TrainFlex"
+            },
+            "position": {
+              "basis": "100px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "margin": 10
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "BackwashCount"
+                },
+                "position": {
+                  "basis": "32px"
+                },
+                "props": {
+                  "text": "Count",
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "NumericEntryField"
+                },
+                "position": {
+                  "basis": "32px"
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.params.backwashNum"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "mode": "button",
+                  "style": {
+                    "padding": 10
+                  }
+                },
+                "type": "ia.input.numeric-entry-field"
+              },
+              {
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "config": {
+                        "script": "\tself.view.params.backwashNum \u003d 0"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "ClearButton",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "Set Report to Show All Backwashes"
+                  }
+                },
+                "position": {
+                  "basis": "34px"
+                },
+                "props": {
+                  "style": {
+                    "marginBottom": 10,
+                    "marginLeft": 10,
+                    "marginRight": 10,
+                    "marginTop": 20
+                  },
+                  "text": "Clear Count"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "BackwashFlex"
+            },
+            "position": {
+              "basis": "100px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "margin": 10
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "32px"
+                },
+                "props": {
+                  "text": "Start Date",
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "DateTimeInput"
+                },
+                "position": {
+                  "basis": "32px"
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.params.startTime"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "formattedValue": "Dec 28, 2023 2:43 PM"
+                },
+                "type": "ia.input.date-time-input"
+              },
+              {
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "config": {
+                        "script": "\tself.view.params.startTime \u003d system.date.addWeeks(system.date.now(), -4)"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "ClearButton",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "Set Start Time to 4 Weeks Ago"
+                  }
+                },
+                "position": {
+                  "basis": "34px"
+                },
+                "props": {
+                  "style": {
+                    "marginBottom": 10,
+                    "marginLeft": 10,
+                    "marginRight": 10,
+                    "marginTop": 20
+                  },
+                  "text": "Clear Start"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "StartDate"
+            },
+            "position": {
+              "basis": "100px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "margin": 10
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "32px"
+                },
+                "props": {
+                  "text": "End Date",
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "DateTimeInput"
+                },
+                "position": {
+                  "basis": "32px"
+                },
+                "propConfig": {
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.params.endTime"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "formattedValue": "Jan 29, 2024 2:43 PM"
+                },
+                "type": "ia.input.date-time-input"
+              },
+              {
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "config": {
+                        "script": "\tself.view.params.endTime \u003d system.date.now()"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "ClearButton",
+                  "tooltip": {
+                    "enabled": true,
+                    "text": "Set End Time to Now"
+                  }
+                },
+                "position": {
+                  "basis": "34px"
+                },
+                "props": {
+                  "style": {
+                    "marginBottom": 10,
+                    "marginLeft": 10,
+                    "marginRight": 10,
+                    "marginTop": 20
+                  },
+                  "text": "Clear End"
+                },
+                "type": "ia.input.button"
+              }
+            ],
+            "meta": {
+              "name": "EndDate"
+            },
+            "position": {
+              "basis": "100px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "margin": 10
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "ReportParams"
+        },
+        "position": {
+          "basis": "150px"
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "path": "view.params.options"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "ReportViewerFirst"
+        },
+        "position": {
+          "basis": "400px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.downloadFilename": {
+            "binding": {
+              "config": {
+                "expression": "dateFormat({this.props.params.startTime},\"yyyy-MM-dd\")+\"_\"+dateFormat({this.props.params.endTime},\"yyyy-MM-dd\")+\r\n\"_Filter-Train-\"+{this.props.params.trainNum}+\r\nIf({this.props.params.backwashNum}\u003e0, \"_Previous_\"+{this.props.params.backwashNum},\"_All\")\r\n+\"_Backwash_Report\""
+              },
+              "type": "expr"
+            }
+          },
+          "props.params": {
+            "binding": {
+              "config": {
+                "path": "view.custom.params"
+              },
+              "type": "property"
+            }
+          },
+          "props.source": {
+            "binding": {
+              "config": {
+                "path": "view.params.path"
+              },
+              "type": "property"
+            }
+          },
+          "props.style": {
+            "binding": {
+              "config": {
+                "path": "view.params.reportStyle"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "page": 1,
+          "pageCount": 1
+        },
+        "type": "ia.reporting.report-viewer"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "custom": {
+    "currentTheme": false,
+    "themeIcon": "material/linear_scale"
+  },
+  "params": {
+    "pipes": true,
+    "theme": "mimic"
+  },
+  "propConfig": {
+    "custom.currentTheme": {
+      "binding": {
+        "config": {
+          "expression": "{view.params.theme} \u003d\r\nif({view.params.pipes},\r\n\t{session.props.pipes.autoAppearance},\r\n\t{session.props.symbols.autoAppearance})"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.themeIcon": {
+      "binding": {
+        "config": {
+          "path": "view.params.theme"
+        },
+        "transforms": [
+          {
+            "fallback": "material/remove",
+            "inputType": "scalar",
+            "mappings": [
+              {
+                "input": "p\u0026id",
+                "output": "material/call_split"
+              },
+              {
+                "input": "simple",
+                "output": "material/remove"
+              },
+              {
+                "input": "mimic",
+                "output": "material/linear_scale"
+              }
+            ],
+            "outputType": "scalar",
+            "type": "map"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "params.pipes": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.theme": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 55,
+      "width": 55
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "MainIcon"
+        },
+        "position": {
+          "height": 0.9796,
+          "width": 0.9796,
+          "x": -0.0069,
+          "y": 0.0245
+        },
+        "propConfig": {
+          "props.path": {
+            "binding": {
+              "config": {
+                "path": "view.custom.themeIcon"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "color": "var(--qual-10)"
+        },
+        "type": "ia.display.icon"
+      }
+    ],
+    "meta": {
+      "name": "root",
+      "tooltip": {
+        "enabled": true,
+        "location": "center",
+        "sustain": 5000
+      }
+    },
+    "propConfig": {
+      "meta.tooltip.text": {
+        "binding": {
+          "config": {
+            "path": "view.params.theme"
+          },
+          "transforms": [
+            {
+              "code": "\treturn value.replace(\u0027-\u0027, \u0027 \u0027).title()",
+              "type": "script"
+            }
+          ],
+          "type": "property"
+        }
+      },
+      "props.style.backgroundColor": {
+        "binding": {
+          "config": {
+            "path": "view.custom.currentTheme"
+          },
+          "transforms": [
+            {
+              "fallback": "var(--neutral-90)",
+              "inputType": "scalar",
+              "mappings": [
+                {
+                  "input": true,
+                  "output": "var(--neutral-10)"
+                },
+                {
+                  "input": false,
+                  "output": "var(--neutral-90)"
+                }
+              ],
+              "outputType": "scalar",
+              "type": "map"
+            }
+          ],
+          "type": "property"
+        }
+      },
+      "props.style.borderColor": {
+        "binding": {
+          "config": {
+            "path": "view.custom.currentTheme"
+          },
+          "transforms": [
+            {
+              "fallback": "var(--neutral-10)",
+              "inputType": "scalar",
+              "mappings": [
+                {
+                  "input": true,
+                  "output": "var(--neutral-90)"
+                },
+                {
+                  "input": false,
+                  "output": "var(--neutral-10)"
+                }
+              ],
+              "outputType": "scalar",
+              "type": "map"
+            }
+          ],
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "aspectRatio": "1:1",
+      "mode": "percent",
+      "style": {
+        "borderBottomLeftRadius": "10px",
+        "borderBottomRightRadius": "10px",
+        "borderStyle": "solid",
+        "borderTopLeftRadius": "10px",
+        "borderTopRightRadius": "10px",
+        "borderWidth": "2px",
+        "cursor": "pointer"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

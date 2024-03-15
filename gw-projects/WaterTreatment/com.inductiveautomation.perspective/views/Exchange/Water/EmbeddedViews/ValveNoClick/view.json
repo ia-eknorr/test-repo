@@ -1,0 +1,357 @@
+{
+  "custom": {},
+  "params": {
+    "id": "",
+    "tagPath": "Water/Valves/Valve2"
+  },
+  "propConfig": {
+    "custom.mode": {
+      "binding": {
+        "config": {
+          "mode": "indirect",
+          "references": {
+            "tag": "{view.params.tagPath}"
+          },
+          "tagPath": "{tag}/Mode"
+        },
+        "type": "tag"
+      }
+    },
+    "custom.state": {
+      "binding": {
+        "config": {
+          "mode": "indirect",
+          "references": {
+            "tag": "{view.params.tagPath}"
+          },
+          "tagPath": "{tag}/Value"
+        },
+        "type": "tag"
+      }
+    },
+    "params.fi": {
+      "paramDirection": "input"
+    },
+    "params.fill": {
+      "paramDirection": "input"
+    },
+    "params.font": {
+      "paramDirection": "input"
+    },
+    "params.fontSiz": {
+      "paramDirection": "input"
+    },
+    "params.fontSize": {
+      "paramDirection": "input"
+    },
+    "params.id": {
+      "paramDirection": "input"
+    },
+    "params.key": {
+      "paramDirection": "input"
+    },
+    "params.ro": {
+      "paramDirection": "input"
+    },
+    "params.rota": {
+      "paramDirection": "input"
+    },
+    "params.rotate": {
+      "paramDirection": "input"
+    },
+    "params.stat": {
+      "paramDirection": "input"
+    },
+    "params.state": {
+      "paramDirection": "input"
+    },
+    "params.tag": {
+      "paramDirection": "input"
+    },
+    "params.tagP": {
+      "paramDirection": "input"
+    },
+    "params.tagPat": {
+      "paramDirection": "input"
+    },
+    "params.tagPath": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 200,
+      "width": 200
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "valve"
+        },
+        "position": {
+          "height": 0.9,
+          "width": 0.9,
+          "x": 0.05,
+          "y": 0.05
+        },
+        "propConfig": {
+          "props.style.fill": {
+            "binding": {
+              "config": {
+                "path": "view.custom.state"
+              },
+              "transforms": [
+                {
+                  "fallback": "#FF0000",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 0,
+                      "output": "--neutral-50"
+                    },
+                    {
+                      "input": 1,
+                      "output": "--indicator"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "elements": [
+            {
+              "elements": [
+                {
+                  "d": "M0,56.252l56.25-28.125L0,0.002V56.252z",
+                  "fill": "--qual-1",
+                  "name": "path",
+                  "stroke": "--div-16",
+                  "type": "path"
+                }
+              ],
+              "name": "Group_Port1",
+              "type": "group"
+            }
+          ],
+          "preserveAspectRatio": "none",
+          "style": {
+            "padding": "2px"
+          },
+          "viewBox": "0 0 112.5 56.25"
+        },
+        "type": "ia.shapes.svg"
+      },
+      {
+        "meta": {
+          "name": "valve2"
+        },
+        "position": {
+          "height": 0.9,
+          "rotate": {
+            "angle": "180deg"
+          },
+          "width": 0.9,
+          "x": 0.05,
+          "y": 0.05
+        },
+        "propConfig": {
+          "props.style.fill": {
+            "binding": {
+              "config": {
+                "path": "view.custom.state"
+              },
+              "transforms": [
+                {
+                  "fallback": "#FF0000",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 0,
+                      "output": "--neutral-50"
+                    },
+                    {
+                      "input": 1,
+                      "output": "--indicator"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "elements": [
+            {
+              "elements": [
+                {
+                  "d": "M1,56.252l56.25-28.125L1,0.002V56.252z",
+                  "fill": "",
+                  "name": "path",
+                  "stroke": "",
+                  "type": "path"
+                }
+              ],
+              "name": "Group_Port1",
+              "type": "group"
+            }
+          ],
+          "preserveAspectRatio": "none",
+          "style": {
+            "padding": "2px"
+          },
+          "viewBox": "0 0 112.5 56.25"
+        },
+        "type": "ia.shapes.svg"
+      },
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "height": 0.32,
+          "width": 1
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.id"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontSize": "0.8em",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": [
+          {
+            "config": {
+              "draggable": true,
+              "id": "HOAControl",
+              "modal": false,
+              "overlayDismiss": false,
+              "resizable": true,
+              "showCloseIcon": true,
+              "type": "close",
+              "viewPath": "",
+              "viewportBound": false
+            },
+            "scope": "C",
+            "type": "popup"
+          },
+          {
+            "config": {
+              "draggable": false,
+              "id": "HOAControl",
+              "modal": false,
+              "overlayDismiss": false,
+              "resizable": false,
+              "showCloseIcon": false,
+              "type": "open",
+              "viewParams": {
+                "popupTitle": "Valve #{view.params.id}",
+                "tagPath": "{view.params.tagPath}"
+              },
+              "viewPath": "Exchange/Water/EmbeddedViews/HOAControl",
+              "viewportBound": false
+            },
+            "scope": "C",
+            "type": "popup"
+          }
+        ]
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.borderColor": {
+        "binding": {
+          "config": {
+            "path": "view.custom.mode"
+          },
+          "transforms": [
+            {
+              "fallback": "-error",
+              "inputType": "scalar",
+              "mappings": [
+                {
+                  "input": 1,
+                  "output": "--neutral-100"
+                },
+                {
+                  "input": 2,
+                  "output": "--qual-10"
+                }
+              ],
+              "outputType": "scalar",
+              "type": "map"
+            }
+          ],
+          "type": "property"
+        }
+      },
+      "props.style.borderStyle": {
+        "binding": {
+          "config": {
+            "mode": "indirect",
+            "references": {
+              "tag": "{view.params.tagPath}"
+            },
+            "tagPath": "{tag}/Mode"
+          },
+          "transforms": [
+            {
+              "fallback": "dashed",
+              "inputType": "scalar",
+              "mappings": [
+                {
+                  "input": 2,
+                  "output": "dashed"
+                },
+                {
+                  "input": 1,
+                  "output": "none"
+                },
+                {
+                  "input": 0,
+                  "output": "dashed"
+                }
+              ],
+              "outputType": "scalar",
+              "type": "map"
+            }
+          ],
+          "type": "tag"
+        }
+      }
+    },
+    "props": {
+      "mode": "percent",
+      "style": {
+        "borderWidth": "4px",
+        "cursor": "pointer"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

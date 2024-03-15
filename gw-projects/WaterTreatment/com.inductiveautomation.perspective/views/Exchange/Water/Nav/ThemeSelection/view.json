@@ -1,0 +1,518 @@
+{
+  "custom": {},
+  "params": {
+    "selecting": true
+  },
+  "propConfig": {
+    "params.selecting": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 165,
+      "width": 240
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "custom": {
+          "centeredCoords": {
+            "left": "92px",
+            "top": "75px"
+          },
+          "defaults": {
+            "dark": {
+              "left": "12px",
+              "top": "75px"
+            },
+            "dark-cool": {
+              "left": "170px",
+              "top": "75px"
+            },
+            "dark-warm": {
+              "left": "92px",
+              "top": "75px"
+            },
+            "light": {
+              "left": "12px",
+              "top": "10px"
+            },
+            "light-cool": {
+              "left": "170px",
+              "top": "10px"
+            },
+            "light-warm": {
+              "left": "92px",
+              "top": "10px"
+            }
+          },
+          "isSelecting": false
+        },
+        "events": {
+          "component": {
+            "onInstanceClicked": {
+              "config": {
+                "script": "\tselecting\t  \u003d self.view.params.selecting\n\t\n\tif not selecting:\n\t\tself.view.params.selecting \u003d True\n\telse:\n\t\tindex\t \t  \u003d event.index\n\t\tinstances  \t  \u003d self.props.instances\n\t\t\n\t\tself.view.params.selecting   \u003d False\n\t\tself.session.props.theme \u003d instances[index].viewParams.theme\n\t\t\n\t\t\n\t\t\n\t\t\n\t"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "ViewCanvas"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0
+        },
+        "propConfig": {
+          "custom.isSelecting": {
+            "binding": {
+              "config": {
+                "path": "view.params.selecting"
+              },
+              "enabled": false,
+              "type": "property"
+            }
+          },
+          "custom.selectedTheme": {
+            "binding": {
+              "config": {
+                "path": "session.props.theme"
+              },
+              "type": "property"
+            }
+          },
+          "props.instances[0].left": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "centeredCoords": "{this.custom.centeredCoords}",
+                  "defaults": "{this.custom.defaults}",
+                  "selectedTheme": "{this.custom.selectedTheme}",
+                  "selecting": "{view.params.selecting}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\timport time\n\t\n\tselecting\t\t\u003d value.selecting\n\tselectedTheme \t\u003d value.selectedTheme\n\tdefaults\t\t\u003d value.defaults\n\tcenteredCoords  \u003d value.centeredCoords\n\t\n\t\n\ttime.sleep(0.2)\n\tif selecting:\n\t\treturn defaults[\"light\"].left\n\telse:\n\t\treturn centeredCoords.left\n\t",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[0].top": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "centeredCoords": "{this.custom.centeredCoords}",
+                  "defaults": "{this.custom.defaults}",
+                  "selectedTheme": "{this.custom.selectedTheme}",
+                  "selecting": "{view.params.selecting}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\timport time\n\t\n\tselecting\t\t\u003d value.selecting\n\tselectedTheme \t\u003d value.selectedTheme\n\tdefaults\t\t\u003d value.defaults\n\tcenteredCoords  \u003d value.centeredCoords\n\t\n\ttime.sleep(0.2)\n\tif selecting:\n\t\treturn defaults[\"light\"].top\n\telse:\n\t\treturn centeredCoords.top\n\t",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[0].zIndex": {
+            "binding": {
+              "config": {
+                "expression": "if({this.custom.selectedTheme}\u003d\"light\", 9999, 0)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.instances[1].left": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "centeredCoords": "{this.custom.centeredCoords}",
+                  "defaults": "{this.custom.defaults}",
+                  "selectedTheme": "{this.custom.selectedTheme}",
+                  "selecting": "{view.params.selecting}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\timport time\n\t\n\tselecting\t\t\u003d value.selecting\n\tselectedTheme \t\u003d value.selectedTheme\n\tdefaults\t\t\u003d value.defaults\n\tcenteredCoords  \u003d value.centeredCoords\n\t\n\ttime.sleep(0.3)\n\tif selecting:\n\t\treturn defaults[\"light-warm\"].left\n\telse:\n\t\treturn centeredCoords.left\n\t",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[1].top": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "centeredCoords": "{this.custom.centeredCoords}",
+                  "defaults": "{this.custom.defaults}",
+                  "selectedTheme": "{this.custom.selectedTheme}",
+                  "selecting": "{view.params.selecting}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\timport time\n\t\n\tselecting\t\t\u003d value.selecting\n\tselectedTheme \t\u003d value.selectedTheme\n\tdefaults\t\t\u003d value.defaults\n\tcenteredCoords  \u003d value.centeredCoords\n\t\n\ttime.sleep(0.3)\n\tif selecting:\n\t\treturn defaults[\"light-warm\"].top\n\telse:\n\t\treturn centeredCoords.top\n\t",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[1].zIndex": {
+            "binding": {
+              "config": {
+                "expression": "if({this.custom.selectedTheme}\u003d\"light-warm\", 9999, 0)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.instances[2].left": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "centeredCoords": "{this.custom.centeredCoords}",
+                  "defaults": "{this.custom.defaults}",
+                  "selectedTheme": "{this.custom.selectedTheme}",
+                  "selecting": "{view.params.selecting}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\timport time\n\t\n\tselecting\t\t\u003d value.selecting\n\tselectedTheme \t\u003d value.selectedTheme\n\tdefaults\t\t\u003d value.defaults\n\tcenteredCoords  \u003d value.centeredCoords\n\t\n\ttime.sleep(0.4)\n\tif selecting:\n\t\treturn defaults[\"light-cool\"].left\n\telse:\n\t\treturn centeredCoords.left\n\t",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[2].top": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "centeredCoords": "{this.custom.centeredCoords}",
+                  "defaults": "{this.custom.defaults}",
+                  "selectedTheme": "{this.custom.selectedTheme}",
+                  "selecting": "{view.params.selecting}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\timport time\n\t\n\tselecting\t\t\u003d value.selecting\n\tselectedTheme \t\u003d value.selectedTheme\n\tdefaults\t\t\u003d value.defaults\n\tcenteredCoords  \u003d value.centeredCoords\n\t\n\ttime.sleep(0.4)\n\tif selecting:\n\t\treturn defaults[\"light-cool\"].top\n\telse:\n\t\treturn centeredCoords.top\n\t",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[2].zIndex": {
+            "binding": {
+              "config": {
+                "expression": "if({this.custom.selectedTheme}\u003d\"light-cool\", 9999, 0)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.instances[3].left": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "centeredCoords": "{this.custom.centeredCoords}",
+                  "defaults": "{this.custom.defaults}",
+                  "selectedTheme": "{this.custom.selectedTheme}",
+                  "selecting": "{view.params.selecting}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\timport time\n\t\n\tselecting\t\t\u003d value.selecting\n\tselectedTheme \t\u003d value.selectedTheme\n\tdefaults\t\t\u003d value.defaults\n\tcenteredCoords  \u003d value.centeredCoords\n\t\n\ttime.sleep(0.1)\n\tif selecting:\n\t\treturn defaults[\"dark\"].left\n\telse:\n\t\treturn centeredCoords.left\n\t",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[3].top": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "centeredCoords": "{this.custom.centeredCoords}",
+                  "defaults": "{this.custom.defaults}",
+                  "selectedTheme": "{this.custom.selectedTheme}",
+                  "selecting": "{view.params.selecting}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\timport time\n\t\n\tselecting\t\t\u003d value.selecting\n\tselectedTheme \t\u003d value.selectedTheme\n\tdefaults\t\t\u003d value.defaults\n\tcenteredCoords  \u003d value.centeredCoords\n\t\n\ttime.sleep(0.1)\n\tif selecting:\n\t\treturn defaults[\"dark\"].top\n\telse:\n\t\treturn centeredCoords.top\n\t",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[3].zIndex": {
+            "binding": {
+              "config": {
+                "expression": "if({this.custom.selectedTheme}\u003d\"dark\", 9999, 0)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.instances[4].left": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "centeredCoords": "{this.custom.centeredCoords}",
+                  "defaults": "{this.custom.defaults}",
+                  "selectedTheme": "{this.custom.selectedTheme}",
+                  "selecting": "{view.params.selecting}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\tselecting\t\t\u003d value.selecting\n\tselectedTheme \t\u003d value.selectedTheme\n\tdefaults\t\t\u003d value.defaults\n\tcenteredCoords  \u003d value.centeredCoords\n\t\n\tif selecting:\n\t\treturn defaults[\"dark-warm\"].left\n\telse:\n\t\treturn centeredCoords.left\n\t",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[4].top": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "centeredCoords": "{this.custom.centeredCoords}",
+                  "defaults": "{this.custom.defaults}",
+                  "selectedTheme": "{this.custom.selectedTheme}",
+                  "selecting": "{view.params.selecting}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\tselecting\t\t\u003d value.selecting\n\tselectedTheme \t\u003d value.selectedTheme\n\tdefaults\t\t\u003d value.defaults\n\tcenteredCoords  \u003d value.centeredCoords\n\t\n\tif selecting:\n\t\treturn defaults[\"dark-warm\"].top\n\telse:\n\t\treturn centeredCoords.top\n\t",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[4].zIndex": {
+            "binding": {
+              "config": {
+                "expression": "if({this.custom.selectedTheme}\u003d\"dark-warm\", 9999, 0)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.instances[5].left": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "centeredCoords": "{this.custom.centeredCoords}",
+                  "defaults": "{this.custom.defaults}",
+                  "selectedTheme": "{this.custom.selectedTheme}",
+                  "selecting": "{view.params.selecting}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\timport time\n\tselecting\t\t\u003d value.selecting\n\tselectedTheme \t\u003d value.selectedTheme\n\tdefaults\t\t\u003d value.defaults\n\tcenteredCoords  \u003d value.centeredCoords\n\t\n\ttime.sleep(0.5)\n\tif selecting:\n\t\treturn defaults[\"dark-cool\"].left\n\telse:\n\t\treturn centeredCoords.left\n\t",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[5].top": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "centeredCoords": "{this.custom.centeredCoords}",
+                  "defaults": "{this.custom.defaults}",
+                  "selectedTheme": "{this.custom.selectedTheme}",
+                  "selecting": "{view.params.selecting}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\timport time\n\t\n\tselecting\t\t\u003d value.selecting\n\tselectedTheme \t\u003d value.selectedTheme\n\tdefaults\t\t\u003d value.defaults\n\tcenteredCoords  \u003d value.centeredCoords\n\t\n\ttime.sleep(0.5)\t\n\tif selecting:\n\t\treturn defaults[\"dark-cool\"].top\n\telse:\n\t\treturn centeredCoords.top\n\t",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.instances[5].zIndex": {
+            "binding": {
+              "config": {
+                "expression": "if({this.custom.selectedTheme}\u003d\"dark-cool\", 9999, 0)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "defaultStyle": {
+            "overflow": "visible"
+          },
+          "instances": [
+            {
+              "bottom": "auto",
+              "height": "auto",
+              "position": "absolute",
+              "right": "auto",
+              "style": {
+                "classes": ""
+              },
+              "viewParams": {
+                "theme": "light"
+              },
+              "viewPath": "Exchange/Water/Nav/ThemeIcons",
+              "width": "auto"
+            },
+            {
+              "bottom": "auto",
+              "height": "auto",
+              "position": "absolute",
+              "right": "auto",
+              "style": {
+                "classes": ""
+              },
+              "viewParams": {
+                "theme": "light-warm"
+              },
+              "viewPath": "Exchange/Water/Nav/ThemeIcons",
+              "width": "auto"
+            },
+            {
+              "bottom": "auto",
+              "height": "auto",
+              "position": "absolute",
+              "right": "auto",
+              "style": {
+                "classes": ""
+              },
+              "viewParams": {
+                "theme": "light-cool"
+              },
+              "viewPath": "Exchange/Water/Nav/ThemeIcons",
+              "width": "auto"
+            },
+            {
+              "bottom": "auto",
+              "height": "auto",
+              "position": "absolute",
+              "right": "auto",
+              "style": {
+                "classes": ""
+              },
+              "viewParams": {
+                "theme": "dark"
+              },
+              "viewPath": "Exchange/Water/Nav/ThemeIcons",
+              "width": "auto"
+            },
+            {
+              "bottom": "auto",
+              "height": "auto",
+              "position": "absolute",
+              "right": "auto",
+              "style": {
+                "classes": ""
+              },
+              "viewParams": {
+                "theme": "dark-warm"
+              },
+              "viewPath": "Exchange/Water/Nav/ThemeIcons",
+              "width": "auto"
+            },
+            {
+              "bottom": "auto",
+              "height": "auto",
+              "position": "absolute",
+              "right": "auto",
+              "style": {
+                "classes": ""
+              },
+              "viewParams": {
+                "theme": "dark-cool"
+              },
+              "viewPath": "Exchange/Water/Nav/ThemeIcons",
+              "width": "auto"
+            }
+          ],
+          "style": {
+            "overflow": "visible"
+          },
+          "transitionSettings": {
+            "duration": "0.1s",
+            "timingFunction": "linear"
+          }
+        },
+        "type": "ia.display.viewcanvas"
+      },
+      {
+        "meta": {
+          "name": "CurrentTheme"
+        },
+        "position": {
+          "basis": "32px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.selecting}\u003dTrue, \"Select a theme...\", \"Theme: \" + upper({../ViewCanvas.custom.selectedTheme}))"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontSize": "12px",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "--neutral-40",
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

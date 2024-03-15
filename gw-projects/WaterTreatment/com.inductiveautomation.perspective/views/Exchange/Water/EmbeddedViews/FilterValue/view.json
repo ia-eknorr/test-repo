@@ -1,0 +1,246 @@
+{
+  "custom": {},
+  "params": {
+    "indicator": {
+      "desiredHigh": 1175,
+      "desiredLow": 1125,
+      "highAlarm": 1200,
+      "highHighAlarm": 1250,
+      "lowAlarm": 1100,
+      "lowLowAlarm": 1050,
+      "maxValue": 1300,
+      "minValue": 1000,
+      "processValue": 1111,
+      "processValueFormat": "#,##0 gpm",
+      "setpointValue": 1150
+    },
+    "text": "Backwash Turbidity"
+  },
+  "propConfig": {
+    "params.indicator": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.text": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 72
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Text"
+            },
+            "position": {
+              "basis": "80px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.text"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "paddingLeft": "5px",
+                "paddingRight": "8px"
+              },
+              "textStyle": {
+                "classes": "exchange/water/filter-mobile"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Value"
+            },
+            "position": {
+              "basis": "40px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": ".../MovingAnalogIndicator.props.processValue"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "numberFormat({value}, {view.params.indicator.processValueFormat})",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.textStyle.color": {
+                "binding": {
+                  "config": {
+                    "path": ".../MovingAnalogIndicator.props.indicatorColor"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "textStyle": {
+                "classes": "exchange/water/filter-mobile",
+                "overflowWrap": "normal",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "220px",
+          "grow": 1
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "MovingAnalogIndicator"
+        },
+        "position": {
+          "basis": "530px",
+          "grow": 1,
+          "shrink": 2
+        },
+        "propConfig": {
+          "props.desiredHigh": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.indicator.desiredHigh} \u003d \u0027\u0027, \r\n\t-100, \r\n\t{view.params.indicator.desiredHigh})"
+              },
+              "type": "expr"
+            }
+          },
+          "props.desiredLow": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.indicator.desiredLow} \u003d \u0027\u0027, \r\n\t-100, \r\n\t{view.params.indicator.desiredLow})"
+              },
+              "type": "expr"
+            }
+          },
+          "props.highAlarm": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.indicator.highAlarm} \u003d \u0027\u0027, \r\n\tNone, \r\n\t{view.params.indicator.highAlarm})"
+              },
+              "type": "expr"
+            }
+          },
+          "props.highHighAlarm": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.indicator.highHighAlarm} \u003d \u0027\u0027, \r\n\tNone, \r\n\t{view.params.indicator.highHighAlarm})"
+              },
+              "type": "expr"
+            }
+          },
+          "props.indicatorColor": {
+            "binding": {
+              "config": {
+                "expression": "case(true,\r\n\t{this.props.processValue} \u003c\u003d coalesce({this.props.lowLowAlarm}, {this.props.minValue}), {this.props.level1AlarmColor},\r\n\t{this.props.processValue} \u003c\u003d coalesce({this.props.lowAlarm}, {this.props.minValue}), {this.props.level2AlarmColor},\r\n\t{this.props.processValue} \u003e\u003d coalesce({this.props.highHighAlarm}, {this.props.maxValue}), {this.props.level1AlarmColor},\r\n\t{this.props.processValue} \u003e\u003d coalesce({this.props.highAlarm}, {this.props.maxValue}), {this.props.level2AlarmColor},\r\n\t{this.props.inactiveAlarmColor})"
+              },
+              "type": "expr"
+            }
+          },
+          "props.lowAlarm": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.indicator.lowAlarm} \u003d \u0027\u0027, \r\n\tNone, \r\n\t{view.params.indicator.lowAlarm})"
+              },
+              "type": "expr"
+            }
+          },
+          "props.lowLowAlarm": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.indicator.lowLowAlarm} \u003d \u0027\u0027, \r\n\tNone, \r\n\t{view.params.indicator.lowLowAlarm})"
+              },
+              "type": "expr"
+            }
+          },
+          "props.maxValue": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.indicator.maxValue} \u003d \u0027\u0027, \r\n\t100, \r\n\t{view.params.indicator.maxValue})"
+              },
+              "type": "expr"
+            }
+          },
+          "props.minValue": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.indicator.minValue} \u003d \u0027\u0027, \r\n\t0, \r\n\t{view.params.indicator.minValue})"
+              },
+              "type": "expr"
+            }
+          },
+          "props.processValue": {
+            "binding": {
+              "config": {
+                "path": "view.params.indicator.processValue"
+              },
+              "type": "property"
+            }
+          },
+          "props.setpointValue": {
+            "binding": {
+              "config": {
+                "path": "view.params.indicator.setpointValue"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "highInterlock": null,
+          "level1AlarmColor": "#FF4747",
+          "level2AlarmColor": "#FFAC47",
+          "lowInterlock": null,
+          "style": {
+            "marginLeft": 0
+          }
+        },
+        "type": "ia.display.moving-analog-indicator"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": 1,
+        "borderLeftStyle": "none",
+        "borderLeftWidth": 1,
+        "borderRightStyle": "none",
+        "borderRightWidth": 1,
+        "borderTopStyle": "none",
+        "borderTopWidth": 1
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

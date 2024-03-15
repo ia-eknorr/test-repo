@@ -1,0 +1,202 @@
+{
+  "custom": {},
+  "params": {
+    "tagPath": "[default]Exchange/Water/Feedrates/ChemPump1/Hand"
+  },
+  "propConfig": {
+    "params.tagPath": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 92,
+      "width": 176
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Heading"
+        },
+        "position": {
+          "basis": "20px"
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "tag": "{view.params.tagPath}"
+                },
+                "tagPath": "{tag}.DisplayName"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontWeight": "bold",
+            "margin": "10px",
+            "marginBottom": "8px",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "custom": {
+              "enterStyle": {
+                "borderBottomLeftRadius": "4px",
+                "borderBottomRightRadius": "4px",
+                "borderColor": "--callToAction--hover",
+                "borderStyle": "dashed",
+                "borderTopLeftRadius": "4px",
+                "borderTopRightRadius": "4px",
+                "borderWidth": "2px",
+                "classes": "exchange/water/value-disp",
+                "cursor": "text"
+              },
+              "exitStyle": {
+                "borderBottomLeftRadius": "4px",
+                "borderBottomRightRadius": "4px",
+                "borderTopLeftRadius": "4px",
+                "borderTopRightRadius": "4px",
+                "classes": "exchange/water/value-disp",
+                "cursor": "text"
+              }
+            },
+            "events": {
+              "dom": {
+                "onMouseEnter": {
+                  "config": {
+                    "script": "\tself.props.style \u003d self.custom.enterStyle"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                },
+                "onMouseLeave": {
+                  "config": {
+                    "script": "\tself.props.style \u003d self.custom.exitStyle"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "NumericEntryField"
+            },
+            "position": {
+              "basis": "50%",
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "tag": "{view.params.tagPath}"
+                    },
+                    "tagPath": "{tag}"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "spinner": {
+                "enabled": false
+              },
+              "style": {
+                "borderBottomLeftRadius": "4px",
+                "borderBottomRightRadius": "4px",
+                "borderTopLeftRadius": "4px",
+                "borderTopRightRadius": "4px",
+                "classes": "exchange/water/value-disp",
+                "cursor": "text"
+              }
+            },
+            "type": "ia.input.numeric-entry-field"
+          },
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "24px",
+              "grow": 1,
+              "shrink": 0
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "tag": "{view.params.tagPath}"
+                    },
+                    "tagPath": "{tag}.EngUnit"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "overflow": "visible",
+                "paddingLeft": "4px"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "borderWidth": 1,
+            "marginBottom": "5px",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "overflow": "visible"
+          },
+          "wrap": "wrap"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "borderBottomLeftRadius": "4px",
+        "borderBottomRightRadius": "4px",
+        "borderStyle": "solid",
+        "borderTopLeftRadius": "4px",
+        "borderTopRightRadius": "4px",
+        "borderWidth": "2px",
+        "classes": "exchange/water/primary"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

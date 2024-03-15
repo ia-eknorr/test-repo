@@ -1,0 +1,201 @@
+{
+  "custom": {},
+  "params": {
+    "format": "#,###",
+    "name": " 24\" Main",
+    "odd": false,
+    "tagPath": "[default]Water/Flows/PlantInfluent",
+    "units": "gpm"
+  },
+  "propConfig": {
+    "params.data": {
+      "paramDirection": "input"
+    },
+    "params.filt": {
+      "paramDirection": "input"
+    },
+    "params.filter": {
+      "paramDirection": "input"
+    },
+    "params.fo": {
+      "paramDirection": "input"
+    },
+    "params.for": {
+      "paramDirection": "input"
+    },
+    "params.format": {
+      "paramDirection": "input"
+    },
+    "params.key": {
+      "paramDirection": "input"
+    },
+    "params.max": {
+      "paramDirection": "input"
+    },
+    "params.name": {
+      "paramDirection": "input"
+    },
+    "params.odd": {
+      "paramDirection": "input"
+    },
+    "params.tag": {
+      "paramDirection": "input"
+    },
+    "params.tagP": {
+      "paramDirection": "input"
+    },
+    "params.tagPat": {
+      "paramDirection": "input"
+    },
+    "params.tagPath": {
+      "paramDirection": "input"
+    },
+    "params.tank": {
+      "paramDirection": "input"
+    },
+    "params.uni": {
+      "paramDirection": "input"
+    },
+    "params.unit": {
+      "paramDirection": "input"
+    },
+    "params.units": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 30,
+      "width": 660
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Name"
+        },
+        "position": {
+          "basis": "340px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params.alt": {
+            "binding": {
+              "config": {
+                "path": "view.params.odd"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.data.value": {
+            "binding": {
+              "config": {
+                "path": "view.params.name"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "data": {
+              "format": "#.#"
+            },
+            "fill": "rgba(255,255,255,0)",
+            "name": "",
+            "state": 0,
+            "tagPath": "",
+            "units": ""
+          },
+          "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Level"
+        },
+        "position": {
+          "basis": "340px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params.alt": {
+            "binding": {
+              "config": {
+                "path": "view.params.odd"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.data.format": {
+            "binding": {
+              "config": {
+                "path": "view.params.format"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.data.value": {
+            "binding": {
+              "config": {
+                "mode": "indirect",
+                "references": {
+                  "tag": "{view.params.tagPath}"
+                },
+                "tagPath": "{tag}"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.tagPath": {
+            "binding": {
+              "config": {
+                "path": "view.params.tagPath"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.units": {
+            "binding": {
+              "config": {
+                "path": "view.params.units"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "data": {},
+            "fill": "rgba(255,255,255,0)",
+            "name": "",
+            "state": 0
+          },
+          "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.classes": {
+        "binding": {
+          "config": {
+            "expression": "\"exchange/water/info-row/base \" + \r\nif({view.params.odd},\r\n\t\"exchange/water/info-row/odd-row\",\r\n\t\"\")"
+          },
+          "type": "expr"
+        }
+      }
+    },
+    "props": {
+      "style": {
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

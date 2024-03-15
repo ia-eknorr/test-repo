@@ -1,0 +1,708 @@
+{
+  "custom": {
+    "scraperA": "1A",
+    "scraperB": "1B"
+  },
+  "params": {
+    "borderRadius": {
+      "bottomLeft": 0,
+      "bottomRight": 0,
+      "topLeft": 0,
+      "topRight": 0
+    },
+    "id": 7,
+    "sludgeATagPath": "[default]Exchange/Water/Basins/SludgeScraper1A",
+    "sludgeBTagPath": "[default]Exchange/Water/Basins/SludgeScraper1B",
+    "tagPath": "[default]Exchange/Water/Basins/Basin7"
+  },
+  "propConfig": {
+    "custom.mode": {
+      "binding": {
+        "config": {
+          "mode": "indirect",
+          "references": {
+            "tag": "{view.params.tagPath}"
+          },
+          "tagPath": "{tag}/Mode"
+        },
+        "type": "tag"
+      }
+    },
+    "custom.scraperA": {
+      "binding": {
+        "config": {
+          "expression": "right({view.params.sludgeATagPath}, 2)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.scraperB": {
+      "binding": {
+        "config": {
+          "expression": "right({view.params.sludgeBTagPath}, 2)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.sludgeAMode": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "tag": "{view.params.sludgeATagPath}"
+          },
+          "tagPath": "{tag}/Mode"
+        },
+        "type": "tag"
+      }
+    },
+    "custom.sludgeAState": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "tag": "{view.params.sludgeATagPath}"
+          },
+          "tagPath": "{tag}./Value"
+        },
+        "type": "tag"
+      }
+    },
+    "custom.sludgeBMode": {
+      "binding": {
+        "config": {
+          "mode": "indirect",
+          "references": {
+            "tag": "{view.params.sludgeBTagPath}"
+          },
+          "tagPath": "{tag}/Mode"
+        },
+        "type": "tag"
+      }
+    },
+    "custom.sludgeBState": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "tag": "{view.params.sludgeBTagPath}"
+          },
+          "tagPath": "{tag}./Value"
+        },
+        "type": "tag"
+      }
+    },
+    "custom.state": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "tag": "{view.params.tagPath}"
+          },
+          "tagPath": "{tag}./Value"
+        },
+        "type": "tag"
+      }
+    },
+    "params.borderRadius": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.font": {
+      "paramDirection": "input"
+    },
+    "params.fontSiz": {
+      "paramDirection": "input"
+    },
+    "params.fontSize": {
+      "paramDirection": "input"
+    },
+    "params.id": {
+      "paramDirection": "input"
+    },
+    "params.s": {
+      "paramDirection": "input"
+    },
+    "params.sl": {
+      "paramDirection": "input"
+    },
+    "params.sli": {
+      "paramDirection": "input"
+    },
+    "params.sliu": {
+      "paramDirection": "input"
+    },
+    "params.slu": {
+      "paramDirection": "input"
+    },
+    "params.slud": {
+      "paramDirection": "input"
+    },
+    "params.sludg": {
+      "paramDirection": "input"
+    },
+    "params.sludge": {
+      "paramDirection": "input"
+    },
+    "params.sludgeA": {
+      "paramDirection": "input"
+    },
+    "params.sludgeAS": {
+      "paramDirection": "input"
+    },
+    "params.sludgeAStat": {
+      "paramDirection": "input"
+    },
+    "params.sludgeAState": {
+      "paramDirection": "input"
+    },
+    "params.sludgeATa": {
+      "paramDirection": "input"
+    },
+    "params.sludgeATag": {
+      "paramDirection": "input"
+    },
+    "params.sludgeATagP": {
+      "paramDirection": "input"
+    },
+    "params.sludgeATagPath": {
+      "paramDirection": "input"
+    },
+    "params.sludgeB": {
+      "paramDirection": "input"
+    },
+    "params.sludgeBS": {
+      "paramDirection": "input"
+    },
+    "params.sludgeBStat": {
+      "paramDirection": "input"
+    },
+    "params.sludgeBState": {
+      "paramDirection": "input"
+    },
+    "params.sludgeBT": {
+      "paramDirection": "input"
+    },
+    "params.sludgeBTag": {
+      "paramDirection": "input"
+    },
+    "params.sludgeBTagPat": {
+      "paramDirection": "input"
+    },
+    "params.sludgeBTagPath": {
+      "paramDirection": "input"
+    },
+    "params.sta": {
+      "paramDirection": "input"
+    },
+    "params.state": {
+      "paramDirection": "input"
+    },
+    "params.tag": {
+      "paramDirection": "input"
+    },
+    "params.tagPat": {
+      "paramDirection": "input"
+    },
+    "params.tagPath": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 250,
+      "width": 200
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "events": {
+          "dom": {
+            "onClick": [
+              {
+                "config": {
+                  "draggable": false,
+                  "id": "HOAControl",
+                  "modal": false,
+                  "overlayDismiss": false,
+                  "resizable": false,
+                  "showCloseIcon": false,
+                  "type": "close",
+                  "viewPath": "",
+                  "viewportBound": false
+                },
+                "scope": "C",
+                "type": "popup"
+              },
+              {
+                "config": {
+                  "draggable": false,
+                  "id": "HOAControl",
+                  "modal": true,
+                  "overlayDismiss": true,
+                  "resizable": false,
+                  "showCloseIcon": false,
+                  "type": "open",
+                  "viewParams": {
+                    "popupTitle": "Basin #{view.params.id}",
+                    "tagPath": "Exchange/Water/Basins/Basin{view.params.id}"
+                  },
+                  "viewPath": "Exchange/Water/EmbeddedViews/HOAControl",
+                  "viewportBound": false
+                },
+                "scope": "C",
+                "type": "popup"
+              }
+            ]
+          }
+        },
+        "meta": {
+          "name": "Status"
+        },
+        "position": {
+          "height": 0.2043,
+          "width": 0.375,
+          "x": 0.3125,
+          "y": 0.1603
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "mode": "{view.custom.mode}",
+                  "state": "{view.custom.state}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "expression": "case({value}[\u0027state\u0027],\r\n\t0, \u0027exchange/water/indicator/state-off\u0027,\r\n\t1, \u0027exchange/water/indicator/state-on\u0027,\r\n\t\u0027exchange/water/error\u0027)\r\n+ \u0027 \u0027 +\r\ncase({value}[\u0027mode\u0027],\r\n\t0, \u0027exchange/water/indicator/mode-off\u0027,\r\n\t1, \u0027exchange/water/indicator/mode-auto\u0027,\r\n\t2, \u0027exchange/water/indicator/mode-hand\u0027,\r\n\t\u0027exchange/water/error\u0027)",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.custom.state"
+              },
+              "transforms": [
+                {
+                  "fallback": "?",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 0,
+                      "output": "Off"
+                    },
+                    {
+                      "input": 1,
+                      "output": "On"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderWidth": "4px",
+            "cursor": "pointer",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Heading"
+        },
+        "position": {
+          "height": 0.1,
+          "width": 1,
+          "y": 0.02
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.id"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn \"Basin #%s\" % value",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontWeight": "bold",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Floc"
+        },
+        "position": {
+          "height": 0.1912,
+          "width": 0.2995,
+          "x": 0.01,
+          "y": 0.1678
+        },
+        "props": {
+          "style": {
+            "fontWeight": "normal",
+            "textAlign": "center"
+          },
+          "text": "Floc"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Value"
+        },
+        "position": {
+          "height": 0.1912,
+          "width": 0.2756,
+          "x": 0.7058,
+          "y": 0.1678
+        },
+        "props": {
+          "style": {
+            "fontWeight": "normal",
+            "textAlign": "center"
+          },
+          "text": 50
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "draggable": false,
+                "id": "HOAControl",
+                "modal": true,
+                "overlayDismiss": true,
+                "resizable": false,
+                "showCloseIcon": false,
+                "type": "open",
+                "viewParams": {
+                  "popupTitle": "Scraper {view.custom.scraperA}",
+                  "tagPath": "{view.params.sludgeATagPath}"
+                },
+                "viewPath": "Exchange/Water/EmbeddedViews/HOAControl",
+                "viewportBound": true
+              },
+              "scope": "C",
+              "type": "popup"
+            }
+          }
+        },
+        "meta": {
+          "name": "SludgeA"
+        },
+        "position": {
+          "height": 0.2002,
+          "width": 0.3675,
+          "x": 0.1,
+          "y": 0.75
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "mode": "{view.custom.sludgeAMode}",
+                  "state": "{view.custom.sludgeAState}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "expression": "case({value}[\u0027state\u0027],\r\n\t0, \u0027exchange/water/indicator/state-off\u0027,\r\n\t1, \u0027exchange/water/indicator/state-on\u0027,\r\n\t\u0027exchange/water/error\u0027)\r\n+ \u0027 \u0027 +\r\ncase({value}[\u0027mode\u0027],\r\n\t0, \u0027exchange/water/indicator/mode-off\u0027,\r\n\t1, \u0027exchange/water/indicator/mode-auto\u0027,\r\n\t2, \u0027exchange/water/indicator/mode-hand\u0027,\r\n\t\u0027exchange/water/error\u0027)",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.custom.sludgeAState"
+              },
+              "transforms": [
+                {
+                  "fallback": "?",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 0,
+                      "output": "Off"
+                    },
+                    {
+                      "input": 1,
+                      "output": "On"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderWidth": "4px",
+            "cursor": "pointer",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "draggable": false,
+                "id": "HOAControl",
+                "modal": true,
+                "overlayDismiss": true,
+                "resizable": false,
+                "showCloseIcon": false,
+                "type": "open",
+                "viewParams": {
+                  "popupTitle": "Scraper {view.custom.scraperB}",
+                  "tagPath": "{view.params.sludgeBTagPath}"
+                },
+                "viewPath": "Exchange/Water/EmbeddedViews/HOAControl",
+                "viewportBound": false
+              },
+              "scope": "C",
+              "type": "popup"
+            }
+          }
+        },
+        "meta": {
+          "name": "SludgeB"
+        },
+        "position": {
+          "height": 0.1962,
+          "width": 0.3675,
+          "x": 0.5398,
+          "y": 0.75
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "mode": "{view.custom.sludgeBMode}",
+                  "state": "{view.custom.sludgeBState}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "expression": "case({value}[\u0027state\u0027],\r\n\t0, \u0027exchange/water/indicator/state-off\u0027,\r\n\t1, \u0027exchange/water/indicator/state-on\u0027,\r\n\t\u0027exchange/water/error\u0027)\r\n+ \u0027 \u0027 +\r\ncase({value}[\u0027mode\u0027],\r\n\t0, \u0027exchange/water/indicator/mode-off\u0027,\r\n\t1, \u0027exchange/water/indicator/mode-auto\u0027,\r\n\t2, \u0027exchange/water/indicator/mode-hand\u0027,\r\n\t\u0027exchange/water/error\u0027)",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.custom.sludgeBState"
+              },
+              "transforms": [
+                {
+                  "fallback": "?",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 0,
+                      "output": "Off"
+                    },
+                    {
+                      "input": 1,
+                      "output": "On"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderWidth": "4px",
+            "cursor": "pointer",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "SludgeHeading"
+        },
+        "position": {
+          "height": 0.0924,
+          "width": 0.98,
+          "x": 0.0102,
+          "y": 0.48
+        },
+        "props": {
+          "style": {
+            "fontSize": "1.0em",
+            "textAlign": "center"
+          },
+          "text": "Sludge Scrapers"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "SludgeALabel"
+        },
+        "position": {
+          "height": 0.0999,
+          "width": 0.1677,
+          "x": 0.1995,
+          "y": 0.64
+        },
+        "props": {
+          "style": {
+            "textAlign": "center"
+          },
+          "text": "A"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "SludgeBLabel"
+        },
+        "position": {
+          "height": 0.0999,
+          "width": 0.1677,
+          "x": 0.6393,
+          "y": 0.64
+        },
+        "props": {
+          "style": {
+            "textAlign": "center"
+          },
+          "text": "B"
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "position": {
+      "x": -0.065,
+      "y": 0
+    },
+    "propConfig": {
+      "props.style.borderBottomLeftRadius": {
+        "binding": {
+          "config": {
+            "path": "view.params.borderRadius.bottomLeft"
+          },
+          "transforms": [
+            {
+              "expression": "{value} + \u0027px\u0027",
+              "type": "expression"
+            }
+          ],
+          "type": "property"
+        }
+      },
+      "props.style.borderBottomRightRadius": {
+        "binding": {
+          "config": {
+            "path": "view.params.borderRadius.bottomRight"
+          },
+          "transforms": [
+            {
+              "expression": "{value} + \u0027px\u0027",
+              "type": "expression"
+            }
+          ],
+          "type": "property"
+        }
+      },
+      "props.style.borderTopLeftRadius": {
+        "binding": {
+          "config": {
+            "path": "view.params.borderRadius.topLeft"
+          },
+          "transforms": [
+            {
+              "expression": "{value} + \u0027px\u0027",
+              "type": "expression"
+            }
+          ],
+          "type": "property"
+        }
+      },
+      "props.style.borderTopRightRadius": {
+        "binding": {
+          "config": {
+            "path": "view.params.borderRadius.topRight"
+          },
+          "transforms": [
+            {
+              "expression": "{value} + \u0027px\u0027",
+              "type": "expression"
+            }
+          ],
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "mode": "percent",
+      "style": {
+        "borderStyle": "solid",
+        "borderWidth": "2px",
+        "classes": "exchange/water/primary"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

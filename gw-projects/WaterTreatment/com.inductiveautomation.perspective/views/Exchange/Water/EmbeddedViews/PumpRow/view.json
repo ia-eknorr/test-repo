@@ -1,0 +1,281 @@
+{
+  "custom": {},
+  "params": {
+    "odd": false,
+    "pump": "Alum Pump 1",
+    "tagPath": "",
+    "url": "/Overview"
+  },
+  "propConfig": {
+    "params.data": {
+      "paramDirection": "input"
+    },
+    "params.filt": {
+      "paramDirection": "input"
+    },
+    "params.filter": {
+      "paramDirection": "input"
+    },
+    "params.key": {
+      "paramDirection": "input"
+    },
+    "params.od": {
+      "paramDirection": "input"
+    },
+    "params.odd": {
+      "paramDirection": "input"
+    },
+    "params.pum": {
+      "paramDirection": "input"
+    },
+    "params.pump": {
+      "paramDirection": "input"
+    },
+    "params.tag": {
+      "paramDirection": "input"
+    },
+    "params.tagPat": {
+      "paramDirection": "input"
+    },
+    "params.tagPath": {
+      "paramDirection": "input"
+    },
+    "params.url": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 30
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "320px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "expression": "if({view.params.odd},\r\n\t\"exchange/water/primary\",\r\n\t\"exchange/water/value-disp\")"
+              },
+              "type": "expr"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.pump"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderRightStyle": "solid",
+            "borderRightWidth": "1px",
+            "fontWeight": "500",
+            "overflow": "hidden",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_0"
+        },
+        "position": {
+          "basis": "120px"
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "tag": "{view.params.tagPath}"
+                },
+                "tagPath": "{tag}/Mode"
+              },
+              "transforms": [
+                {
+                  "expression": "case({value},\r\n\t0, \u0027exchange/water/indicator/mode-off\u0027,\r\n\t1, \u0027exchange/water/indicator/mode-auto\u0027,\r\n\t2, \u0027exchange/water/indicator/mode-hand\u0027,\r\n\t\u0027exchange/water/error\u0027)",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "tagPath": "{view.params.tagPath}"
+                },
+                "tagPath": "{tagPath}/Mode"
+              },
+              "transforms": [
+                {
+                  "fallback": "Unknown",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 0,
+                      "output": "Off"
+                    },
+                    {
+                      "input": 1,
+                      "output": "Auto"
+                    },
+                    {
+                      "input": 2,
+                      "output": "Hand"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderBottomLeftRadius": 0,
+            "borderBottomRightRadius": 0,
+            "borderStyle": "hidden",
+            "borderTopLeftRadius": 0,
+            "borderTopRightRadius": 0,
+            "fontWeight": "500",
+            "overflow": "hidden",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Label_0_0"
+        },
+        "position": {
+          "basis": "120px"
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "tag": "{view.params.tagPath}"
+                },
+                "tagPath": "{tag}/Value"
+              },
+              "transforms": [
+                {
+                  "expression": "case({value},\r\n\t0, \u0027exchange/water/indicator/state-off\u0027,\r\n\t1, \u0027exchange/water/indicator/state-on\u0027,\r\n\t\u0027exchange/water/error\u0027)",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "mode": "indirect",
+                "references": {
+                  "tagPath": "{view.params.tagPath}"
+                },
+                "tagPath": "{tagPath}/Value"
+              },
+              "transforms": [
+                {
+                  "fallback": "Unknown",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 0,
+                      "output": "Off"
+                    },
+                    {
+                      "input": 1,
+                      "output": "On"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderBottomStyle": "hidden",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "1px",
+            "borderRightStyle": "hidden",
+            "borderTopStyle": "hidden",
+            "fontWeight": "500",
+            "overflow": "hidden",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": [
+          {
+            "config": {
+              "page": "{view.params.url}"
+            },
+            "scope": "C",
+            "type": "nav"
+          },
+          {
+            "config": {
+              "script": "\tpage \u003d self.view.params.url.replace(\"/\", \"\")\n\tif page \u003d\u003d \"ChemFeed\":\n\t\tpage \u003d \"Chemical Feed\"\n\tsystem.perspective.sendMessage(\"exchange.water.menuChange\", payload \u003d {\u0027page\u0027:page}, scope \u003d \u0027session\u0027)"
+            },
+            "scope": "G",
+            "type": "script"
+          }
+        ]
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "borderBottomStyle": "none",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "1px",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "1px",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "1px",
+        "classes": "exchange/water/primary",
+        "cursor": "pointer",
+        "fontSize": "0.8em",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

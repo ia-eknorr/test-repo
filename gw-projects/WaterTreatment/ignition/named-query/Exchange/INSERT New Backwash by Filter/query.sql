@@ -1,0 +1,2 @@
+INSERT INTO backwash (filter, start_time, flow_before, level_before, loh_before, turb_before, backwash_type)
+VALUES (:filter, :start_time, :flow_before, :level_before, :loh_before, :turb_before, :backwash_type);

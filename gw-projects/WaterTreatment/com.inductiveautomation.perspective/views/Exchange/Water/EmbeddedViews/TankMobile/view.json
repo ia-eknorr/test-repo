@@ -1,0 +1,647 @@
+{
+  "custom": {},
+  "params": {
+    "id": "Tank 1",
+    "inService": 1,
+    "max": 40,
+    "sparkline": {
+      "sparkData": [
+        0,
+        32,
+        12,
+        30
+      ],
+      "sparkPath": "[WaterSimData]Water/Tanks/Backwash"
+    },
+    "value1": {
+      "data": {
+        "format": "#.#",
+        "value": 20
+      },
+      "name": "",
+      "state": 0,
+      "tagPath": "",
+      "units": ""
+    },
+    "value2": {
+      "data": {
+        "format": "#.#",
+        "value": 0
+      },
+      "state": 0,
+      "tagPath": "",
+      "units": ""
+    }
+  },
+  "propConfig": {
+    "params.id": {
+      "paramDirection": "input"
+    },
+    "params.inService": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.max": {
+      "paramDirection": "input"
+    },
+    "params.spa": {
+      "paramDirection": "input"
+    },
+    "params.spar": {
+      "paramDirection": "input"
+    },
+    "params.spark": {
+      "paramDirection": "input"
+    },
+    "params.sparkline": {
+      "paramDirection": "input"
+    },
+    "params.val": {
+      "paramDirection": "input"
+    },
+    "params.valu": {
+      "paramDirection": "input"
+    },
+    "params.value": {
+      "paramDirection": "input"
+    },
+    "params.value1": {
+      "paramDirection": "input"
+    },
+    "params.value2": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 99,
+      "width": 498
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Name"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.id"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.textStyle.color": {
+                "binding": {
+                  "config": {
+                    "expression": "try(if({view.params.inService},\r\n\t\"--neutral-100\",\r\n\t\"--error\"),\r\n\"--error\")"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "fontSize": "1em",
+                "fontWeight": "bold",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Volume"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.params": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.value1"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\t# Toggle Tank\u0027s In-Service tag value\n\tself.view.params.inService \u003d (self.view.params.inService + 1) % 2"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ServiceToggle",
+              "tooltip": {
+                "enabled": true,
+                "text": "Toggle Tank Out-of-Service"
+              }
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "meta.visible": {
+                "binding": {
+                  "config": {
+                    "expression": "!isNull({view.params.inService})"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.image.icon.color": {
+                "binding": {
+                  "config": {
+                    "expression": "try(if({view.params.inService},\r\n\t\"--neutral-100\",\r\n\t\"--error\"),\r\n\"--error\")"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "try(if({view.params.inService},\r\n\t\"In Service\",\r\n\t\"Out of Service\"),\r\n\"\")"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "image": {
+                "height": 20,
+                "icon": {
+                  "path": "material/block"
+                },
+                "width": 20
+              },
+              "style": {
+                "backgroundColor": "#FFFFFF00",
+                "borderStyle": "none"
+              },
+              "textStyle": {
+                "color": "--neutral-100"
+              }
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "130px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "custom": {
+              "note": "Sparkline now automatically resizes based on the min/max points, so an empty element is added to create a \u0027max\u0027 effect. Min could be added as well, by adding an element below.\nStroke width is a number that is currently related to the min/max points as well, so it is being bound to a calculation that will scale it to 2%, ensuring a consistent stroke width with varying data point values.\nChart will be updated both when the {data} value gets updated as well as at regular intervals {refresh}. Update is with a change event script.\nPoints are queried using {sparkPath}, over the last 24 hours. Can be overridden by leaving {sparkPath} empty and providing points in {sparkData}."
+            },
+            "meta": {
+              "name": "Sparkline"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "custom.data": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.params.sparkline}"
+                  },
+                  "type": "expr"
+                },
+                "onChange": {
+                  "enabled": null,
+                  "script": "\ttry:\n\t\tif self.custom.data.sparkPath:\n\t\t\t#max \u003d self.view.params.max\n\t\t\t#min \u003d 0\n\t\t\tpath \u003d self.custom.data.sparkPath\n\t\t\n\t\t\tds \u003d system.dataset.toPyDataSet(system.tag.queryTagHistory(paths\u003d[path], rangeHours\u003d24, returnSize\u003d100))\n\t\t\tdata \u003d [0]\n\t\t\tfor i in range(len(ds)):\n\t\t\t\tval \u003d ds[i][1] if ds[i][1] is not None else 0.0\n\t\t\t\t\n\t\t\t\t#r \u003d 100.0 / float(max - min)\n\t\t\t\t#offset \u003d 0.0 - float(min * r)\n\t\t\t\t#val \u003d float(val * r) + offset\n\t\t\t\t\n\t\t\t\tif val !\u003d None:\n\t\t\t\t\tdata.append(val)\n\t\t\tself.props.points \u003d data\n\t\telif self.custom.data.sparkData:\n\t\t\tself.props.points \u003d self.custom.data.sparkData\n\t\telse:\n\t\t\tself.props.points \u003d []\n\texcept:\n\t\tself.props.points \u003d []"
+                }
+              },
+              "custom.refresh": {
+                "binding": {
+                  "config": {
+                    "expression": "now(10000)"
+                  },
+                  "type": "expr"
+                },
+                "onChange": {
+                  "enabled": null,
+                  "script": "\ttry:\n\t\tif self.custom.data.sparkPath:\n\t\t\t#max \u003d self.view.params.max\n\t\t\t#min \u003d 0\n\t\t\tpath \u003d self.custom.data.sparkPath\n\t\t\n\t\t\tds \u003d system.dataset.toPyDataSet(system.tag.queryTagHistory(paths\u003d[path], rangeHours\u003d24, returnSize\u003d100))\n\t\t\tdata \u003d [0]\n\t\t\tfor i in range(len(ds)):\n\t\t\t\tval \u003d ds[i][1] if ds[i][1] is not None else 0.0\n\t\t\t\t\n\t\t\t\t#r \u003d 100.0 / float(max - min)\n\t\t\t\t#offset \u003d 0.0 - float(min * r)\n\t\t\t\t#val \u003d float(val * r) + offset\n\t\t\t\t\n\t\t\t\tif val !\u003d None:\n\t\t\t\t\tdata.append(val)\n\t\t\tself.props.points \u003d data\n\t\telif self.custom.data.sparkData:\n\t\t\tself.props.points \u003d self.custom.data.sparkData\n\t\telse:\n\t\t\tself.props.points \u003d []\n\texcept:\n\t\tself.props.points \u003d []"
+                }
+              },
+              "props.strokeWidth": {
+                "binding": {
+                  "config": {
+                    "expression": "{this.props.points}"
+                  },
+                  "enabled": false,
+                  "transforms": [
+                    {
+                      "code": "\tif value is None and len(value) \u003c\u003d 0:\n\t\treturn 1\n\ttry:\n\t\treturn (self.view.params.max) / 50.0#stroke width will essentially be set to relative size of 2%\n\texcept:\n\t\treturn 1",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "points": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "strokeWidth": 1.5,
+              "style": {
+                "classes": "exchange/water/chart"
+              }
+            },
+            "type": "ia.display.sparkline"
+          }
+        ],
+        "meta": {
+          "name": "Chart"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "borderColor": "#AAAAAA",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "CylindricalTank"
+        },
+        "position": {
+          "basis": "60px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.capacity": {
+            "binding": {
+              "config": {
+                "path": "view.params.max"
+              },
+              "type": "property"
+            }
+          },
+          "props.liquidColor": {
+            "binding": {
+              "config": {
+                "expression": "if(isNull({view.params.inService}) || {view.params.inService},\r\n\t\"#B27300\",\r\n\t\"--callToAction--disabled\")"
+              },
+              "type": "expr"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "view.params.value1.data.value"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "liquidOpacity": 0.6,
+          "tankColor": "#B2B2B2"
+        },
+        "type": "ia.display.cylindrical-tank"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label5"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "parent.custom.points[4]"
+                  },
+                  "transforms": [
+                    {
+                      "formatType": "numeric",
+                      "formatValue": "- #0.0",
+                      "type": "format"
+                    },
+                    {
+                      "code": "\treturn value if value is not None else \u0027 - 40.0\u0027",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label4"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "parent.custom.points[3]"
+                  },
+                  "transforms": [
+                    {
+                      "formatType": "numeric",
+                      "formatValue": "- #0.0",
+                      "type": "format"
+                    },
+                    {
+                      "code": "\treturn value if value is not None else \u0027 - 30.0\u0027",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label3"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "parent.custom.points[2]"
+                  },
+                  "transforms": [
+                    {
+                      "formatType": "numeric",
+                      "formatValue": "- #0.0",
+                      "type": "format"
+                    },
+                    {
+                      "code": "\treturn value if value is not None else \u0027 - 20.0\u0027",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label2"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "parent.custom.points[1]"
+                  },
+                  "transforms": [
+                    {
+                      "formatType": "numeric",
+                      "formatValue": "- #0.0",
+                      "type": "format"
+                    },
+                    {
+                      "code": "\treturn value if value is not None else \u0027 - 10.0\u0027",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Label1"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "parent.custom.points[0]"
+                  },
+                  "transforms": [
+                    {
+                      "formatType": "numeric",
+                      "formatValue": "- #0.0",
+                      "type": "format"
+                    },
+                    {
+                      "code": "\treturn value if value is not None else \u0027 - 0.0\u0027",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "TickMarks"
+        },
+        "position": {
+          "basis": "40px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "custom.points": {
+            "binding": {
+              "config": {
+                "path": "view.params.max"
+              },
+              "transforms": [
+                {
+                  "code": "\tmax \u003d value if value !\u003d None and value \u003e 0 else 100\n\tindicatorPoints \u003d []\n\ttry:\n\t\tfor i in range(5):\n\t\t\tindicatorPoints.append(i / 4.0 * max)\n\t\treturn indicatorPoints\n\texcept:\n\t\treturn [0.0, 1.0, 2.0, 3.0, 4.0]",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "fontSize": "0.6em",
+            "overflow": "visible"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "borderStyle": "solid",
+        "borderWidth": "2px",
+        "classes": "exchange/water/primary",
+        "overflow": "hidden",
+        "padding": "10px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

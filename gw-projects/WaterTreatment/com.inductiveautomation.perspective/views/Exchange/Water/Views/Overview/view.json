@@ -1,0 +1,43 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "OverviewFull"
+        },
+        "position": {
+          "size": "large"
+        },
+        "props": {
+          "params": {
+            "title": "Overview"
+          },
+          "path": "Exchange/Water/EmbeddedViews/OverviewFull"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "OverviewMobile"
+        },
+        "props": {
+          "params": {
+            "title": "Overview"
+          },
+          "path": "Exchange/Water/EmbeddedViews/OverviewMobile"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "breakpoint": 961
+    },
+    "type": "ia.container.breakpt"
+  }
+}

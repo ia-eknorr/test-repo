@@ -1,0 +1,283 @@
+{
+  "custom": {},
+  "params": {
+    "nav": true,
+    "size": "xl",
+    "title": "Dashboard"
+  },
+  "propConfig": {
+    "params.key": {
+      "paramDirection": "input"
+    },
+    "params.nav": {
+      "onChange": {
+        "enabled": null,
+        "script": "\tsystem.perspective.toggleDock(\u0027NavBar\u0027)"
+      },
+      "paramDirection": "inout"
+    },
+    "params.siz": {
+      "paramDirection": "input"
+    },
+    "params.size": {
+      "paramDirection": "input"
+    },
+    "params.tit": {
+      "paramDirection": "input"
+    },
+    "params.title": {
+      "paramDirection": "input"
+    },
+    "params.wind": {
+      "paramDirection": "input"
+    },
+    "params.window": {
+      "paramDirection": "input"
+    },
+    "params.windowTit": {
+      "paramDirection": "input"
+    },
+    "params.windowTitle": {
+      "paramDirection": "input"
+    },
+    "params.windwo": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 60,
+      "width": 1000
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "events": {
+          "dom": {
+            "onClick": [
+              {
+                "config": {
+                  "script": "\tself.view.params.nav \u003d not self.view.params.nav\n"
+                },
+                "enabled": false,
+                "scope": "G",
+                "type": "script"
+              },
+              {
+                "config": {
+                  "id": "NavBar",
+                  "type": "toggle"
+                },
+                "scope": "C",
+                "type": "dock"
+              }
+            ]
+          }
+        },
+        "meta": {
+          "name": "Nav"
+        },
+        "position": {
+          "basis": "40px"
+        },
+        "props": {
+          "path": "material/menu",
+          "style": {
+            "border": "1px solid black",
+            "cursor": "pointer",
+            "marginRight": "10px"
+          }
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "url": "http://demo.ia.io"
+              },
+              "scope": "C",
+              "type": "nav"
+            }
+          }
+        },
+        "meta": {
+          "name": "Home"
+        },
+        "position": {
+          "basis": "40px"
+        },
+        "props": {
+          "path": "material/home",
+          "style": {
+            "border": "1px solid black",
+            "cursor": "pointer",
+            "marginRight": "10px"
+          }
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "meta": {
+          "name": "WindowPath"
+        },
+        "position": {
+          "grow": 1,
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.title"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontSize": "1.4em",
+            "marginRight": "10px"
+          }
+        },
+        "scripts": {
+          "customMethods": [],
+          "extensionFunctions": null,
+          "messageHandlers": [
+            {
+              "messageType": "WindowChange",
+              "pageScope": false,
+              "script": "\ttry:\n\t\ttitle \u003d payload[\u0027title\u0027]\n\t\tself.props.text \u003d title\n\texcept:\n\t\tself.props.text \u003d \u0027Demo\u0027",
+              "sessionScope": true,
+              "viewScope": false
+            }
+          ]
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "props": {
+              "path": "material/login",
+              "style": {
+                "width": "32px"
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "shrink": 0
+            },
+            "propConfig": {
+              "custom.text": {
+                "binding": {
+                  "config": {
+                    "expression": "if({session.props.auth.authenticated}, \"Logout\", \"Login\")"
+                  },
+                  "type": "expr"
+                }
+              },
+              "position.basis": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.size"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn \u00270px\u0027 if value \u003d\u003d \u0027xs\u0027 else \u0027auto\u0027",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "session.props.auth.authenticated"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "Login",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": true,
+                          "output": "Logout"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tif self.session.props.auth.authenticated:\n\t\tsystem.perspective.logout()\n\telse:\n\t\tsystem.perspective.login()"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Login"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "props": {
+          "alignContent": "flex-start",
+          "justify": "flex-end",
+          "style": {
+            "border": "1px solid black",
+            "cursor": "pointer",
+            "marginRight": "10px",
+            "padding": "0px 5px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "background": "--neutral-40",
+        "borderBottom": "2px",
+        "borderBottomColor": "--neutral-90",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "2px",
+        "borderLeftStyle": "none",
+        "borderRightStyle": "none",
+        "borderTopStyle": "none",
+        "overflow": "hidden",
+        "padding": "10px 5px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

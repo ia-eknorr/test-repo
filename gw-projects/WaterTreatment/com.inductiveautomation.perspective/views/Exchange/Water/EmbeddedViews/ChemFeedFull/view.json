@@ -1,0 +1,1975 @@
+{
+  "custom": {
+    "pipeTheme": {
+      "hypo": {
+        "fill": "#B27300",
+        "stroke": "#B27300"
+      },
+      "idle": {
+        "fill": "var(--neutral-70)",
+        "stroke": "var(--neutral-70)"
+      }
+    }
+  },
+  "params": {},
+  "propConfig": {
+    "custom.pipeTheme": {
+      "persistent": true
+    },
+    "params.key": {
+      "paramDirection": "input"
+    },
+    "params.tit": {
+      "paramDirection": "input"
+    },
+    "params.title": {
+      "binding": {
+        "config": {
+          "expression": "\"Chem Feed\""
+        },
+        "type": "expr"
+      },
+      "paramDirection": "output"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 1080,
+      "width": 1920
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "BulkTank1"
+        },
+        "position": {
+          "height": 0.3,
+          "width": 0.14,
+          "x": 0.0134,
+          "y": 0.0329
+        },
+        "propConfig": {
+          "props.params.inService": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]Exchange/Water/Tanks/HypoBulk1.InService"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.max": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]Exchange/Water/Tanks/HypoBulk1.Capacity"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.value1.data.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]Exchange/Water/Tanks/HypoBulk1"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.value2.data.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]Exchange/Water/Tanks/HypoBulk1.InService"
+              },
+              "transforms": [
+                {
+                  "fallback": "Tank Out of Service",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "Tank In Service"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "borderRadius": {
+              "bottomLeft": 4,
+              "bottomRight": 4,
+              "topLeft": 4,
+              "topRight": 4
+            },
+            "capacityLabel": "9290 gal",
+            "id": "Bulk Tank 1",
+            "liquidColor": "#B27300",
+            "sparkline": {
+              "DisplayHours": 24,
+              "sparkPath": "[default]Exchange/Water/Tanks/HypoBulk1"
+            },
+            "value1": {
+              "data": {
+                "format": "#.#"
+              },
+              "name": "Bulk Tank 1",
+              "state": 0,
+              "tagPath": "[default]Exchange/Water/Tanks/HypoBulk1",
+              "units": "gal"
+            },
+            "value2": {
+              "data": {
+                "format": "#.#"
+              },
+              "state": 0,
+              "tagPath": "",
+              "units": ""
+            }
+          },
+          "path": "Exchange/Water/EmbeddedViews/Tank"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "BulkTank2"
+        },
+        "position": {
+          "height": 0.3,
+          "width": 0.14,
+          "x": 0.0134,
+          "y": 0.3579
+        },
+        "propConfig": {
+          "props.params.inService": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]Exchange/Water/Tanks/HypoBulk2.InService"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.max": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]Exchange/Water/Tanks/HypoBulk2.Capacity"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.value1.data.value": {
+            "binding": {
+              "config": {
+                "mode": "direct",
+                "tagPath": "[]Exchange/Water/Tanks/HypoBulk2"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.value2.data.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]Exchange/Water/Tanks/HypoBulk2.InService"
+              },
+              "transforms": [
+                {
+                  "fallback": "Tank Out of Service",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "Tank In Service"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "borderRadius": {
+              "bottomLeft": 4,
+              "bottomRight": 4,
+              "topLeft": 4,
+              "topRight": 4
+            },
+            "capacityLabel": "9290 gal",
+            "id": "Bulk Tank 2",
+            "liquidColor": "#B27300",
+            "sparkline": {
+              "DisplayHours": 24,
+              "sparkPath": "[default]Exchange/Water/Tanks/HypoBulk2"
+            },
+            "value1": {
+              "data": {
+                "format": "#.#"
+              },
+              "name": "Bulk Tank 2",
+              "state": 0,
+              "tagPath": "[default]Exchange/Water/Tanks/HypoBulk2",
+              "units": "gal"
+            },
+            "value2": {
+              "data": {
+                "format": "#.#"
+              },
+              "state": 0,
+              "tagPath": "",
+              "units": ""
+            }
+          },
+          "path": "Exchange/Water/EmbeddedViews/Tank"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "BulkTank3"
+        },
+        "position": {
+          "height": 0.3,
+          "width": 0.14,
+          "x": 0.0134,
+          "y": 0.6842
+        },
+        "propConfig": {
+          "props.params.inService": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]Exchange/Water/Tanks/HypoBulk3.InService"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.value1.data.value": {
+            "binding": {
+              "config": {
+                "mode": "direct",
+                "tagPath": "[]Exchange/Water/Tanks/HypoBulk3"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.value2.data.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]Exchange/Water/Tanks/HypoBulk3.InService"
+              },
+              "transforms": [
+                {
+                  "fallback": "Tank Out of Service",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "Tank In Service"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "borderRadius": {
+              "bottomLeft": 4,
+              "bottomRight": 4,
+              "topLeft": 4,
+              "topRight": 4
+            },
+            "capacityLabel": "9290 gal",
+            "id": "Bulk Tank 3",
+            "liquidColor": "#B27300",
+            "max": 9290,
+            "sparkline": {
+              "DisplayHours": 24,
+              "sparkPath": "[default]Exchange/Water/Tanks/HypoBulk3"
+            },
+            "value1": {
+              "data": {
+                "format": "#.#"
+              },
+              "name": "Bulk Tank 3",
+              "state": 0,
+              "tagPath": "[default]Exchange/Water/Tanks/HypoBulk3",
+              "units": "gal"
+            },
+            "value2": {
+              "data": {
+                "format": "#.#"
+              },
+              "state": 0,
+              "tagPath": "",
+              "units": ""
+            }
+          },
+          "path": "Exchange/Water/EmbeddedViews/Tank"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "DayTank"
+        },
+        "position": {
+          "height": 0.25,
+          "width": 0.14,
+          "x": 0.3558,
+          "y": 0.0236
+        },
+        "propConfig": {
+          "props.params.inService": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]Exchange/Water/Tanks/HypoDayTank.InService"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.value1.data.value": {
+            "binding": {
+              "config": {
+                "mode": "direct",
+                "tagPath": "[default]Exchange/Water/Tanks/HypoDayTank"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.value2.data.value": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "flow1": "{[default]Exchange/Water/Hypo/ActualFlow1}",
+                  "flow2": "{[default]Exchange/Water/Hypo/ActualFlow2}",
+                  "flow3": "{[default]Exchange/Water/Hypo/ActualFlow3}",
+                  "flow4": "{[default]Exchange/Water/Hypo/ActualFlow4}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "expression": "{[default]Exchange/Water/Tanks/HypoDayTank}\r\n/\r\n(sum({value}[\u0027flow1\u0027], {value}[\u0027flow2\u0027], {value}[\u0027flow3\u0027], {value}[\u0027flow4\u0027]) / 3785.4118)\t\t\t// Usage in gallons/minute",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "borderRadius": {
+              "bottomLeft": 4,
+              "bottomRight": 4,
+              "topLeft": 4,
+              "topRight": 4
+            },
+            "capacityLabel": "1020 gal",
+            "id": "Day Tank",
+            "liquidColor": "#B27300",
+            "max": 1020,
+            "sparkline": {
+              "DisplayHours": 2,
+              "sparkPath": "[default]Exchange/Water/Tanks/HypoDayTank"
+            },
+            "value1": {
+              "data": {
+                "format": "#,##0"
+              },
+              "name": "",
+              "state": 0,
+              "tagPath": "[default]Exchange/Water/Tanks/HypoDayTank",
+              "units": "gal"
+            },
+            "value2": {
+              "data": {
+                "format": "#,##0"
+              },
+              "state": "",
+              "tagPath": "",
+              "units": "mins to empty"
+            }
+          },
+          "path": "Exchange/Water/EmbeddedViews/Tank"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "FinishedChlorineLabel"
+            },
+            "position": {
+              "height": 0.2455,
+              "width": 0.2377,
+              "x": 0.0481,
+              "y": 0.1885
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.8em",
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Finished Chlorine"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "FinishedChlorine"
+            },
+            "position": {
+              "height": 0.3279,
+              "width": 0.1943,
+              "x": 0.0719,
+              "y": 0.5178
+            },
+            "propConfig": {
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "Exchange/Water/FinishedChlorine"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "data": {
+                  "format": "#0.00"
+                },
+                "state": 0,
+                "units": "mg/L"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "PumpLeakLabel"
+            },
+            "position": {
+              "height": 0.2455,
+              "width": 0.2379,
+              "x": 0.7068,
+              "y": 0.1885
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.8em",
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Pump Leak"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "PumpLeak"
+            },
+            "position": {
+              "height": 0.328,
+              "width": 0.1958,
+              "x": 0.7273,
+              "y": 0.5178
+            },
+            "props": {
+              "params": {
+                "data": {
+                  "format": "#0.00",
+                  "value": "Normal"
+                },
+                "state": 0,
+                "units": ""
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "BuildingLeak"
+            },
+            "position": {
+              "height": 0.3279,
+              "width": 0.1958,
+              "x": 0.4043,
+              "y": 0.5178
+            },
+            "props": {
+              "params": {
+                "data": {
+                  "format": "#0.00",
+                  "value": "Normal"
+                },
+                "state": 0,
+                "units": ""
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "BuildingLeakLabel"
+            },
+            "position": {
+              "height": 0.2455,
+              "width": 0.2395,
+              "x": 0.3826,
+              "y": 0.1885
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.8em",
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Building Leak"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "ChemFeedDetails"
+        },
+        "position": {
+          "height": 0.1093,
+          "width": 0.3281,
+          "x": 0.1682,
+          "y": 0.8749
+        },
+        "props": {
+          "mode": "percent",
+          "pipes": [
+            {
+              "appearance": "auto",
+              "end": "none",
+              "fill": "",
+              "flanges": true,
+              "lineVariant": "solid",
+              "name": "pipe",
+              "origin": {
+                "connections": [],
+                "x": 0.0074,
+                "y": 0.0061
+              },
+              "start": "none",
+              "stroke": "",
+              "visible": true,
+              "width": 10
+            },
+            {
+              "appearance": "auto",
+              "end": "none",
+              "fill": "",
+              "flanges": true,
+              "lineVariant": "solid",
+              "name": "pipe_0",
+              "origin": {
+                "connections": [],
+                "x": 0.0084,
+                "y": 0.0072
+              },
+              "start": "none",
+              "stroke": "",
+              "visible": true,
+              "width": 10
+            }
+          ],
+          "style": {
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "classes": "exchange/water/border-radius exchange/water/primary"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "meta": {
+          "name": "DayTankEgressValve"
+        },
+        "position": {
+          "height": 0.06,
+          "width": 0.06,
+          "x": 0.4519,
+          "y": 0.2866
+        },
+        "props": {
+          "params": {
+            "id": "DTo",
+            "tagPath": "Exchange/Water/Valves/DTo"
+          },
+          "path": "Exchange/Water/EmbeddedViews/Valve"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "DayTankIngressValve"
+        },
+        "position": {
+          "height": 0.06,
+          "width": 0.06,
+          "x": 0.3664,
+          "y": 0.2866
+        },
+        "props": {
+          "params": {
+            "id": "DTi",
+            "tagPath": "Exchange/Water/Valves/DTi"
+          },
+          "path": "Exchange/Water/EmbeddedViews/Valve"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "BulkValve1"
+        },
+        "position": {
+          "height": 0.06,
+          "width": 0.06,
+          "x": 0.1592,
+          "y": 0.2403
+        },
+        "props": {
+          "params": {
+            "id": "BT1",
+            "tagPath": "Exchange/Water/Valves/BT1"
+          },
+          "path": "Exchange/Water/EmbeddedViews/Valve"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "BulkValve2"
+        },
+        "position": {
+          "height": 0.06,
+          "width": 0.06,
+          "x": 0.1592,
+          "y": 0.4835
+        },
+        "props": {
+          "params": {
+            "id": "BT2",
+            "tagPath": "Exchange/Water/Valves/BT2"
+          },
+          "path": "Exchange/Water/EmbeddedViews/Valve"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "BulkValve3"
+        },
+        "position": {
+          "height": 0.06,
+          "width": 0.06,
+          "x": 0.1592,
+          "y": 0.7888
+        },
+        "props": {
+          "params": {
+            "id": "BT3",
+            "tagPath": "Exchange/Water/Valves/BT3"
+          },
+          "path": "Exchange/Water/EmbeddedViews/Valve"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Pump1"
+        },
+        "position": {
+          "height": 0.21,
+          "width": 0.45,
+          "x": 0.5314,
+          "y": 0.0329
+        },
+        "propConfig": {
+          "props.params.ingressFilled": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "publishInitial": false,
+                "tagPath": "[default]Exchange/Water/Valves/DTo/Value"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "linkOutTitle": "Clearwell",
+            "pumpNum": 1,
+            "pumpTitle": "Pump 1 (Clearwell)"
+          },
+          "path": "Exchange/Water/EmbeddedViews/ChemPump"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Pump2"
+        },
+        "position": {
+          "height": 0.21,
+          "width": 0.45,
+          "x": 0.5314,
+          "y": 0.2544
+        },
+        "propConfig": {
+          "props.params.ingressFilled": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "publishInitial": false,
+                "tagPath": "[default]Exchange/Water/Valves/DTo/Value"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "linkOutTitle": "Rapid Mix",
+            "pumpNum": 2,
+            "pumpTitle": "Pump 2 (Rapid Mix)"
+          },
+          "path": "Exchange/Water/EmbeddedViews/ChemPump"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Pump3"
+        },
+        "position": {
+          "height": 0.21,
+          "width": 0.45,
+          "x": 0.5314,
+          "y": 0.48
+        },
+        "propConfig": {
+          "props.params.ingressFilled": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "publishInitial": false,
+                "tagPath": "[default]Exchange/Water/Valves/DTo/Value"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "linkOutTitle": "Filter 1-4",
+            "pumpNum": 3,
+            "pumpTitle": "Pump 3 (Filters 1-4)"
+          },
+          "path": "Exchange/Water/EmbeddedViews/ChemPump"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Pump4"
+        },
+        "position": {
+          "height": 0.21,
+          "width": 0.45,
+          "x": 0.5314,
+          "y": 0.705
+        },
+        "propConfig": {
+          "props.params.ingressFilled": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "publishInitial": false,
+                "tagPath": "[default]Exchange/Water/Valves/DTo/Value"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "linkOutTitle": "Filter 5-9",
+            "pumpNum": 4,
+            "pumpTitle": "Pump 4 (Filters 5-9)"
+          },
+          "path": "Exchange/Water/EmbeddedViews/ChemPump"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "BulkTank1ValveLabel"
+        },
+        "position": {
+          "height": 0.03,
+          "width": 0.06,
+          "x": 0.1592,
+          "y": 0.3008
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "../BulkValve1.props.params.id"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "BulkTank2ValveLabel"
+        },
+        "position": {
+          "height": 0.0306,
+          "width": 0.0599,
+          "x": 0.1594,
+          "y": 0.5467
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "../BulkValve2.props.params.id"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "BulkTank3ValveLabel"
+        },
+        "position": {
+          "height": 0.0306,
+          "width": 0.0599,
+          "x": 0.1594,
+          "y": 0.8475
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "../BulkValve3.props.params.id"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "TransferPumpValveLabel"
+        },
+        "position": {
+          "height": 0.0306,
+          "width": 0.0599,
+          "x": 0.2438,
+          "y": 0.3554
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "../TransferPumpValve.props.params.id"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "DayTankInletValveLabel"
+        },
+        "position": {
+          "height": 0.0306,
+          "width": 0.0599,
+          "x": 0.3664,
+          "y": 0.355
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "../DayTankIngressValve.props.params.id"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "DayTankOutletValveLabel"
+        },
+        "position": {
+          "height": 0.0306,
+          "width": 0.0599,
+          "x": 0.4519,
+          "y": 0.3567
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "../DayTankEgressValve.props.params.id"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "TransferPumpLabel"
+        },
+        "position": {
+          "height": 0.0306,
+          "width": 0.0859,
+          "x": 0.2928,
+          "y": 0.3901
+        },
+        "props": {
+          "text": "Transfer Pump",
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "WaterPump"
+        },
+        "position": {
+          "height": 0.1148,
+          "width": 0.0719,
+          "x": 0.3041,
+          "y": 0.2782
+        },
+        "props": {
+          "params": {
+            "id": "Hypo Transfer",
+            "orientation": "right",
+            "popupTitle": "Hypo. Transfer Pump",
+            "tagPath": "[default]Exchange/Water/Pumps/ChemTransfer"
+          },
+          "path": "Exchange/Water/EmbeddedViews/WaterPump"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "height": 0.09,
+              "width": 1
+            },
+            "props": {
+              "style": {
+                "classes": "exchange/water/secondary",
+                "fontSize": "max(1vw,1vh)",
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Transfer Status"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Status"
+            },
+            "position": {
+              "height": 0.91,
+              "width": 1,
+              "y": 0.09
+            },
+            "propConfig": {
+              "props.source": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/HypoTransfer/Message"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "if({value} \u003d \"\",\r\n\t\"Last Transfer: \" \r\n\t\t+ coalesce(\r\n\t\t\tdateFormat({[default]Exchange/Water/Hypo/HypoTransfer/LastTransfer}, \"MMMM d, yyyy HH:mm\")\r\n\t\t\t, \"None\"\r\n\t\t)\r\n\t+ \"\u003cul\u003e\"\r\n\t+ \"\u003cli\u003eDuration: \" + {[default]Exchange/Water/Hypo/HypoTransfer/DurationSeconds} + \" seconds\u003c/li\u003e\" \r\n\t+ \"\u003cli\u003eSource: Bulk Tank #\" + {[default]Exchange/Water/Hypo/HypoTransfer/LastSource} + \"\u003c/li\u003e\"\r\n\t+ \"\u003cli\u003eGallons: \" + numberFormat({[default]Exchange/Water/Hypo/HypoTransfer/LastGallons}, \"#,##0.0\") + \"\u003c/li\u003e\"\r\n\t+ \"\u003c/ul\u003e\"\r\n\t, {value}\r\n)",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "markdown": {
+                "escapeHtml": false
+              },
+              "style": {
+                "classes": "exchange/water/border-radius exchange/water/secondary-title",
+                "fontSize": "min(1.5vw,4vh)",
+                "padding": "10px",
+                "textAlign": "left"
+              }
+            },
+            "type": "ia.display.markdown"
+          }
+        ],
+        "meta": {
+          "name": "FilterStatus"
+        },
+        "position": {
+          "height": 0.4157,
+          "width": 0.2505,
+          "x": 0.2453,
+          "y": 0.4488
+        },
+        "props": {
+          "mode": "percent",
+          "style": {
+            "borderStyle": "solid",
+            "borderWidth": "0.1vw",
+            "classes": "exchange/water/border-radius exchange/water/primary"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "meta": {
+          "name": "TransferPumpValve"
+        },
+        "position": {
+          "height": 0.06,
+          "width": 0.06,
+          "x": 0.2429,
+          "y": 0.2994
+        },
+        "props": {
+          "params": {
+            "id": "TP",
+            "tagPath": "Exchange/Water/Valves/TP"
+          },
+          "path": "Exchange/Water/EmbeddedViews/Valve"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "SourceTankLabel"
+            },
+            "position": {
+              "height": 0.1315,
+              "width": 0.4903,
+              "x": 0.0025,
+              "y": 0.1849
+            },
+            "props": {
+              "style": {
+                "fontSize": "min(1.2vw,1.2vh)",
+                "fontWeight": "bold",
+                "paddingLeft": "3px",
+                "paddingRight": "3px",
+                "textAlign": "center"
+              },
+              "text": "Source Tank"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "SourceBulkTank"
+            },
+            "position": {
+              "height": 0.1362,
+              "width": 0.4735,
+              "x": 0.5121,
+              "y": 0.1749
+            },
+            "propConfig": {
+              "props.options": {
+                "binding": {
+                  "config": {
+                    "struct": {
+                      "tank1": "{[default]Exchange/Water/Tanks/HypoBulk1.InService}",
+                      "tank2": "{[default]Exchange/Water/Tanks/HypoBulk2.InService}",
+                      "tank3": "{[default]Exchange/Water/Tanks/HypoBulk3.InService}"
+                    },
+                    "waitOnAll": true
+                  },
+                  "transforms": [
+                    {
+                      "code": "\t# Build list of options\n\toptions \u003d []\n\t\n\tfor i in range(3):\n\t\ttank \u003d {\"value\": (i+1), \"label\": \"Bulk #%d\"% (i+1)}\n\t\n\t\tif not value[\u0027tank%d\u0027% (i+1)]:\n\t\t\ttank[\u0027isDisabled\u0027] \u003d True\n\t\n\t\toptions.append(tank)\n\t\n\treturn options",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr-struct"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/HypoTransfer/SelectedBulkTank"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "borderColor": "--callToAction--hover",
+                "borderStyle": "solid",
+                "borderWidth": "1px",
+                "classes": "exchange/water/value-disp",
+                "cursor": "pointer",
+                "fontSize": "min(1.2vw,1.2vh)"
+              },
+              "textAlign": "center"
+            },
+            "type": "ia.input.dropdown"
+          },
+          {
+            "meta": {
+              "name": "ConcentrationLabel"
+            },
+            "position": {
+              "height": 0.1428,
+              "width": 0.4903,
+              "x": 0.0025,
+              "y": 0.3571
+            },
+            "props": {
+              "style": {
+                "fontSize": "min(1.2vw,1.2vh)",
+                "fontWeight": "bold",
+                "paddingLeft": "3px",
+                "paddingRight": "3px",
+                "textAlign": "center"
+              },
+              "text": "Concentration"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "RefillAlarmLabel"
+            },
+            "position": {
+              "height": 0.1362,
+              "width": 0.4903,
+              "x": 0.0025,
+              "y": 0.5488
+            },
+            "props": {
+              "style": {
+                "fontSize": "min(1.2vw,1.2vh)",
+                "fontWeight": "bold",
+                "paddingLeft": "3px",
+                "paddingRight": "3px",
+                "textAlign": "center"
+              },
+              "text": "Refill Alarm"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Concentration"
+            },
+            "position": {
+              "height": 0.1428,
+              "width": 0.271,
+              "x": 0.5124,
+              "y": 0.3571
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/Strength"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "format": "0,0.#",
+              "inputBounds": {
+                "maximum": 20,
+                "minimum": 1
+              },
+              "spinner": {
+                "increment": 0.1
+              },
+              "style": {
+                "borderColor": "--callToAction--hover",
+                "borderStyle": "solid",
+                "borderWidth": "1px",
+                "classes": "exchange/water/value-disp",
+                "cursor": "pointer",
+                "fontSize": "min(1.2vw,1.2vh)"
+              }
+            },
+            "type": "ia.input.numeric-entry-field"
+          },
+          {
+            "meta": {
+              "name": "RefillSetpoint"
+            },
+            "position": {
+              "height": 0.1315,
+              "width": 0.271,
+              "x": 0.5124,
+              "y": 0.5488
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/HypoTransfer/AutoRefillSetPoint"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "format": "0,0 gal",
+              "spinner": {
+                "increment": 10
+              },
+              "style": {
+                "borderColor": "--callToAction--hover",
+                "borderStyle": "solid",
+                "borderWidth": "1px",
+                "classes": "exchange/water/value-disp",
+                "cursor": "pointer",
+                "fontSize": "min(1.2vw,1.2vh)"
+              }
+            },
+            "type": "ia.input.numeric-entry-field"
+          },
+          {
+            "meta": {
+              "name": "ConcentrationUnit"
+            },
+            "position": {
+              "height": 0.1728,
+              "width": 0.1014,
+              "x": 0.8066,
+              "y": 0.3435
+            },
+            "props": {
+              "style": {
+                "fontWeight": "bold",
+                "paddingLeft": "3px",
+                "paddingRight": "3px",
+                "textAlign": "left"
+              },
+              "text": "%"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "RefillUnit"
+            },
+            "position": {
+              "height": 0.1729,
+              "width": 0.0988,
+              "x": 0.8105,
+              "y": 0.5277
+            },
+            "props": {
+              "style": {
+                "fontWeight": "bold",
+                "paddingLeft": "3px",
+                "paddingRight": "3px",
+                "textAlign": "left"
+              },
+              "text": "gal."
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\t# Retrieve name of this project\n\tproj \u003d system.util.getProjectName()\n\t\n\t# Call SFC (passing source bulk tank)\n\targs \u003d {\u0027bulkTankNumber\u0027: self.getSibling(\"SourceBulkTank\").props.value}\n\tsystem.sfc.startChart(proj, \u0027Exchange/Water/HypoTransfer\u0027, args)"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "TransferButton",
+              "tooltip": {
+                "enabled": true
+              }
+            },
+            "position": {
+              "height": 0.2488,
+              "width": 0.9694,
+              "x": 0.0167,
+              "y": 0.736
+            },
+            "propConfig": {
+              "meta.tooltip.text": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/HypoTransfer/InProcess"
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "Transfer hypo from selected bulk tank to day tank",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": true,
+                          "output": "Hypo transfer already in process"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              },
+              "props.enabled": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/HypoTransfer/InProcess"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "!{value}",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/double_arrow"
+                },
+                "position": "right"
+              },
+              "style": {
+                "backgroundColor": "#B27300",
+                "fontSize": "min(2vw,2vh)"
+              },
+              "text": "Manual Transfer"
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": {
+              "name": "Header"
+            },
+            "position": {
+              "height": 0.15,
+              "width": 1
+            },
+            "props": {
+              "style": {
+                "backgroundColor": "#B27300",
+                "color": "black",
+                "fontSize": "min(2vw,2vh)",
+                "fontWeight": "bold",
+                "paddingLeft": "3px",
+                "paddingRight": "3px",
+                "textAlign": "center",
+                "textDecoration": "underline"
+              },
+              "text": "Transfer Control"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Hypo"
+        },
+        "position": {
+          "height": 0.212,
+          "width": 0.1953,
+          "x": 0.1572,
+          "y": 0.034
+        },
+        "props": {
+          "mode": "percent",
+          "style": {
+            "borderColor": "#B27300",
+            "borderStyle": "ridge",
+            "borderWidth": "4px",
+            "classes": "exchange/water/border-radius exchange/water/primary"
+          }
+        },
+        "type": "ia.container.coord"
+      }
+    ],
+    "custom": {
+      "emptyColor": "value",
+      "hypoColor": "value"
+    },
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.pipes[0].fill": {
+        "binding": {
+          "config": {
+            "expression": "if({[default]Exchange/Water/Tanks/HypoBulk1.InService},\r\n\t{view.custom.pipeTheme.hypo.fill},\r\n\t{view.custom.pipeTheme.idle.fill})"
+          },
+          "type": "expr"
+        }
+      },
+      "props.pipes[0].stroke": {
+        "binding": {
+          "config": {
+            "expression": "if({[default]Exchange/Water/Tanks/HypoBulk1.InService},\r\n\t{view.custom.pipeTheme.hypo.stroke},\r\n\t{view.custom.pipeTheme.idle.stroke})"
+          },
+          "type": "expr"
+        }
+      },
+      "props.pipes[1].fill": {
+        "binding": {
+          "config": {
+            "expression": "if({[default]Exchange/Water/Tanks/HypoBulk2.InService},\r\n\t{view.custom.pipeTheme.hypo.fill},\r\n\t{view.custom.pipeTheme.idle.fill})"
+          },
+          "type": "expr"
+        }
+      },
+      "props.pipes[1].stroke": {
+        "binding": {
+          "config": {
+            "expression": "if({[default]Exchange/Water/Tanks/HypoBulk2.InService},\r\n\t{view.custom.pipeTheme.hypo.stroke},\r\n\t{view.custom.pipeTheme.idle.stroke})"
+          },
+          "type": "expr"
+        }
+      },
+      "props.pipes[2].fill": {
+        "binding": {
+          "config": {
+            "expression": "if({[default]Exchange/Water/Tanks/HypoBulk3.InService},\r\n\t{view.custom.pipeTheme.hypo.fill},\r\n\t{view.custom.pipeTheme.idle.fill})"
+          },
+          "type": "expr"
+        }
+      },
+      "props.pipes[2].stroke": {
+        "binding": {
+          "config": {
+            "expression": "if({[default]Exchange/Water/Tanks/HypoBulk3.InService},\r\n\t{view.custom.pipeTheme.hypo.stroke},\r\n\t{view.custom.pipeTheme.idle.stroke})"
+          },
+          "type": "expr"
+        }
+      },
+      "props.pipes[3].fill": {
+        "binding": {
+          "config": {
+            "expression": "if(sum({[default]Exchange/Water/Valves/BT1/Value}, {[default]Exchange/Water/Valves/BT2/Value}, {[default]Exchange/Water/Valves/BT3/Value}),\r\n\t{view.custom.pipeTheme.hypo.fill},\r\n\t{view.custom.pipeTheme.idle.fill})"
+          },
+          "type": "expr"
+        }
+      },
+      "props.pipes[3].stroke": {
+        "binding": {
+          "config": {
+            "expression": "if(sum({[default]Exchange/Water/Valves/BT1/Value}, {[default]Exchange/Water/Valves/BT2/Value}, {[default]Exchange/Water/Valves/BT3/Value}),\r\n\t{view.custom.pipeTheme.hypo.stroke},\r\n\t{view.custom.pipeTheme.idle.stroke})"
+          },
+          "type": "expr"
+        }
+      },
+      "props.pipes[4].fill": {
+        "binding": {
+          "config": {
+            "expression": "if({[default]Exchange/Water/Valves/TP/Value},\r\n\t{view.custom.pipeTheme.hypo.fill},\r\n\t{view.custom.pipeTheme.idle.fill})"
+          },
+          "type": "expr"
+        }
+      },
+      "props.pipes[4].stroke": {
+        "binding": {
+          "config": {
+            "expression": "if({[default]Exchange/Water/Valves/TP/Value},\r\n\t{view.custom.pipeTheme.hypo.stroke},\r\n\t{view.custom.pipeTheme.idle.stroke})"
+          },
+          "type": "expr"
+        }
+      },
+      "props.pipes[5].fill": {
+        "binding": {
+          "config": {
+            "expression": "if({[default]Exchange/Water/Valves/DTi/Value} || ({[default]Exchange/Water/Valves/TP/Value} \u0026\u0026 {[default]Exchange/Water/pumps/ChemTransfer/Value}),\r\n\t{view.custom.pipeTheme.hypo.fill},\r\n\t{view.custom.pipeTheme.idle.fill})"
+          },
+          "type": "expr"
+        }
+      },
+      "props.pipes[5].stroke": {
+        "binding": {
+          "config": {
+            "expression": "if({[default]Exchange/Water/Valves/DTi/Value} || ({[default]Exchange/Water/Valves/TP/Value} \u0026\u0026 {[default]Exchange/Water/pumps/ChemTransfer/Value}),\r\n\t{view.custom.pipeTheme.hypo.stroke},\r\n\t{view.custom.pipeTheme.idle.stroke})"
+          },
+          "type": "expr"
+        }
+      },
+      "props.pipes[6].fill": {
+        "binding": {
+          "config": {
+            "path": "view.custom.pipeTheme.hypo.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[6].stroke": {
+        "binding": {
+          "config": {
+            "path": "view.custom.pipeTheme.hypo.stroke"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[7].fill": {
+        "binding": {
+          "config": {
+            "expression": "if({[default]Exchange/Water/Valves/DTo/Value},\r\n\t{view.custom.pipeTheme.hypo.fill},\r\n\t{view.custom.pipeTheme.idle.fill})"
+          },
+          "type": "expr"
+        }
+      },
+      "props.pipes[7].stroke": {
+        "binding": {
+          "config": {
+            "expression": "if({[default]Exchange/Water/Valves/DTo/Value},\r\n\t{view.custom.pipeTheme.hypo.stroke},\r\n\t{view.custom.pipeTheme.idle.stroke})"
+          },
+          "type": "expr"
+        }
+      },
+      "props.pipes[8].fill": {
+        "binding": {
+          "config": {
+            "path": "view.custom.pipeTheme.hypo.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[8].stroke": {
+        "binding": {
+          "config": {
+            "path": "view.custom.pipeTheme.hypo.stroke"
+          },
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "mode": "percent",
+      "pipes": [
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "Bulk 1",
+          "origin": {
+            "connections": [
+              {
+                "connections": [],
+                "x": 0.1813,
+                "y": 0.27
+              }
+            ],
+            "x": 0.1516,
+            "y": 0.27
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "Bulk 2",
+          "origin": {
+            "connections": [
+              {
+                "connections": [],
+                "x": 0.1813,
+                "y": 0.5137
+              }
+            ],
+            "x": 0.1516,
+            "y": 0.5137
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "Bulk 3",
+          "origin": {
+            "connections": [
+              {
+                "connections": [],
+                "x": 0.1813,
+                "y": 0.8186
+              }
+            ],
+            "x": 0.1516,
+            "y": 0.8186
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "Bulk Egress",
+          "origin": {
+            "connections": [
+              {
+                "connections": [
+                  {
+                    "connections": [
+                      {
+                        "connections": [],
+                        "x": 0.1963,
+                        "y": 0.5137
+                      },
+                      {
+                        "connections": [
+                          {
+                            "connections": [],
+                            "x": 0.1962,
+                            "y": 0.8186
+                          }
+                        ],
+                        "x": 0.2322,
+                        "y": 0.8186
+                      }
+                    ],
+                    "x": 0.2322,
+                    "y": 0.5137
+                  },
+                  {
+                    "connections": [
+                      {
+                        "connections": [],
+                        "x": 0.1973,
+                        "y": 0.27
+                      }
+                    ],
+                    "x": 0.2322,
+                    "y": 0.27
+                  }
+                ],
+                "x": 0.2322,
+                "y": 0.329
+              }
+            ],
+            "x": 0.265,
+            "y": 0.329
+          },
+          "start": "arrowOutward",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "Transfer Pump Ingress",
+          "origin": {
+            "connections": [
+              {
+                "connections": [],
+                "x": 0.33,
+                "y": 0.329
+              }
+            ],
+            "x": 0.281,
+            "y": 0.329
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "arrowInward",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "Transfer Pump Egress",
+          "origin": {
+            "connections": [
+              {
+                "x": 0.362,
+                "y": 0.316
+              }
+            ],
+            "x": 0.388,
+            "y": 0.316
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "Day Egress",
+          "origin": {
+            "connections": [
+              {
+                "connections": [
+                  {
+                    "connections": [],
+                    "x": 0.4745,
+                    "y": 0.316
+                  }
+                ],
+                "x": 0.445,
+                "y": 0.316
+              }
+            ],
+            "x": 0.445,
+            "y": 0.27
+          },
+          "start": "arrowInward",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "Chem Pump Ingress",
+          "origin": {
+            "connections": [
+              {
+                "connections": [
+                  {
+                    "connections": [
+                      {
+                        "connections": [],
+                        "x": 0.538,
+                        "y": 0.1857
+                      }
+                    ],
+                    "x": 0.5118,
+                    "y": 0.1857
+                  },
+                  {
+                    "connections": [
+                      {
+                        "connections": [
+                          {
+                            "connections": [
+                              {
+                                "connections": [],
+                                "x": 0.538,
+                                "y": 0.8569
+                              }
+                            ],
+                            "x": 0.5118,
+                            "y": 0.8569
+                          },
+                          {
+                            "connections": [],
+                            "x": 0.538,
+                            "y": 0.6324
+                          }
+                        ],
+                        "x": 0.5118,
+                        "y": 0.6324
+                      },
+                      {
+                        "connections": [],
+                        "x": 0.538,
+                        "y": 0.4064
+                      }
+                    ],
+                    "x": 0.5118,
+                    "y": 0.4064
+                  }
+                ],
+                "x": 0.5118,
+                "y": 0.316
+              }
+            ],
+            "x": 0.4891,
+            "y": 0.316
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "Day Ingress",
+          "origin": {
+            "connections": [
+              {
+                "connections": [
+                  {
+                    "connections": [],
+                    "x": 0.435,
+                    "y": 0.2712
+                  }
+                ],
+                "x": 0.435,
+                "y": 0.316
+              }
+            ],
+            "x": 0.403,
+            "y": 0.316
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        }
+      ],
+      "style": {
+        "classes": "exchange/water/primary"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

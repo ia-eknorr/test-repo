@@ -1,0 +1,261 @@
+{
+  "custom": {
+    "currentTheme": false,
+    "tempIcon": "material/local_fire_department",
+    "themeIcon": "material/wb_sunny"
+  },
+  "params": {
+    "theme": "light-warm"
+  },
+  "propConfig": {
+    "custom.currentTheme": {
+      "binding": {
+        "config": {
+          "expression": "if({session.props.theme}\u003d{view.params.theme}, True, False)"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "custom.tempIcon": {
+      "binding": {
+        "config": {
+          "path": "view.params.theme"
+        },
+        "transforms": [
+          {
+            "fallback": "",
+            "inputType": "scalar",
+            "mappings": [
+              {
+                "input": "light",
+                "output": ""
+              },
+              {
+                "input": "light-warm",
+                "output": "material/local_fire_department"
+              },
+              {
+                "input": "light-cool",
+                "output": "material/ac_unit"
+              },
+              {
+                "input": "dark",
+                "output": ""
+              },
+              {
+                "input": "dark-warm",
+                "output": "material/local_fire_department"
+              },
+              {
+                "input": "dark-cool",
+                "output": "material/ac_unit"
+              }
+            ],
+            "outputType": "scalar",
+            "type": "map"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "custom.themeIcon": {
+      "binding": {
+        "config": {
+          "path": "view.params.theme"
+        },
+        "transforms": [
+          {
+            "fallback": "material/wb_sunny",
+            "inputType": "scalar",
+            "mappings": [
+              {
+                "input": "light",
+                "output": "material/wb_sunny"
+              },
+              {
+                "input": "light-warm",
+                "output": "material/wb_sunny"
+              },
+              {
+                "input": "light-cool",
+                "output": "material/wb_sunny"
+              },
+              {
+                "input": "dark",
+                "output": "material/nights_stay"
+              },
+              {
+                "input": "dark-warm",
+                "output": "material/nights_stay"
+              },
+              {
+                "input": "dark-cool",
+                "output": "material/nights_stay"
+              }
+            ],
+            "outputType": "scalar",
+            "type": "map"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "params.theme": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 55,
+      "width": 55
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "MainIcon"
+        },
+        "position": {
+          "height": 0.8,
+          "width": 0.8,
+          "x": 0.05,
+          "y": 0.15
+        },
+        "propConfig": {
+          "props.path": {
+            "binding": {
+              "config": {
+                "path": "view.custom.themeIcon"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "color": "var(--qual-10)"
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "meta": {
+          "name": "MiniIcon"
+        },
+        "position": {
+          "height": 0.4,
+          "width": 0.4,
+          "x": 0.55,
+          "y": 0.05
+        },
+        "propConfig": {
+          "props.path": {
+            "binding": {
+              "config": {
+                "path": "view.custom.tempIcon"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "color": "var(--qual-10)"
+        },
+        "type": "ia.display.icon"
+      }
+    ],
+    "meta": {
+      "name": "root",
+      "tooltip": {
+        "enabled": true,
+        "location": "top",
+        "sustain": 5000
+      }
+    },
+    "propConfig": {
+      "meta.tooltip.text": {
+        "binding": {
+          "config": {
+            "path": "view.params.theme"
+          },
+          "transforms": [
+            {
+              "code": "\treturn value.replace(\u0027-\u0027, \u0027 \u0027).title()",
+              "type": "script"
+            }
+          ],
+          "type": "property"
+        }
+      },
+      "props.style.backgroundColor": {
+        "binding": {
+          "config": {
+            "path": "view.custom.currentTheme"
+          },
+          "transforms": [
+            {
+              "fallback": "var(--neutral-90)",
+              "inputType": "scalar",
+              "mappings": [
+                {
+                  "input": true,
+                  "output": "var(--neutral-10)"
+                },
+                {
+                  "input": false,
+                  "output": "var(--neutral-90)"
+                }
+              ],
+              "outputType": "scalar",
+              "type": "map"
+            }
+          ],
+          "type": "property"
+        }
+      },
+      "props.style.borderColor": {
+        "binding": {
+          "config": {
+            "path": "view.custom.currentTheme"
+          },
+          "transforms": [
+            {
+              "fallback": "var(--neutral-10)",
+              "inputType": "scalar",
+              "mappings": [
+                {
+                  "input": true,
+                  "output": "var(--neutral-90)"
+                },
+                {
+                  "input": false,
+                  "output": "var(--neutral-10)"
+                }
+              ],
+              "outputType": "scalar",
+              "type": "map"
+            }
+          ],
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "aspectRatio": "1:1",
+      "mode": "percent",
+      "style": {
+        "borderBottomLeftRadius": "10px",
+        "borderBottomRightRadius": "10px",
+        "borderStyle": "solid",
+        "borderTopLeftRadius": "10px",
+        "borderTopRightRadius": "10px",
+        "borderWidth": "2px",
+        "cursor": "pointer"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

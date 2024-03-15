@@ -1,0 +1,40 @@
+{
+  "scope": "DG",
+  "version": 2,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "query.sql"
+  ],
+  "attributes": {
+    "useMaxReturnSize": false,
+    "autoBatchEnabled": false,
+    "fallbackValue": "0",
+    "maxReturnSize": 100,
+    "cacheUnit": "SEC",
+    "type": "ScalarQuery",
+    "enabled": true,
+    "cacheAmount": 1,
+    "cacheEnabled": false,
+    "database": "WaterTreatment",
+    "fallbackEnabled": true,
+    "lastModificationSignature": "0323c174f1158b7cfe053c83d4e5a817e93d020bbd53eb26dcba61f0e5151ab9",
+    "permissions": [
+      {
+        "zone": "",
+        "role": ""
+      }
+    ],
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2024-03-12T19:23:03Z"
+    },
+    "parameters": [
+      {
+        "type": "Parameter",
+        "identifier": "filter",
+        "sqlType": 2
+      }
+    ]
+  }
+}

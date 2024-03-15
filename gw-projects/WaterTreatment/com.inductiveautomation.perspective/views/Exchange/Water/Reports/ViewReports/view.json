@@ -1,0 +1,86 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 544,
+      "width": 960
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "MenuTree"
+        },
+        "position": {
+          "basis": "200px"
+        },
+        "propConfig": {
+          "props.items": {
+            "binding": {
+              "config": {
+                "expression": "1"
+              },
+              "transforms": [
+                {
+                  "code": "\tmenu \u003d []\n\tcomplianceMenu \u003d {}\n\tcomplianceMenu[\u0027target\u0027] \u003d \u0027\u0027\n\tcomplianceMenu[\u0027items\u0027] \u003d []\n\tcomplianceMenu[\u0027navIcon\u0027] \u003d {\u0027path\u0027:\u0027material/chevron_right\u0027, \u0027color\u0027: \u0027#6C6C6C\u0027}\n\tcomplianceMenu[\u0027label\u0027] \u003d {\u0027text\u0027: \u0027Compliance Reports\u0027, \u0027icon\u0027:{\u0027path\u0027:\u0027material/list\u0027}}\n\tmenu.append(complianceMenu)\n\t\n\ttry:\n\t\tyear \u003d system.date.getYear(system.date.now())\n\texcept:\n\t\tyear \u003d 2019\n\t\n\tfor i in range(2011, year + 1):\n\t\tyear \u003d {}\n\t\tyear[\u0027target\u0027] \u003d \u0027/Reports/\u0027\n\t\tyear[\u0027items\u0027] \u003d []\n\t\tyear[\u0027navIcon\u0027] \u003d {\u0027path\u0027:\u0027\u0027}\n\t\tyear[\u0027label\u0027] \u003d {\u0027text\u0027: str(i), \u0027icon\u0027:{\u0027path\u0027:\u0027\u0027}}\n\t\tcomplianceMenu[\u0027items\u0027].append(year)\n\n\t\n\treturn menu",
+                  "type": "script"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "type": "ia.navigation.menutree"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView"
+        },
+        "position": {
+          "basis": "320px"
+        },
+        "props": {
+          "params": {
+            "path": "Compliance Report"
+          },
+          "path": "Exchange/Water/Reports/ReportView"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedView_0"
+        },
+        "position": {
+          "basis": "320px"
+        },
+        "propConfig": {
+          "props.params": {
+            "binding": {
+              "config": {
+                "expression": "1"
+              },
+              "transforms": [
+                {
+                  "code": "\tmenu \u003d {}\n\tmenu[\u0027name\u0027] \u003d \u0027Compliance Reports\u0027\n\tmenu[\u0027items\u0027] \u003d []\n\t\n\ttry:\n\t\tyear \u003d system.date.getYear(system.date.now())\n\texcept:\n\t\tyear \u003d 2019\n\t\n\tfor i in range(2011, year + 1):\n\t\tyear \u003d {}\n\t\tyear[\u0027items\u0027] \u003d [{\u0027name\u0027: \u0027Sub Item\u0027, \u0027items\u0027: []}]\n\t\tyear[\u0027name\u0027] \u003d i\n\t\tmenu[\u0027items\u0027].append(year)\n\t\n\treturn menu",
+                  "type": "script"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "path": "Exchange/Water/Reports/ReportView"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.flex"
+  }
+}

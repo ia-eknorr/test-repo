@@ -1,0 +1,462 @@
+{
+  "custom": {},
+  "params": {
+    "name": "Influent",
+    "pipeThemeLeft": {
+      "fill": "var(--callToAction--disabled)",
+      "stroke": "var(--neutral-90)"
+    },
+    "pipeThemeRight": {
+      "fill": "var(--callToAction--disabled)",
+      "stroke": "var(--neutral-90)"
+    },
+    "reverseLeft": false,
+    "reverseRight": false,
+    "tagPath": "[default]Water/Filters/Filter1/Valves/Influent"
+  },
+  "propConfig": {
+    "params.filter": {
+      "paramDirection": "input"
+    },
+    "params.name": {
+      "paramDirection": "input"
+    },
+    "params.pipeThemeLeft": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.pipeThemeRight": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.reverseLeft": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.reverseRight": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tag": {
+      "paramDirection": "input"
+    },
+    "params.tagPat": {
+      "paramDirection": "input"
+    },
+    "params.tagPath": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 200,
+      "width": 300
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "OffAuto"
+        },
+        "position": {
+          "height": 0.7,
+          "width": 0.3,
+          "x": 0.6684,
+          "y": 0.149
+        },
+        "propConfig": {
+          "props.controlValue": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "mode": "indirect",
+                "references": {
+                  "valve": "{view.params.tagPath}"
+                },
+                "tagPath": "{valve}/Mode"
+              },
+              "type": "tag"
+            },
+            "onChange": {
+              "enabled": null,
+              "script": "\t# Clear hand mode, but only when changed by the user in a browser\n\tif origin \u003d\u003d \u0027Browser\u0027:\n\t\tsystem.tag.writeBlocking([self.view.params.tagPath + \"/Hand\"], [2])"
+            }
+          },
+          "props.indicatorValue": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "mode": "indirect",
+                "references": {
+                  "valve": "{view.params.tagPath}"
+                },
+                "tagPath": "{valve}/Mode"
+              },
+              "type": "tag"
+            }
+          },
+          "props.states[2].selectedStyle.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "session.custom.hmi.colors[1]"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "buttonGap": 28,
+          "defaultSelectedStyle": {
+            "fontSize": "1em"
+          },
+          "defaultUnselectedStyle": {
+            "fontSize": "1em"
+          },
+          "states": [
+            {
+              "selectedStyle": {
+                "classes": "exchange/water/indicator/mode-off"
+              },
+              "text": "Off",
+              "unselectedStyle": {
+                "classes": ""
+              },
+              "value": 0
+            },
+            {
+              "selectedStyle": {
+                "classes": "exchange/water/indicator/mode-auto"
+              },
+              "text": "Auto",
+              "unselectedStyle": {
+                "classes": ""
+              },
+              "value": 1
+            }
+          ],
+          "style": {
+            "padding": "3px"
+          }
+        },
+        "type": "ia.input.multi-state-button"
+      },
+      {
+        "meta": {
+          "name": "Heading"
+        },
+        "position": {
+          "height": 0.3367,
+          "width": 0.3345,
+          "x": 0.3328
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.name} + \" Valve\""
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontWeight": "bold",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Valve"
+        },
+        "position": {
+          "height": 0.3724,
+          "width": 0.3081,
+          "x": 0.3463,
+          "y": 0.3069
+        },
+        "propConfig": {
+          "props.params.tagPath": {
+            "binding": {
+              "config": {
+                "path": "view.params.tagPath"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "id": ""
+          },
+          "path": "Exchange/Water/EmbeddedViews/Valve"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Hand"
+        },
+        "position": {
+          "height": 0.7,
+          "width": 0.3,
+          "x": 0.0202,
+          "y": 0.149
+        },
+        "propConfig": {
+          "custom.handModeEnabled": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "tag": "{view.params.tagPath}"
+                },
+                "tagPath": "{tag}/Mode"
+              },
+              "transforms": [
+                {
+                  "expression": "{value} \u003d 2",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "custom.handModeValue": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "valve": "{view.params.tagPath}"
+                },
+                "tagPath": "{valve}/Hand"
+              },
+              "type": "tag"
+            }
+          },
+          "props.controlValue": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "valve": "{view.params.tagPath}"
+                },
+                "tagPath": "{valve}/Hand"
+              },
+              "type": "tag"
+            },
+            "onChange": {
+              "enabled": null,
+              "script": "\t# Update the hoa mode to \u0027Hand\u0027, but only when changed by the user in a browser\n\tif origin \u003d\u003d \u0027Browser\u0027:\n\t\tsystem.tag.writeBlocking([self.view.params.tagPath + \"/Mode\"], [2])"
+            }
+          },
+          "props.indicatorValue": {
+            "binding": {
+              "config": {
+                "expression": "if({this.custom.handModeEnabled}, {this.custom.handModeValue}, -1)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.states[2].selectedStyle.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "session.custom.hmi.colors[1]"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "buttonGap": 28,
+          "defaultSelectedStyle": {
+            "fontSize": "1em"
+          },
+          "defaultUnselectedStyle": {
+            "fontSize": "1em",
+            "fontWeight": "normal"
+          },
+          "states": [
+            {
+              "selectedStyle": {
+                "classes": "exchange/water/indicator/mode-hand"
+              },
+              "text": "Close",
+              "unselectedStyle": {
+                "classes": ""
+              },
+              "value": 0
+            },
+            {
+              "selectedStyle": {
+                "classes": "exchange/water/indicator/mode-hand"
+              },
+              "text": "Open",
+              "unselectedStyle": {
+                "classes": ""
+              },
+              "value": 1
+            }
+          ],
+          "style": {
+            "borderColor": "--neutral-50",
+            "borderRadius": "4px",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "padding": "2px"
+          }
+        },
+        "type": "ia.input.multi-state-button"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.pipes[0].end": {
+        "binding": {
+          "config": {
+            "path": "view.params.reverseLeft"
+          },
+          "transforms": [
+            {
+              "fallback": "none",
+              "inputType": "scalar",
+              "mappings": [
+                {
+                  "input": true,
+                  "output": "arrowInward"
+                },
+                {
+                  "input": false,
+                  "output": "none"
+                }
+              ],
+              "outputType": "scalar",
+              "type": "map"
+            }
+          ],
+          "type": "property"
+        }
+      },
+      "props.pipes[0].fill": {
+        "binding": {
+          "config": {
+            "path": "view.params.pipeThemeLeft.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[0].stroke": {
+        "binding": {
+          "config": {
+            "path": "view.params.pipeThemeLeft.stroke"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[1].end": {
+        "binding": {
+          "config": {
+            "path": "view.params.reverseRight"
+          },
+          "transforms": [
+            {
+              "fallback": "none",
+              "inputType": "scalar",
+              "mappings": [
+                {
+                  "input": true,
+                  "output": "arrowInward"
+                },
+                {
+                  "input": false,
+                  "output": "none"
+                }
+              ],
+              "outputType": "scalar",
+              "type": "map"
+            }
+          ],
+          "type": "property"
+        }
+      },
+      "props.pipes[1].fill": {
+        "binding": {
+          "config": {
+            "path": "view.params.pipeThemeRight.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[1].stroke": {
+        "binding": {
+          "config": {
+            "path": "view.params.pipeThemeRight.stroke"
+          },
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "mode": "percent",
+      "pipes": [
+        {
+          "appearance": "auto",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "left",
+          "origin": {
+            "connections": [
+              {
+                "connections": [],
+                "x": 0.43,
+                "y": 0.5
+              }
+            ],
+            "x": -0.05,
+            "y": 0.5
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "right",
+          "origin": {
+            "connections": [
+              {
+                "connections": [],
+                "x": 1.05,
+                "y": 0.5
+              }
+            ],
+            "x": 0.57,
+            "y": 0.5
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        }
+      ],
+      "style": {
+        "borderStyle": "solid",
+        "borderWidth": "2px",
+        "classes": "exchange/water/border-radius exchange/water/primary",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

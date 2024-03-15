@@ -1,0 +1,40 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "DashboardFull"
+        },
+        "position": {
+          "size": "large"
+        },
+        "props": {
+          "path": "Exchange/Water/EmbeddedViews/DashboardFull"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "DashboardMobile"
+        },
+        "props": {
+          "params": {
+            "title": "Dashboard"
+          },
+          "path": "Exchange/Water/EmbeddedViews/DashboardMobile"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "breakpoint": 960
+    },
+    "type": "ia.container.breakpt"
+  }
+}

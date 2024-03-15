@@ -1,0 +1,302 @@
+{
+  "custom": {},
+  "params": {
+    "selectedFilter": 3
+  },
+  "propConfig": {
+    "params.selectedFilter": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 527
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Heading"
+            },
+            "position": {
+              "basis": "100px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.selectedFilter"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "\"Filter #\" + {value} + \" Mode\"",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "exchange/water/filter-mobile",
+                "fontWeight": "bold",
+                "margin": "-10px 10px 0px 0px",
+                "textAlign": "right"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Off Auto"
+            },
+            "position": {
+              "basis": "350px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.controlValue": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "filter": "{view.params.selectedFilter}"
+                    },
+                    "tagPath": "[default]Exchange/Water/Filters/Filter{filter}/Control/Mode"
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.indicatorValue": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "indirect",
+                    "references": {
+                      "filter": "{view.params.selectedFilter}"
+                    },
+                    "tagPath": "[default]Exchange/Water/Filters/Filter{filter}/Control/Mode"
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.states[2].selectedStyle.backgroundColor": {
+                "binding": {
+                  "config": {
+                    "path": "session.custom.hmi.colors[1]"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "buttonGap": 5,
+              "defaultSelectedStyle": {
+                "fontSize": "1em"
+              },
+              "defaultUnselectedStyle": {
+                "fontSize": "1em"
+              },
+              "orientation": "row",
+              "states": [
+                {
+                  "selectedStyle": {
+                    "classes": "exchange/water/indicator/mode-off"
+                  },
+                  "text": "Off",
+                  "unselectedStyle": {
+                    "classes": ""
+                  },
+                  "value": 0
+                },
+                {
+                  "selectedStyle": {
+                    "classes": "exchange/water/indicator/mode-auto"
+                  },
+                  "text": "Auto",
+                  "unselectedStyle": {
+                    "classes": ""
+                  },
+                  "value": 1
+                }
+              ],
+              "style": {
+                "marginBottom": "10px",
+                "marginRight": "10px"
+              }
+            },
+            "type": "ia.input.multi-state-button"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "50px"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "FlexRepeater"
+        },
+        "position": {
+          "basis": "513px"
+        },
+        "propConfig": {
+          "props.instances[0].tagPath": {
+            "binding": {
+              "config": {
+                "expression": "\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Valves/Influent\""
+              },
+              "type": "expr"
+            }
+          },
+          "props.instances[1].tagPath": {
+            "binding": {
+              "config": {
+                "expression": "\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Valves/Drain\""
+              },
+              "type": "expr"
+            }
+          },
+          "props.instances[2].tagPath": {
+            "binding": {
+              "config": {
+                "expression": "\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Valves/Waste\""
+              },
+              "type": "expr"
+            }
+          },
+          "props.instances[3].tagPath": {
+            "binding": {
+              "config": {
+                "expression": "\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Valves/AirScour\""
+              },
+              "type": "expr"
+            }
+          },
+          "props.instances[4].tagPath": {
+            "binding": {
+              "config": {
+                "expression": "\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Valves/Effluent\""
+              },
+              "type": "expr"
+            }
+          },
+          "props.instances[5].tagPath": {
+            "binding": {
+              "config": {
+                "expression": "\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Valves/Backwash\""
+              },
+              "type": "expr"
+            }
+          },
+          "props.instances[6].tagPath": {
+            "binding": {
+              "config": {
+                "expression": "\"[default]Exchange/Water/Filters/Filter\" + {view.params.selectedFilter} + \"/Valves/Rinse\""
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "elementPosition": {
+            "shrink": 0
+          },
+          "instances": [
+            {
+              "borderRadius": {
+                "bottom": 0,
+                "top": "4px"
+              },
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "name": "Influent"
+            },
+            {
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "name": "Drain"
+            },
+            {
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "name": "Backwash Waste"
+            },
+            {
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "name": "Air Scour"
+            },
+            {
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "name": "Effluent"
+            },
+            {
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "name": "Backwash Supply"
+            },
+            {
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "name": "Rinse"
+            },
+            {
+              "borderRadius": {
+                "bottom": "4px",
+                "top": 0
+              },
+              "device": "Blower",
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "name": "Blower",
+              "tagPath": "[default]Exchange/Water/Filters/Blower"
+            }
+          ],
+          "path": "Exchange/Water/EmbeddedViews/ValveDetailsMobile",
+          "useDefaultViewWidth": false
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "overflow": "visible"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

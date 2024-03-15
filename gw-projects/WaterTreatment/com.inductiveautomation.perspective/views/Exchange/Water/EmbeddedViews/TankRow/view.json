@@ -1,0 +1,425 @@
+{
+  "custom": {
+    "max": null
+  },
+  "params": {
+    "color": "#FFA500",
+    "odd": false,
+    "tagPath": "[default]Water/Tanks/HypoBulk1",
+    "tank": "Finished Tank 1",
+    "units": "gal"
+  },
+  "propConfig": {
+    "custom.max": {
+      "binding": {
+        "config": {
+          "expression": "if({view.params.units} \u003d \u0027ft\u0027,\r\n\ttag({view.params.tagPath} + \".Height\"),\r\n\ttag({view.params.tagPath} + \".Capacity\"))"
+        },
+        "type": "expr"
+      },
+      "persistent": true
+    },
+    "params.color": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.data": {
+      "paramDirection": "input"
+    },
+    "params.filt": {
+      "paramDirection": "input"
+    },
+    "params.filter": {
+      "paramDirection": "input"
+    },
+    "params.odd": {
+      "paramDirection": "input"
+    },
+    "params.tag": {
+      "paramDirection": "input"
+    },
+    "params.tagP": {
+      "paramDirection": "input"
+    },
+    "params.tagPat": {
+      "paramDirection": "input"
+    },
+    "params.tagPath": {
+      "paramDirection": "input"
+    },
+    "params.tank": {
+      "paramDirection": "input"
+    },
+    "params.uni": {
+      "paramDirection": "input"
+    },
+    "params.unit": {
+      "paramDirection": "input"
+    },
+    "params.units": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 30
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "view.params.odd"
+              },
+              "transforms": [
+                {
+                  "fallback": "exchange/water/error",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "exchange/water/primary"
+                    },
+                    {
+                      "input": false,
+                      "output": "exchange/water/value-disp"
+                    }
+                  ],
+                  "outputType": "style-list",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.tank"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderRightStyle": "solid",
+            "borderRightWidth": "1px",
+            "fontWeight": "500",
+            "overflow": "hidden",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Quantity"
+        },
+        "position": {
+          "basis": "90px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "propConfig": {
+          "custom.hasAlarm": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "1": "{view.params.tagPath}"
+                },
+                "tagPath": "{1}/Alarms.HasActive"
+              },
+              "type": "tag"
+            }
+          },
+          "props.style.borderStyle": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "1": "{view.params.tagPath}"
+                },
+                "tagPath": "{1}/Alarms.HasActive"
+              },
+              "transforms": [
+                {
+                  "fallback": "none",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "Solid"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "view.params.odd"
+              },
+              "transforms": [
+                {
+                  "fallback": "exchange/water/error",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "exchange/water/primary"
+                    },
+                    {
+                      "input": false,
+                      "output": "exchange/water/value-disp"
+                    }
+                  ],
+                  "outputType": "style-list",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "tag": "{view.params.tagPath}"
+                },
+                "tagPath": "{tag}"
+              },
+              "transforms": [
+                {
+                  "formatType": "numeric",
+                  "formatValue": "#,###.0",
+                  "type": "format"
+                },
+                {
+                  "expression": "{value} + \u0027 \u0027 + {view.params.units}",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderColor": "#FF0000",
+            "borderWidth": "2px",
+            "fontWeight": "500",
+            "overflow": "hidden",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Percent"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "view.params.odd"
+              },
+              "transforms": [
+                {
+                  "fallback": "exchange/water/error",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "exchange/water/primary"
+                    },
+                    {
+                      "input": false,
+                      "output": "exchange/water/value-disp"
+                    }
+                  ],
+                  "outputType": "style-list",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "tag": "{view.params.tagPath}"
+                },
+                "tagPath": "{tag}"
+              },
+              "transforms": [
+                {
+                  "expression": "numberFormat({value} / {view.custom.max} * 100.0, \u0027#\u0027) + \u0027%\u0027",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "1px",
+            "fontWeight": "500",
+            "overflow": "hidden",
+            "paddingRight": "10px",
+            "textAlign": "right"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Progress"
+        },
+        "position": {
+          "basis": "300px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.bar.determinate.color": {
+            "binding": {
+              "config": {
+                "path": "view.params.color"
+              },
+              "type": "property"
+            }
+          },
+          "props.max": {
+            "binding": {
+              "config": {
+                "path": "view.custom.max"
+              },
+              "type": "property"
+            }
+          },
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "view.params.odd"
+              },
+              "transforms": [
+                {
+                  "fallback": "exchange/water/error",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "exchange/water/primary"
+                    },
+                    {
+                      "input": false,
+                      "output": "exchange/water/value-disp"
+                    }
+                  ],
+                  "outputType": "style-list",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "1": "{view.params.tagPath}"
+                },
+                "tagPath": "{1}"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "bar": {
+            "determinate": {},
+            "style": {
+              "backgroundColor": "--callToAction--hover"
+            }
+          },
+          "style": {
+            "borderStyle": "none",
+            "padding": "3px"
+          },
+          "track": {
+            "style": {
+              "borderColor": "--neutral-100",
+              "borderStyle": "solid",
+              "borderWidth": "1px",
+              "classes": "exchange/water/secondary"
+            }
+          },
+          "valueDisplay": {
+            "format": "0%"
+          }
+        },
+        "type": "ia.display.progress"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "script": "\t\tif \u0027Hypo\u0027 in self.getChild(\"Label\").props.text:\n\t\t\tsystem.perspective.sendMessage(\"exchange.water.menuChange\", payload \u003d {\u0027page\u0027:\u0027Chemical Feed\u0027}, scope \u003d \u0027session\u0027)\n\t\t\tsystem.perspective.navigate(page \u003d \"/chemfeed\")\n\t\telse:\n\t\t\tsystem.perspective.sendMessage(\"exchange.water.menuChange\", payload \u003d {\u0027page\u0027:\u0027Overview\u0027}, scope \u003d \u0027session\u0027)\n\t\t\tsystem.perspective.navigate(page \u003d \"/overview\")"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "1px",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "1px",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "1px",
+        "classes": "exchange/water/primary",
+        "cursor": "pointer",
+        "fontSize": "0.8em",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

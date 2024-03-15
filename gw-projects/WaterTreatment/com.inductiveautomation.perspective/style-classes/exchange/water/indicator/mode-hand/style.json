@@ -1,0 +1,10 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--qual-10)",
+      "borderColor": "var(--qual-10)",
+      "borderStyle": "dashed",
+      "color": "var(--neutral-100)"
+    }
+  }
+}

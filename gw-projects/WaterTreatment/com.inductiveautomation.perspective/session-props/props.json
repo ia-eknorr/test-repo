@@ -1,0 +1,94 @@
+{
+  "custom": {
+    "hmi": {
+      "alarmColors": [
+        "rgba(120,150,150,1)",
+        "rgba(255,255,0,1)",
+        "rgba(255,128,0,1)",
+        "rgba(255,0,0,1)"
+      ],
+      "background": "--seq-3",
+      "borderColor": "--neutral-70",
+      "colors": [
+        "--indicatorOff",
+        "--indicator",
+        "--warning",
+        "--error"
+      ],
+      "colorsSingleValue": [
+        "rgba(255,255,255,1)",
+        "rgba(100,255,100,1)",
+        "rgba(255,230,0,1)",
+        "rgba(255,0,0,1)"
+      ],
+      "fontSize": "0.75em",
+      "headerBackground": "rgba(200,200,200,1)",
+      "hoaBorders": [
+        "rgba(0, 0, 0, 1)",
+        "rgba(0, 0, 0, 1)",
+        "rgba(200, 200, 0, 1)",
+        "rgba(255, 0, 0, 1)"
+      ],
+      "pipeColor": "rgba(244,244,244,1)",
+      "secondaryBackground": "rgba(230,230,230,1)",
+      "window": "Overview"
+    }
+  },
+  "propConfig": {
+    "props.auth": {
+      "access": "PRIVATE",
+      "persistent": false
+    },
+    "props.device.accelerometer": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.device.identifier": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.device.timezone": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.device.type": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.device.userAgent": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.gateway": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.geolocation.data": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.geolocation.permissionGranted": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.host": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.id": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.lastActivity": {
+      "access": "SYSTEM",
+      "persistent": false
+    }
+  },
+  "props": {
+    "address": "172.18.0.2",
+    "device": {},
+    "geolocation": {},
+    "locale": "en-US",
+    "timeZoneId": "America/Los_Angeles"
+  }
+}

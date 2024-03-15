@@ -1,0 +1,279 @@
+{
+  "custom": {},
+  "params": {
+    "alt": false,
+    "borderRadius": {
+      "bottomLeft": 0,
+      "bottomRight": 0,
+      "topLeft": 0,
+      "topRight": 0
+    },
+    "data": {
+      "format": "#,##0",
+      "value": 288.5678984
+    },
+    "fontSize": "1em",
+    "name": "",
+    "tagPath": "",
+    "units": ""
+  },
+  "propConfig": {
+    "params.alt": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.borderRadius": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.data": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.fontSize": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.name": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.tagPath": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.units": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 37,
+      "width": 177
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "37px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "data": "{view.params.data}",
+                  "units": "{view.params.units}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "expression": "try(numberFormat({value}[\u0027data\u0027][\u0027value\u0027], toStr({value}[\u0027data\u0027][\u0027format\u0027])), {value}[\u0027data\u0027][\u0027value\u0027]) + \r\n\u0027 \u0027 + {value}[\u0027units\u0027]",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.textStyle.fontSize": {
+            "binding": {
+              "config": {
+                "path": "view.params.fontSize"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "textStyle": {
+            "overflow": "hidden",
+            "overflowX": "hidden",
+            "overflowY": "hidden",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Icon"
+        },
+        "position": {
+          "basis": "30px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "name": "{view.params.name}",
+                  "tagPath": "{view.params.tagPath}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\tif not value[\u0027name\u0027]:\n\t\treturn False\n\ttry:\n\t\treturn system.tag.read(value[\u0027tagPath\u0027] + \u0027.historyEnabled\u0027).value\n\texcept:\n\t\treturn False ",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          }
+        },
+        "props": {
+          "color": "--neutral-80",
+          "path": "material/timeline",
+          "style": {
+            "cursor": "pointer"
+          }
+        },
+        "type": "ia.display.icon"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "script": "\tif self.view.params.name:\n\t\thistoryEnabled \u003d system.tag.read(self.view.params.tagPath + \".historyEnabled\")\n\t\tif historyEnabled.value:\n\t\t\tpayload \u003d {}\n\t\t\tpayload[\u0027path\u0027] \u003d self.view.params.tagPath\n\t\t\tpayload[\u0027friendly\u0027] \u003d self.view.params.name\n\t\t\tpayload[\u0027alias\u0027] \u003d self.view.params.tagPath\n\t\t\tpayload[\u0027enabled\u0027] \u003d True\n\t\t\t\n\t\t\tsystem.perspective.openPopup(id\u003d\"History\",\n\t\t\t\t\t\t\t\t\t\tview\u003d\"Exchange/Water/EmbeddedViews/History\",\n\t\t\t\t \t\t\t\t\t\ttitle\u003d\"Ad Hoc Trends\",\n\t\t\t\t \t\t\t\t\t\tshowCloseIcon\u003dTrue,\n\t\t\t \t\t\t\t\t\t\tdraggable\u003dTrue,\n\t\t\t \t\t\t\t\t\t\tresizable\u003dTrue, \n\t\t\t \t\t\t\t\t\t\tparams\u003dpayload,\n\t\t\t \t\t\t\t\t\t\tposition\u003d{\u0027width\u0027: \u002790%\u0027, \u0027height\u0027: \u002790%\u0027})\n\telse:\n\t\treturn"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.borderBottomLeftRadius": {
+        "binding": {
+          "config": {
+            "path": "view.params.borderRadius.bottomLeft"
+          },
+          "type": "property"
+        }
+      },
+      "props.style.borderBottomRightRadius": {
+        "binding": {
+          "config": {
+            "path": "view.params.borderRadius.bottomRight"
+          },
+          "type": "property"
+        }
+      },
+      "props.style.borderColor": {
+        "binding": {
+          "config": {
+            "fallbackDelay": 2.5,
+            "mode": "indirect",
+            "references": {
+              "1": "{view.params.tagPath}"
+            },
+            "tagPath": "{1}/Alarms.HasActive"
+          },
+          "transforms": [
+            {
+              "expression": "coalesce({value}, 0)",
+              "type": "expression"
+            },
+            {
+              "fallback": "--neutral-90",
+              "inputType": "scalar",
+              "mappings": [
+                {
+                  "input": true,
+                  "output": "--error"
+                },
+                {
+                  "input": false,
+                  "output": "--neutral-90"
+                }
+              ],
+              "outputType": "scalar",
+              "type": "map"
+            }
+          ],
+          "type": "tag"
+        }
+      },
+      "props.style.borderTopLeftRadius": {
+        "binding": {
+          "config": {
+            "path": "view.params.borderRadius.topLeft"
+          },
+          "type": "property"
+        }
+      },
+      "props.style.borderTopRightRadius": {
+        "binding": {
+          "config": {
+            "path": "view.params.borderRadius.topRight"
+          },
+          "type": "property"
+        }
+      },
+      "props.style.borderWidth": {
+        "binding": {
+          "config": {
+            "fallbackDelay": 2.5,
+            "mode": "indirect",
+            "references": {
+              "1": "{view.params.tagPath}"
+            },
+            "tagPath": "{1}/Alarms.HasActive"
+          },
+          "transforms": [
+            {
+              "expression": "if(coalesce({value}, 0),\r\n\t\u00273px\u0027, \u00271px\u0027)",
+              "type": "expression"
+            }
+          ],
+          "type": "tag"
+        }
+      },
+      "props.style.classes": {
+        "binding": {
+          "config": {
+            "expression": "if({view.params.alt},\r\n\t\"exchange/water/info-row/odd-row\",\r\n\t\"exchange/water/value-disp\")"
+          },
+          "type": "expr"
+        }
+      },
+      "props.style.cursor": {
+        "binding": {
+          "config": {
+            "struct": {
+              "name": "{view.params.name}",
+              "tagPath": "{view.params.tagPath}"
+            },
+            "waitOnAll": true
+          },
+          "transforms": [
+            {
+              "code": "\tif not value:\n\t\treturn \u0027auto\u0027\n\ttry:\n\t\tif system.tag.read(tagPath + \u0027.historyEnabled\u0027).value:\n\t\t\treturn \u0027pointer\u0027\n\t\treturn \u0027auto\u0027\n\texcept:\n\t\treturn \u0027auto\u0027",
+              "type": "script"
+            }
+          ],
+          "type": "expr-struct"
+        }
+      }
+    },
+    "props": {
+      "style": {
+        "borderStyle": "solid",
+        "fontSize": "0.775em",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

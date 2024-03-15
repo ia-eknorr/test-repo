@@ -1,0 +1,233 @@
+{
+  "custom": {},
+  "params": {
+    "appearance": "auto",
+    "orientation": "top",
+    "popupTitle": "Raw Water #1",
+    "pumpLabel": "",
+    "tagPath": "[default]Exchange/Water/Filters/Filter7/Control"
+  },
+  "propConfig": {
+    "custom.mode": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "tag": "{view.params.tagPath}"
+          },
+          "tagPath": "{tag}/Mode"
+        },
+        "type": "tag"
+      }
+    },
+    "custom.state": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "tag": "{view.params.tagPath}"
+          },
+          "tagPath": "{tag}./Value"
+        },
+        "type": "tag"
+      }
+    },
+    "params.appearance": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.fi": {
+      "paramDirection": "input"
+    },
+    "params.fill": {
+      "paramDirection": "input"
+    },
+    "params.font": {
+      "paramDirection": "input"
+    },
+    "params.fontSiz": {
+      "paramDirection": "input"
+    },
+    "params.fontSize": {
+      "paramDirection": "input"
+    },
+    "params.orientation": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.popupTitle": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.pumpLabel": {
+      "paramDirection": "input"
+    },
+    "params.ro": {
+      "paramDirection": "input"
+    },
+    "params.rota": {
+      "paramDirection": "input"
+    },
+    "params.rotate": {
+      "paramDirection": "input"
+    },
+    "params.stat": {
+      "paramDirection": "input"
+    },
+    "params.state": {
+      "paramDirection": "input"
+    },
+    "params.tag": {
+      "paramDirection": "input"
+    },
+    "params.tagPat": {
+      "paramDirection": "input"
+    },
+    "params.tagPath": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 390,
+      "width": 339
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Pump"
+        },
+        "position": {
+          "height": 0.95,
+          "width": 0.95,
+          "x": 0.025,
+          "y": 0.025
+        },
+        "propConfig": {
+          "props.appearance": {
+            "binding": {
+              "config": {
+                "path": "session.props.symbols.autoAppearance"
+              },
+              "type": "property"
+            }
+          },
+          "props.label.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.pumpLabel"
+              },
+              "type": "property"
+            }
+          },
+          "props.orientation": {
+            "binding": {
+              "config": {
+                "path": "view.params.orientation"
+              },
+              "type": "property"
+            }
+          },
+          "props.state": {
+            "binding": {
+              "config": {
+                "path": "view.custom.state"
+              },
+              "transforms": [
+                {
+                  "fallback": "faulted",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 1,
+                      "output": "running"
+                    },
+                    {
+                      "input": 0,
+                      "output": "stopped"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "animationSpeed": 100,
+          "label": {
+            "style": {
+              "fontSize": "1.5em"
+            }
+          },
+          "value": {
+            "location": "hidden"
+          }
+        },
+        "type": "ia.symbol.pump"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "script": "\tparams \u003d {\u0027popupTitle\u0027: self.view.params.popupTitle, \u0027tagPath\u0027: self.view.params.tagPath}\n\tsystem.perspective.openPopup(\u0027HOAControl\u0027, \u0027Exchange/Water/EmbeddedViews/HOAControl\u0027, params \u003d params, showCloseIcon \u003d False, draggable \u003d False, modal \u003d True, overlayDismiss \u003d True)"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.classes": {
+        "binding": {
+          "config": {
+            "path": "view.custom.mode"
+          },
+          "transforms": [
+            {
+              "fallback": "",
+              "inputType": "scalar",
+              "mappings": [
+                {
+                  "input": 0,
+                  "output": "exchange/water/icon/mode-off"
+                },
+                {
+                  "input": 1,
+                  "output": "exchange/water/icon/mode-auto"
+                },
+                {
+                  "input": 2,
+                  "output": "exchange/water/icon/mode-hand"
+                }
+              ],
+              "outputType": "style-list",
+              "type": "map"
+            }
+          ],
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "aspectRatio": "339:390",
+      "mode": "percent",
+      "style": {
+        "borderStyle": "dashed",
+        "cursor": "pointer",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

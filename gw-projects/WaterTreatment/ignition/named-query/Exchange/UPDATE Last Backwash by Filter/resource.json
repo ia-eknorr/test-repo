@@ -1,0 +1,65 @@
+{
+  "scope": "DG",
+  "version": 2,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "query.sql"
+  ],
+  "attributes": {
+    "useMaxReturnSize": false,
+    "autoBatchEnabled": false,
+    "fallbackValue": "",
+    "maxReturnSize": 100,
+    "cacheUnit": "SEC",
+    "type": "UpdateQuery",
+    "enabled": true,
+    "cacheAmount": 1,
+    "cacheEnabled": false,
+    "database": "WaterTreatment",
+    "fallbackEnabled": false,
+    "lastModificationSignature": "a2a53d2939d1e4dfe6ed8736bb27edb8b9079d61d66b28f3c875d784f4bbcd99",
+    "permissions": [
+      {
+        "zone": "",
+        "role": ""
+      }
+    ],
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2024-03-12T19:23:03Z"
+    },
+    "parameters": [
+      {
+        "type": "Parameter",
+        "identifier": "flow_after",
+        "sqlType": 5
+      },
+      {
+        "type": "Parameter",
+        "identifier": "level_after",
+        "sqlType": 5
+      },
+      {
+        "type": "Parameter",
+        "identifier": "loh_after",
+        "sqlType": 5
+      },
+      {
+        "type": "Parameter",
+        "identifier": "turb_after",
+        "sqlType": 5
+      },
+      {
+        "type": "Parameter",
+        "identifier": "filter",
+        "sqlType": 2
+      },
+      {
+        "type": "Parameter",
+        "identifier": "end_time",
+        "sqlType": 8
+      }
+    ]
+  }
+}

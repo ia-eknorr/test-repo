@@ -1,0 +1,207 @@
+{
+  "custom": {},
+  "params": {
+    "size": "xs"
+  },
+  "propConfig": {
+    "params.size": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 808
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "EmbeddedViewtTab0"
+        },
+        "position": {
+          "basis": "600px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "headerStyle": {
+              "classes": "exchange/water/Card_Title"
+            },
+            "name": "Monthly Operating Report",
+            "params": {
+              "month": 1,
+              "year": 2019
+            },
+            "path": "Exchange/Water/MonthlyOperating",
+            "project": "OnlineDemo",
+            "reportStyle": {
+              "background": "white",
+              "classes": ""
+            }
+          },
+          "path": "Exchange/Water/Reports/ReportView",
+          "style": {
+            "classes": "exchange/water/Card",
+            "maxWidth": "420px"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "EmbeddedViewtTab3"
+        },
+        "position": {
+          "basis": "600px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "headerStyle": {
+              "classes": "exchange/water/Card_Title"
+            },
+            "name": "Pump Runtime Report",
+            "path": "Exchange/Water/PumpRuntimeReport",
+            "project": "OnlineDemo",
+            "reportStyle": {
+              "background": "white",
+              "classes": ""
+            }
+          },
+          "path": "Exchange/Water/Reports/ReportView",
+          "style": {
+            "classes": "exchange/water/Card",
+            "maxWidth": "420px"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "BackwashByFilter"
+        },
+        "position": {
+          "basis": "600px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "endTime": {
+              "$": [
+                "ts",
+                192,
+                1709844228156
+              ],
+              "$ts": 1709844228156
+            },
+            "headerStyle": {
+              "classes": "exchange/water/Card_Title"
+            },
+            "name": "Backwash Report by Filter",
+            "options": true,
+            "params": {
+              "backwashNum": 1,
+              "endTime": {
+                "$": [
+                  "ts",
+                  192,
+                  1708986659595
+                ],
+                "$ts": 1708986659595
+              },
+              "filterNum": 2,
+              "startTime": {
+                "$": [
+                  "ts",
+                  192,
+                  1708986659595
+                ],
+                "$ts": 1706567459595
+              }
+            },
+            "path": "Exchange/Water/FilterBackwash",
+            "project": "OnlineDemo",
+            "reportStyle": {
+              "background": "white",
+              "classes": ""
+            },
+            "startTime": {
+              "$": [
+                "ts",
+                192,
+                1709844228156
+              ],
+              "$ts": 1707425028156
+            }
+          },
+          "path": "Exchange/Water/Reports/ReportViewBackwash",
+          "style": {
+            "classes": "exchange/water/Card",
+            "maxWidth": "420px"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "BackwashByTrain"
+        },
+        "position": {
+          "basis": "600px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "props": {
+          "params": {
+            "backwashNum": 0,
+            "endTime": {
+              "$": [
+                "ts",
+                192,
+                1709844228156
+              ],
+              "$ts": 1709844228156
+            },
+            "headerStyle": {
+              "classes": "exchange/water/Card_Title"
+            },
+            "name": "Backwash Report by Filter Train",
+            "options": true,
+            "path": "Exchange/Water/TrainBackwash",
+            "project": "OnlineDemo",
+            "reportStyle": {
+              "background": "white",
+              "classes": ""
+            },
+            "startTime": {
+              "$": [
+                "ts",
+                192,
+                1709844228156
+              ],
+              "$ts": 1707425028156
+            },
+            "trainNum": 1
+          },
+          "path": "Exchange/Water/Reports/ReportViewBackwashTrain",
+          "style": {
+            "classes": "exchange/water/Card",
+            "maxWidth": "420px"
+          }
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

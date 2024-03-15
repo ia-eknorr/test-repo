@@ -1,0 +1,50 @@
+{
+  "custom": {},
+  "params": {
+    "backgroundLeft": "#d3d3d3",
+    "backgroundRight": "#d3d3d3"
+  },
+  "propConfig": {
+    "params.backgroundLeft": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.backgroundRight": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 300,
+      "width": 600
+    }
+  },
+  "root": {
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.backgroundColor": {
+        "binding": {
+          "config": {
+            "expression": "if({view.params.backgroundLeft} \u003d {view.params.backgroundRight},\r\n\t{view.params.backgroundLeft},\r\n\tnone)"
+          },
+          "type": "expr"
+        }
+      },
+      "props.style.backgroundImage": {
+        "binding": {
+          "config": {
+            "expression": "if({view.params.backgroundLeft} \u003d {view.params.backgroundRight},\r\n\tnone,\r\n\t\"linear-gradient(to right, \" + {view.params.backgroundLeft} + \"00 0%, \" + {view.params.backgroundLeft} + \"00 10%, \" + {view.params.backgroundRight} + \" 90%, \" + {view.params.backgroundRight} + \" 100%)\")"
+          },
+          "type": "expr"
+        }
+      }
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

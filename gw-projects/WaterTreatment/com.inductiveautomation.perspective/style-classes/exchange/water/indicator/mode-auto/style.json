@@ -1,0 +1,15 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--success)",
+      "borderColor": "var(--neutral-80)",
+      "borderStyle": "solid",
+      "borderWidth": "0.15vw",
+      "borderTopLeftRadius": "max(0.2vw,0.2vh)",
+      "borderTopRightRadius": "max(0.2vw,0.2vh)",
+      "borderBottomLeftRadius": "max(0.2vw,0.2vh)",
+      "borderBottomRightRadius": "max(0.2vw,0.2vh)",
+      "color": "var(--neutral-100)"
+    }
+  }
+}

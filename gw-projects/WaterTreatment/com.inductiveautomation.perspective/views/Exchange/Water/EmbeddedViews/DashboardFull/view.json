@@ -1,0 +1,770 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {
+    "params.key": {
+      "paramDirection": "input"
+    },
+    "params.ti": {
+      "paramDirection": "input"
+    },
+    "params.tit": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 880,
+      "width": 1660
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Heading"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Filters"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Filters"
+            },
+            "position": {
+              "basis": "320px"
+            },
+            "props": {
+              "direction": "column",
+              "elementStyle": {
+                "flex": "1 1 auto",
+                "overflow": "hidden"
+              },
+              "instances": [
+                {
+                  "filter": 0,
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "filter": 1
+                },
+                {
+                  "filter": 2
+                },
+                {
+                  "filter": 3
+                },
+                {
+                  "filter": 4
+                },
+                {
+                  "filter": 5
+                },
+                {
+                  "filter": 6
+                },
+                {
+                  "filter": 7
+                },
+                {
+                  "filter": 8
+                },
+                {
+                  "filter": 9
+                }
+              ],
+              "path": "Exchange/Water/EmbeddedViews/FilterRow",
+              "style": {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "1px",
+                "classes": "exchange/water/primary",
+                "overflow": "hidden"
+              },
+              "useDefaultViewHeight": false,
+              "useDefaultViewWidth": false
+            },
+            "type": "ia.display.flex-repeater"
+          }
+        ],
+        "meta": {
+          "name": "FilterGroup"
+        },
+        "position": {
+          "height": 0.3568,
+          "width": 0.4675,
+          "x": 0.0241,
+          "y": 0.0409
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "borderBottomLeftRadius": "4px",
+            "borderBottomRightRadius": "4px",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": "4px",
+            "borderTopRightRadius": "4px",
+            "borderWidth": "2px",
+            "classes": "exchange/water/primary",
+            "cursor": "pointer",
+            "padding": "15px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Heading"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Pumps"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Pumps1"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.instances": {
+                    "binding": {
+                      "config": {
+                        "expression": "now(0)"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\trows \u003d []\n\thighlightRow \u003d True\n\n\tfor i in range(1, 6):\n\t\trow \u003d {}\n\t\trow[\u0027tagPath\u0027] \u003d \u0027[default]Exchange/Water/Pumps/RawWater/Pump%d\u0027 %i\n\t\trow[\u0027pump\u0027] \u003d \u0027Raw Water %d\u0027 %i\n\t\trow[\u0027odd\u0027] \u003d highlightRow \u003d not highlightRow\n\t\trows.append(row)\n\n\tfor i in range(1, 5):\n\t\trow \u003d {}\n\t\trow[\u0027tagPath\u0027] \u003d \u0027[default]Exchange/Water/Pumps/Chem/Pump%d\u0027 %i\n\t\trow[\u0027pump\u0027] \u003d \u0027Hypo Pump %d\u0027 %i\n\t\trow[\u0027odd\u0027] \u003d highlightRow \u003d not highlightRow\n\t\trow[\u0027url\u0027] \u003d \u0027/ChemFeed\u0027\n\t\trows.append(row)\n\n\trow \u003d {}\n\trow[\u0027tagPath\u0027] \u003d \u0027[default]Exchange/Water/Pumps/ChemTransfer\u0027\n\trow[\u0027pump\u0027] \u003d \u0027Hypo Transfer\u0027\n\trow[\u0027odd\u0027] \u003d highlightRow \u003d not highlightRow\n\trow[\u0027url\u0027] \u003d \u0027/ChemFeed\u0027\n\trows.append(row)\n\n\treturn rows",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "direction": "column",
+                  "elementStyle": {
+                    "flex": "1 1 auto",
+                    "overflow": "hidden"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/PumpRow",
+                  "style": {
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "1px",
+                    "borderRightStyle": "solid",
+                    "borderRightWidth": "1px",
+                    "classes": "exchange/water/primary",
+                    "marginRight": "3px",
+                    "overflow": "hidden"
+                  },
+                  "useDefaultViewHeight": false,
+                  "useDefaultViewWidth": false
+                },
+                "type": "ia.display.flex-repeater"
+              },
+              {
+                "meta": {
+                  "name": "Pumps2"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.instances": {
+                    "binding": {
+                      "config": {
+                        "expression": "now(0)"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\trows \u003d []\n\thighlightRow \u003d True\n\n\tfor i in range(1, 6):\n\t\trow \u003d {}\n\t\trow[\u0027tagPath\u0027] \u003d \u0027[default]Exchange/Water/Pumps/FinishedWater/Pump%d\u0027 %i\n\t\trow[\u0027pump\u0027] \u003d \u0027Finish Pump %d\u0027 %i\n\t\trow[\u0027odd\u0027] \u003d highlightRow \u003d not highlightRow\n\t\trows.append(row)\n\n\tfor i in range(1, 5):\n\t\trow \u003d {}\n\t\trow[\u0027tagPath\u0027] \u003d \u0027[default]Exchange/Water/Pumps/HighService/Pump%d\u0027 %i\n\t\trow[\u0027pump\u0027] \u003d \u0027High Service %d\u0027 %i\n\t\trow[\u0027odd\u0027] \u003d highlightRow \u003d not highlightRow\n\t\trows.append(row)\n\n\treturn rows",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "direction": "column",
+                  "elementStyle": {
+                    "flex": "1 1 auto",
+                    "overflow": "hidden"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/PumpRow",
+                  "style": {
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "1px",
+                    "borderLeftStyle": "solid",
+                    "borderLeftWidth": "1px",
+                    "classes": "exchange/water/primary",
+                    "marginLeft": "3px",
+                    "overflow": "hidden"
+                  },
+                  "useDefaultViewHeight": false,
+                  "useDefaultViewWidth": false
+                },
+                "type": "ia.display.flex-repeater"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "PumpGroup"
+        },
+        "position": {
+          "height": 0.5398,
+          "width": 0.4675,
+          "x": 0.0241,
+          "y": 0.4125
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "borderBottomLeftRadius": "4px",
+            "borderBottomRightRadius": "4px",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": "4px",
+            "borderTopRightRadius": "4px",
+            "borderWidth": "2px",
+            "classes": "exchange/water/primary",
+            "padding": "15px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Heading"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Tanks"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Tanks"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.instances": {
+                "binding": {
+                  "config": {
+                    "expression": "now(2000)"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\trows \u003d []\n\thighlightRow \u003d True\n\t\n\ttanks \u003d [(\u0027Backwash\u0027, \u0027Backwash\u0027, \u0027ft\u0027, \u0027#C4A484\u0027),\n\t(\u0027Clearwell\u0027, \u0027Clearwell\u0027, \u0027ft\u0027, \u0027blue\u0027),\n\t(\u0027Finished1\u0027, \u0027Finished 1\u0027, \u0027ft\u0027, \u0027blue\u0027),\n\t(\u0027Finished2\u0027, \u0027Finished 2\u0027, \u0027ft\u0027, \u0027blue\u0027),\n\t(\u0027HypoDayTank\u0027, \u0027Hypo Day\u0027, \u0027gal\u0027, \u0027#FFA500\u0027),\n\t(\u0027HypoBulk1\u0027, \u0027Hypo 1\u0027, \u0027gal\u0027, \u0027#FFA500\u0027),\n\t(\u0027HypoBulk2\u0027, \u0027Hypo 2\u0027, \u0027gal\u0027, \u0027#FFA500\u0027),\n\t(\u0027HypoBulk3\u0027, \u0027Hypo 3\u0027, \u0027gal\u0027, \u0027#ffa500\u0027)]\n\t\t\n\tfor tag in tanks:\n\t\trow \u003d {}\n\t\trow[\u0027tagPath\u0027] \u003d \u0027[default]Exchange/Water/Tanks/%s\u0027 %tag[0]\n\t\trow[\u0027tank\u0027] \u003d tag[1]\n\t\trow[\u0027odd\u0027] \u003d highlightRow \u003d not highlightRow\n\t\trow[\u0027units\u0027] \u003d tag[2]\n\t\trow[\u0027color\u0027] \u003d tag[3]\n\t\trows.append(row)\n\t\n\treturn rows",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "direction": "column",
+              "elementStyle": {
+                "flex": "1 1 auto",
+                "overflow": "hidden"
+              },
+              "path": "Exchange/Water/EmbeddedViews/TankRow",
+              "style": {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "1px",
+                "borderLeftStyle": "none",
+                "borderRightStyle": "none",
+                "borderTopStyle": "none",
+                "classes": "exchange/water/primary",
+                "overflow": "hidden"
+              },
+              "useDefaultViewHeight": false,
+              "useDefaultViewWidth": false
+            },
+            "type": "ia.display.flex-repeater"
+          }
+        ],
+        "meta": {
+          "name": "TankGroup"
+        },
+        "position": {
+          "height": 0.3568,
+          "width": 0.4663,
+          "x": 0.506,
+          "y": 0.0409
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "borderBottomLeftRadius": "4px",
+            "borderBottomRightRadius": "4px",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": "4px",
+            "borderTopRightRadius": "4px",
+            "borderWidth": "2px",
+            "classes": "exchange/water/primary",
+            "padding": "15px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Heading"
+            },
+            "position": {
+              "basis": "40px",
+              "shrink": 0
+            },
+            "props": {
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Flows"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Flows2"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.instances": {
+                    "binding": {
+                      "config": {
+                        "expression": "now(0)"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\trows \u003d []\n\thighlightRow \u003d True\n\t\n\ttanks \u003d [(\u0027Raw\u0027, \u0027Influent\u0027, \u0027gal\u0027),\n\t(\u0027PlantInfluent\u0027, \u0027Influent Daily\u0027, \u0027gal\u0027),\n\t(\u0027PlantInfluentTotal\u0027, \u0027Influent Total\u0027, \u0027gal\u0027),\n\t(\u0027Backwash\u0027, \u0027Backwash\u0027, \u0027gpm\u0027)]\n\t\t\n\tfor tag in tanks:\n\t\trow \u003d {}\n\t\trow[\u0027tagPath\u0027] \u003d \u0027[default]Exchange/Water/Flows/%s\u0027 %tag[0]\n\t\trow[\u0027name\u0027] \u003d tag[1]\n\t\trow[\u0027odd\u0027] \u003d highlightRow \u003d not highlightRow\n\t\trow[\u0027units\u0027] \u003d tag[2]\n\t\trows.append(row)\n\t\n\treturn rows",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "direction": "column",
+                  "elementStyle": {
+                    "flex": "1 1 auto",
+                    "overflow": "hidden"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/FlowRow",
+                  "style": {
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "1px",
+                    "classes": "exchange/water/primary",
+                    "overflow": "hidden"
+                  },
+                  "useDefaultViewHeight": false,
+                  "useDefaultViewWidth": false
+                },
+                "type": "ia.display.flex-repeater"
+              },
+              {
+                "meta": {
+                  "name": "Flows1"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.instances": {
+                    "binding": {
+                      "config": {
+                        "expression": "now(0)"
+                      },
+                      "transforms": [
+                        {
+                          "code": "\trows \u003d []\n\thighlightRow \u003d True\n\t\n\ttanks \u003d [(\u0027Finished\u0027, \u0027Effluent\u0027, \u0027gal\u0027),\n\t(\u0027PlantEffluent\u0027, \u0027Effluent Daily\u0027, \u0027gal\u0027),\n\t(\u0027PlantEffluentTotal\u0027, \u0027Effluent Total\u0027, \u0027gal\u0027),\n\t(\u0027BackwashTotal\u0027, \u0027Backwash Total\u0027, \u0027gal\u0027)]\n\t\t\n\tfor tag in tanks:\n\t\trow \u003d {}\n\t\trow[\u0027tagPath\u0027] \u003d \u0027[default]Exchange/Water/Flows/%s\u0027 %tag[0]\n\t\trow[\u0027name\u0027] \u003d tag[1]\n\t\trow[\u0027odd\u0027] \u003d highlightRow \u003d not highlightRow\n\t\trow[\u0027units\u0027] \u003d tag[2]\n\t\trows.append(row)\n\t\n\treturn rows",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "expr"
+                    }
+                  }
+                },
+                "props": {
+                  "direction": "column",
+                  "elementStyle": {
+                    "flex": "1 1 auto",
+                    "overflow": "hidden"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/FlowRow",
+                  "style": {
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "1px",
+                    "borderLeftStyle": "none",
+                    "borderRightStyle": "solid",
+                    "borderRightWidth": "1px",
+                    "borderTopStyle": "none",
+                    "classes": "exchange/water/primary",
+                    "overflow": "hidden"
+                  },
+                  "useDefaultViewHeight": false,
+                  "useDefaultViewWidth": false
+                },
+                "type": "ia.display.flex-repeater"
+              }
+            ],
+            "meta": {
+              "name": "FlexContainer"
+            },
+            "position": {
+              "basis": "200px",
+              "grow": 1
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "page": "/Overview"
+              },
+              "scope": "C",
+              "type": "nav"
+            }
+          }
+        },
+        "meta": {
+          "name": "FlowsGroup"
+        },
+        "position": {
+          "height": 0.2103,
+          "width": 0.4663,
+          "x": 0.506,
+          "y": 0.4125
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "borderBottomLeftRadius": "4px",
+            "borderBottomRightRadius": "4px",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": "4px",
+            "borderTopRightRadius": "4px",
+            "borderWidth": "2px",
+            "classes": "exchange/water/primary",
+            "cursor": "pointer",
+            "padding": "15px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "TimeSeriesChart"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "custom.max_t_stamp": {
+                "binding": {
+                  "config": {
+                    "expression": "sortDataset({this.props.series[0].data}, \u0027t_stamp\u0027, false)[0,0]"
+                  },
+                  "type": "expr"
+                }
+              },
+              "custom.min_t_stamp": {
+                "binding": {
+                  "config": {
+                    "expression": "sortDataset({this.props.series[0].data}, \u0027t_stamp\u0027)[0,0]"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.defaultStyles.colorScheme": {
+                "binding": {
+                  "config": {
+                    "expression": "if(left({session.props.theme}, 4) \u003d \"dark\",\r\n\t\"Dark2\",\r\n\t\"Set1\")"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.series[0].data": {
+                "binding": {
+                  "config": {
+                    "aggregate": "MinMax",
+                    "avoidScanClassValidation": true,
+                    "dateRange": {
+                      "mostRecent": "3",
+                      "mostRecentUnits": "DAY"
+                    },
+                    "enableValueCache": true,
+                    "ignoreBadQuality": false,
+                    "polling": {
+                      "enabled": true,
+                      "rate": "60"
+                    },
+                    "preventInterpolation": false,
+                    "returnFormat": "Wide",
+                    "returnSize": {
+                      "numRows": "200",
+                      "type": "FIXED"
+                    },
+                    "tags": [
+                      {
+                        "path": "[default]Exchange/Water/Flows/Raw"
+                      },
+                      {
+                        "path": "[default]Exchange/Water/Flows/Finished"
+                      }
+                    ],
+                    "valueFormat": "DATASET"
+                  },
+                  "type": "tag-history"
+                }
+              }
+            },
+            "props": {
+              "defaultStyles": {},
+              "legend": {
+                "position": "top",
+                "style": {
+                  "color": "--neutral-90"
+                },
+                "visible": true
+              },
+              "plots": [
+                {
+                  "axes": [
+                    {
+                      "alignment": "left",
+                      "label": {
+                        "font": {
+                          "color": "",
+                          "size": 12
+                        },
+                        "offset": 0,
+                        "style": {
+                          "classes": ""
+                        },
+                        "text": "",
+                        "visible": true
+                      },
+                      "max": "",
+                      "min": "",
+                      "name": "Boiler",
+                      "style": {
+                        "classes": "",
+                        "stroke": "--neutral-80"
+                      },
+                      "tick": {
+                        "color": "",
+                        "count": "Auto",
+                        "label": {
+                          "font": {
+                            "color": "",
+                            "size": 12
+                          },
+                          "format": "Auto",
+                          "style": {
+                            "classes": "",
+                            "fill": "--neutral-80"
+                          }
+                        },
+                        "style": {
+                          "classes": "",
+                          "stroke": "--neutral-80"
+                        }
+                      },
+                      "width": 60
+                    }
+                  ],
+                  "markers": [],
+                  "relativeWeight": 1,
+                  "trends": [
+                    {
+                      "axis": "Boiler",
+                      "baselines": [],
+                      "breakLine": true,
+                      "columns": [],
+                      "interpolation": "curveLinear",
+                      "radius": 2,
+                      "series": "Boiler",
+                      "stack": true,
+                      "type": "line",
+                      "visible": true
+                    }
+                  ]
+                }
+              ],
+              "series": [
+                {
+                  "name": "Boiler"
+                }
+              ],
+              "style": {
+                "borderStyle": "none",
+                "borderWidth": "1px",
+                "classes": "exchange/water/primary",
+                "overflow": "auto",
+                "padding": "15px"
+              },
+              "timeAxis": {
+                "color": "--neutral-80",
+                "style": {
+                  "stroke": "--neutral-80"
+                },
+                "tick": {
+                  "color": "--neutral-80",
+                  "label": {
+                    "font": {
+                      "size": 12
+                    },
+                    "format": "ddd DD, hA",
+                    "style": {
+                      "fill": "--neutral-80"
+                    }
+                  },
+                  "style": {
+                    "stroke": "--neutral-80"
+                  }
+                },
+                "tickCount": 8
+              },
+              "timeRange": {
+                "visible": false
+              }
+            },
+            "type": "ia.chart.timeseries"
+          },
+          {
+            "meta": {
+              "name": "timeRange"
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "dateFormat({../TimeSeriesChart.custom.min_t_stamp}, \"M-d-yyyy H:mm:ss\")\r\n+ \u0027 to \u0027 + \r\ndateFormat({../TimeSeriesChart.custom.max_t_stamp}, \"M-d-yyyy H:mm:ss\")"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "exchange/water/primary",
+                "marginBottom": "5px",
+                "marginTop": -20
+              },
+              "textStyle": {
+                "color": "--neutral-80",
+                "fontSize": "12px",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "height": 0.3125,
+          "width": 0.4663,
+          "x": 0.506,
+          "y": 0.6398
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "borderBottomLeftRadius": "4px",
+            "borderBottomRightRadius": "4px",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": "4px",
+            "borderTopRightRadius": "4px",
+            "borderWidth": "2px",
+            "classes": "exchange/water/primary"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "custom": {
+      "bg": "no"
+    },
+    "meta": {
+      "name": "root"
+    },
+    "position": {
+      "x": -0.0464,
+      "y": 0.008
+    },
+    "props": {
+      "mode": "percent",
+      "style": {
+        "backgroundColor": "--neutral-10"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

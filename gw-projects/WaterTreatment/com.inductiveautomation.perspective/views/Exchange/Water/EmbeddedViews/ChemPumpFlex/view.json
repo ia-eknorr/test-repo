@@ -1,0 +1,799 @@
+{
+  "custom": {},
+  "params": {
+    "ingressFilled": true,
+    "pipeTheme": {
+      "hypo": {
+        "fill": "#B27300",
+        "stroke": "#B27300"
+      },
+      "idle": {
+        "fill": "var(--neutral-70)",
+        "stroke": "var(--neutral-70)"
+      }
+    },
+    "pumpNum": 1,
+    "pumpTitle": "\"Sample Pump Title\""
+  },
+  "propConfig": {
+    "params.ingressFilled": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.pipeTheme": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.pumpNum": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.pumpTitle": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 667,
+      "width": 414
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "basis": "25px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "len({view.params.pumpTitle}) \u003e 1"
+              },
+              "type": "expr"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.pumpTitle"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "exchange/water/filter-mobile",
+            "fontSize": "min(1.3vw,1.3vh)",
+            "fontWeight": "bold",
+            "textAlign": "center"
+          },
+          "textStyle": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "WaterPump"
+            },
+            "position": {
+              "basis": "50%",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.params.popupTitle": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.pumpTitle"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.params.tagPath": {
+                "binding": {
+                  "config": {
+                    "expression": "\"[default]Exchange/Water/Pumps/Chem/Pump\" + {view.params.pumpNum}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "orientation": "right",
+                "pumpLabel": ""
+              },
+              "path": "Exchange/Water/EmbeddedViews/WaterPump"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Dosage"
+            },
+            "position": {
+              "basis": "50%",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.params.tagPath": {
+                "binding": {
+                  "config": {
+                    "expression": "\"[default]Exchange/Water/Hypo/Dosage\" + {view.params.pumpNum}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "path": "Exchange/Water/EmbeddedViews/NumericEntryFlex"
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "PumpDosage"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "padding": 4
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "SparklineLabel"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.8em",
+                "marginBottom": "3px"
+              },
+              "text": "Feedrate (2 Hrs)"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "custom": {
+              "keyJSON": [
+                {
+                  "aggregate": "LastValue",
+                  "alias": "feedrate"
+                }
+              ]
+            },
+            "meta": {
+              "name": "Sparkline"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "custom.keyJSON[0].path": {
+                "binding": {
+                  "config": {
+                    "expression": "\"[default]Exchange/Water/Hypo/ActualFlow\" + {view.params.pumpNum}"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.points": {
+                "binding": {
+                  "config": {
+                    "aggregate": "MinMax",
+                    "avoidScanClassValidation": true,
+                    "dateRange": {
+                      "mostRecent": "2",
+                      "mostRecentUnits": "HOUR"
+                    },
+                    "enableValueCache": true,
+                    "ignoreBadQuality": false,
+                    "polling": {
+                      "enabled": true,
+                      "rate": "10"
+                    },
+                    "preventInterpolation": false,
+                    "returnFormat": "Wide",
+                    "returnSize": {
+                      "numRows": "100",
+                      "type": "FIXED"
+                    },
+                    "tags": "{this.custom.keyJSON}",
+                    "valueFormat": "DATASET"
+                  },
+                  "type": "tag-history"
+                }
+              },
+              "props.range.high": {
+                "binding": {
+                  "config": {
+                    "expression": "max({this.props.points}, \u0027feedrate\u0027) * 1.03"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.range.low": {
+                "binding": {
+                  "config": {
+                    "expression": "min({this.props.points}, \u0027feedrate\u0027) * 0.97"
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.strokeWidth": {
+                "binding": {
+                  "config": {
+                    "expression": "{this.props.points}"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tif value is None and len(value) \u003c\u003d 0:\n\t\treturn 1\n\ttry:\n\t\treturn (self.view.params.max) / 50.0#stroke width will essentially be set to relative size of 2%\n\texcept:\n\t\treturn 1",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "range": {},
+              "style": {
+                "borderStyle": "solid",
+                "borderWidth": "1px"
+              }
+            },
+            "type": "ia.display.sparkline"
+          }
+        ],
+        "meta": {
+          "name": "FeedrateSpark"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "borderStyle": "none",
+            "padding": 4
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "ActualLabel"
+                    },
+                    "position": {
+                      "basis": "50%",
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "0.8em",
+                        "fontWeight": "bold",
+                        "textAlign": "center"
+                      },
+                      "text": "Actual Feedrate",
+                      "textStyle": {
+                        "fontSize": 16
+                      }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": {
+                      "name": "TargetLabel"
+                    },
+                    "position": {
+                      "basis": "50%",
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "fontSize": "0.8em",
+                        "fontWeight": "bold",
+                        "textAlign": "center"
+                      },
+                      "text": "Target Feedrate",
+                      "textStyle": {
+                        "fontSize": 16
+                      }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "Headers"
+                },
+                "position": {
+                  "basis": "25px",
+                  "shrink": 0
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Actualgph"
+                    },
+                    "position": {
+                      "basis": "25%",
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.params.data.value": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "1": "{view.params.pumpNum}"
+                            },
+                            "tagPath": "[default]Exchange/Water/Hypo/ActualFlow{1}"
+                          },
+                          "transforms": [
+                            {
+                              "expression": "// 1 mL/min \u003d 0.016 gal/hr\r\n{value} * 0.016",
+                              "type": "expression"
+                            }
+                          ],
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "params": {
+                        "alt": false,
+                        "borderRadius": {
+                          "bottomLeft": 4,
+                          "bottomRight": 4,
+                          "topLeft": 0,
+                          "topRight": 0
+                        },
+                        "data": {
+                          "format": "#,##0.00"
+                        },
+                        "name": "",
+                        "state": 0,
+                        "tagPath": "",
+                        "units": "gph"
+                      },
+                      "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "ActualmL"
+                    },
+                    "position": {
+                      "basis": "25%",
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.params.data.format": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "1": "{view.params.pumpNum}"
+                            },
+                            "tagPath": "[default]Exchange/Water/Hypo/ActualFlow{1}.FormatString"
+                          },
+                          "type": "tag"
+                        }
+                      },
+                      "props.params.data.value": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "1": "{view.params.pumpNum}"
+                            },
+                            "tagPath": "[default]Exchange/Water/Hypo/ActualFlow{1}"
+                          },
+                          "type": "tag"
+                        }
+                      },
+                      "props.params.units": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "1": "{view.params.pumpNum}"
+                            },
+                            "tagPath": "[default]Exchange/Water/Hypo/ActualFlow{1}.EngUnit"
+                          },
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "params": {
+                        "alt": false,
+                        "borderRadius": {
+                          "bottomLeft": 0,
+                          "bottomRight": 0,
+                          "topLeft": 4,
+                          "topRight": 4
+                        },
+                        "data": {},
+                        "name": "",
+                        "state": 0,
+                        "tagPath": ""
+                      },
+                      "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "Targetgph"
+                    },
+                    "position": {
+                      "basis": "25%",
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.params.data.value": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "1": "{view.params.pumpNum}"
+                            },
+                            "tagPath": "[default]Exchange/Water/Hypo/TargetFlow{1}"
+                          },
+                          "transforms": [
+                            {
+                              "expression": "// 1 mL/min \u003d 0.016 gal/hr\r\n{value} * 0.016",
+                              "type": "expression"
+                            }
+                          ],
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "params": {
+                        "alt": false,
+                        "borderRadius": {
+                          "bottomLeft": 4,
+                          "bottomRight": 4,
+                          "topLeft": 0,
+                          "topRight": 0
+                        },
+                        "data": {
+                          "format": "#,##0.00"
+                        },
+                        "name": "",
+                        "state": 0,
+                        "tagPath": "",
+                        "units": "gph"
+                      },
+                      "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+                    },
+                    "type": "ia.display.view"
+                  },
+                  {
+                    "meta": {
+                      "name": "TargetmL"
+                    },
+                    "position": {
+                      "basis": "25%",
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.params.data.format": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "1": "{view.params.pumpNum}"
+                            },
+                            "tagPath": "[default]Exchange/Water/Hypo/TargetFlow{1}.FormatString"
+                          },
+                          "type": "tag"
+                        }
+                      },
+                      "props.params.data.value": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "1": "{view.params.pumpNum}"
+                            },
+                            "tagPath": "[default]Exchange/Water/Hypo/TargetFlow{1}"
+                          },
+                          "type": "tag"
+                        }
+                      },
+                      "props.params.units": {
+                        "binding": {
+                          "config": {
+                            "fallbackDelay": 2.5,
+                            "mode": "indirect",
+                            "references": {
+                              "1": "{view.params.pumpNum}"
+                            },
+                            "tagPath": "[default]Exchange/Water/Hypo/TargetFlow{1}.engUnit"
+                          },
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "params": {
+                        "alt": false,
+                        "borderRadius": {
+                          "bottomLeft": 0,
+                          "bottomRight": 0,
+                          "topLeft": 4,
+                          "topRight": 4
+                        },
+                        "data": {},
+                        "name": "",
+                        "state": 0,
+                        "tagPath": ""
+                      },
+                      "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+                    },
+                    "type": "ia.display.view"
+                  }
+                ],
+                "meta": {
+                  "name": "Values"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Content"
+            },
+            "position": {
+              "basis": "200px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "FeedrateFlex"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "borderStyle": "none",
+            "borderWidth": "1px",
+            "padding": 4,
+            "paddingTop": "6px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "ManualFlowEntry"
+            },
+            "position": {
+              "basis": "50%",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.params.tagPath": {
+                "binding": {
+                  "config": {
+                    "expression": "\"[default]Exchange/Water/Feedrates/ChemPump\" + {view.params.pumpNum} + \"/Hand\""
+                  },
+                  "type": "expr"
+                }
+              },
+              "props.style.borderStyle": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "expression",
+                    "tagPath": "\"[default]Exchange/Water/Pumps/Chem/Pump\" + {view.params.pumpNum} + \"/Mode\""
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "hidden",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": 2,
+                          "output": "solid"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "path": "Exchange/Water/EmbeddedViews/NumericEntryFlex",
+              "style": {
+                "borderBottomLeftRadius": "4px",
+                "borderBottomRightRadius": "4px",
+                "borderColor": "#B27300",
+                "borderTopLeftRadius": "4px",
+                "borderTopRightRadius": "4px",
+                "borderWidth": "3px",
+                "padding": "2px"
+              }
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "AutoFlow"
+            },
+            "position": {
+              "basis": "50%",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.params.format": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "expression",
+                    "tagPath": "\"[default]Exchange/Water/Feedrates/ChemPump\" + {view.params.pumpNum} + \"/Auto.FormatString\""
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.params.selected": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "expression",
+                    "tagPath": "\"[default]Exchange/Water/Feedrates/ChemPump\" + {view.params.pumpNum} + \"/Mode\""
+                  },
+                  "enabled": false,
+                  "transforms": [
+                    {
+                      "expression": "{value} \u003d 1",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              },
+              "props.params.units": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "expression",
+                    "tagPath": "\"[default]Exchange/Water/Feedrates/ChemPump\" + {view.params.pumpNum} + \"/Auto.EngUnit\""
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.params.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "expression",
+                    "tagPath": "\"[default]Exchange/Water/Feedrates/ChemPump\" + {view.params.pumpNum} + \"/Auto\""
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.style.borderStyle": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "expression",
+                    "tagPath": "\"[default]Exchange/Water/Pumps/Chem/Pump\" + {view.params.pumpNum} + \"/Mode\""
+                  },
+                  "transforms": [
+                    {
+                      "fallback": "hidden",
+                      "inputType": "scalar",
+                      "mappings": [
+                        {
+                          "input": 1,
+                          "output": "solid"
+                        }
+                      ],
+                      "outputType": "scalar",
+                      "type": "map"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "id": "Auto Flow",
+                "selected": false
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueLabelDisp",
+              "style": {
+                "borderBottomLeftRadius": "4px",
+                "borderBottomRightRadius": "4px",
+                "borderColor": "#B27300",
+                "borderTopLeftRadius": "4px",
+                "borderTopRightRadius": "4px",
+                "borderWidth": "3px",
+                "padding": "2px"
+              }
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "Flow"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "padding": 4
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

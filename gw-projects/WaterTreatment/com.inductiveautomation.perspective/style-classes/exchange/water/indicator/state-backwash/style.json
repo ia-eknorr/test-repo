@@ -1,0 +1,8 @@
+{
+  "base": {
+    "style": {
+      "backgroundColor": "var(--seq-2)",
+      "color": "var(--neutral-100)"
+    }
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "custom": {},
+  "params": {
+    "id": "Test",
+    "noPopup": false,
+    "tagPath": "[default]Exchange/Water/Filters/Filter1/Valves/Influent"
+  },
+  "propConfig": {
+    "custom.mode": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "tag": "{view.params.tagPath}"
+          },
+          "tagPath": "{tag}/Mode"
+        },
+        "type": "tag"
+      }
+    },
+    "custom.state": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "tag": "{view.params.tagPath}"
+          },
+          "tagPath": "{tag}/Value"
+        },
+        "type": "tag"
+      }
+    },
+    "params.fi": {
+      "paramDirection": "input"
+    },
+    "params.fill": {
+      "paramDirection": "input"
+    },
+    "params.font": {
+      "paramDirection": "input"
+    },
+    "params.fontSiz": {
+      "paramDirection": "input"
+    },
+    "params.fontSize": {
+      "paramDirection": "input"
+    },
+    "params.id": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.noPopup": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.ro": {
+      "paramDirection": "input"
+    },
+    "params.rota": {
+      "paramDirection": "input"
+    },
+    "params.rotate": {
+      "paramDirection": "input"
+    },
+    "params.stat": {
+      "paramDirection": "input"
+    },
+    "params.state": {
+      "paramDirection": "input"
+    },
+    "params.tag": {
+      "paramDirection": "input"
+    },
+    "params.tagP": {
+      "paramDirection": "input"
+    },
+    "params.tagPat": {
+      "paramDirection": "input"
+    },
+    "params.tagPath": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 200,
+      "width": 200
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Valve"
+        },
+        "position": {
+          "height": 0.96,
+          "width": 0.96,
+          "x": 0.0217,
+          "y": 0.0217
+        },
+        "propConfig": {
+          "props.state": {
+            "binding": {
+              "config": {
+                "path": "view.custom.state"
+              },
+              "transforms": [
+                {
+                  "fallback": null,
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 1,
+                      "output": "open"
+                    },
+                    {
+                      "input": 0,
+                      "output": "closed"
+                    },
+                    {
+                      "input": 4,
+                      "output": "failedToOpen"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "appearance": "p\u0026id",
+          "label": {
+            "location": "hidden"
+          },
+          "value": {
+            "location": "hidden"
+          }
+        },
+        "type": "ia.symbol.valve"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": [
+          {
+            "config": {
+              "draggable": false,
+              "id": "HOAControl",
+              "modal": true,
+              "overlayDismiss": true,
+              "resizable": false,
+              "showCloseIcon": false,
+              "type": "open",
+              "viewParams": {
+                "popupTitle": "{view.params.id}",
+                "tagPath": "{view.params.tagPath}"
+              },
+              "viewPath": "Exchange/Water/EmbeddedViews/HOAControl",
+              "viewportBound": false
+            },
+            "enabled": false,
+            "scope": "C",
+            "type": "popup"
+          },
+          {
+            "config": {
+              "script": "\tif not self.view.params.noPopup:\n\t\tparams \u003d {\u0027popupTitle\u0027: \u0027Valve \u0027 + str(self.view.params.id), \u0027tagPath\u0027: self.view.params.tagPath}\n\t\tsystem.perspective.openPopup(\u0027HOAControl\u0027, \u0027Exchange/Water/EmbeddedViews/HOAControl\u0027, params \u003d params, showCloseIcon \u003d False, draggable \u003d False, modal \u003d True, overlayDismiss \u003d True)"
+            },
+            "scope": "G",
+            "type": "script"
+          }
+        ]
+      }
+    },
+    "meta": {
+      "name": "root",
+      "tooltip": {
+        "text": "Valve Faulted"
+      }
+    },
+    "propConfig": {
+      "meta.tooltip.enabled": {
+        "binding": {
+          "config": {
+            "expression": "{./Valve.props.state} \u003d \u0027failedToOpen\u0027"
+          },
+          "type": "expr"
+        }
+      },
+      "props.style.classes": {
+        "binding": {
+          "config": {
+            "path": "view.custom.mode"
+          },
+          "transforms": [
+            {
+              "fallback": "",
+              "inputType": "scalar",
+              "mappings": [
+                {
+                  "input": 0,
+                  "output": "exchange/water/icon/mode-off"
+                },
+                {
+                  "input": 1,
+                  "output": "exchange/water/icon/mode-auto"
+                },
+                {
+                  "input": 2,
+                  "output": "exchange/water/icon/mode-hand"
+                }
+              ],
+              "outputType": "style-list",
+              "type": "map"
+            }
+          ],
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "aspectRatio": "1:1",
+      "mode": "percent",
+      "style": {
+        "cursor": "pointer"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

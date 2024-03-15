@@ -1,0 +1,18 @@
+{
+  "scope": "G",
+  "documentation": "Device param must stay as Valve by default. No input param assumes valve.",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "thumbnail.png",
+    "view.json"
+  ],
+  "attributes": {
+    "lastModificationSignature": "900f3b730b877fe9a060f4deaacc33c581ce66ed5f70fcaa3258f0580cf3f82d",
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2024-01-10T19:53:48Z"
+    }
+  }
+}

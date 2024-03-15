@@ -1,0 +1,5111 @@
+{
+  "custom": {},
+  "params": {},
+  "propConfig": {
+    "custom.window": {
+      "binding": {
+        "config": {
+          "expression": "\"Overview\""
+        },
+        "transforms": [
+          {
+            "code": "\tself.session.custom.hmi.window \u003d value \n\treturn value",
+            "type": "script"
+          }
+        ],
+        "type": "expr"
+      }
+    },
+    "params.fon": {
+      "paramDirection": "input"
+    },
+    "params.font": {
+      "paramDirection": "input"
+    },
+    "params.fontSiz": {
+      "paramDirection": "input"
+    },
+    "params.fontSize": {
+      "paramDirection": "input"
+    },
+    "params.key": {
+      "paramDirection": "input"
+    },
+    "params.ti": {
+      "paramDirection": "input"
+    },
+    "params.titl": {
+      "paramDirection": "input"
+    },
+    "params.title": {
+      "binding": {
+        "config": {
+          "expression": "\"Overview\""
+        },
+        "type": "expr"
+      },
+      "paramDirection": "output"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 1106,
+      "width": 1920
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Train3Turb",
+          "tooltip": {
+            "enabled": true,
+            "text": "Filter 7-9 Combined Turbidity"
+          }
+        },
+        "position": {
+          "height": 0.12,
+          "width": 0.092,
+          "x": 0.6098,
+          "y": 0.7138
+        },
+        "propConfig": {
+          "props.params.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Turbs/CombTurb3"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "format": "#0.000",
+            "id": "Train #3 Turbidity",
+            "state": 0,
+            "tagPath": "[default]Exchange/Water/Turbs/CombTurb3",
+            "units": "ntu"
+          },
+          "path": "Exchange/Water/EmbeddedViews/ValueLabelDisp"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Train2Turb",
+          "tooltip": {
+            "enabled": true,
+            "text": "Filters 4-6 Combined Turbidity"
+          }
+        },
+        "position": {
+          "height": 0.12,
+          "width": 0.092,
+          "x": 0.4838,
+          "y": 0.7138
+        },
+        "propConfig": {
+          "props.params.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Turbs/CombTurb2"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "format": "#0.000",
+            "id": "Train #2 Turbidity",
+            "state": 0,
+            "tagPath": "[default]Exchange/Water/Turbs/CombTurb2",
+            "units": "ntu"
+          },
+          "path": "Exchange/Water/EmbeddedViews/ValueLabelDisp"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Train1Turb",
+          "tooltip": {
+            "enabled": true,
+            "text": "Filters 1-3 Combined Turbidity"
+          }
+        },
+        "position": {
+          "height": 0.12,
+          "width": 0.092,
+          "x": 0.3586,
+          "y": 0.7138
+        },
+        "propConfig": {
+          "props.params.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Turbs/CombTurb1"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "format": "#0.000",
+            "id": "Train #1 Turbidity",
+            "state": 0,
+            "tagPath": "[default]Exchange/Water/Turbs/CombTurb1",
+            "units": "ntu"
+          },
+          "path": "Exchange/Water/EmbeddedViews/ValueLabelDisp"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Heading"
+            },
+            "position": {
+              "height": 0.2174,
+              "width": 0.9686,
+              "x": 0.0143
+            },
+            "props": {
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Raw Water Pumps"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Pump"
+                },
+                "position": {
+                  "basis": "75%",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "popupTitle": "Raw Water #1",
+                    "pumpLabel": "",
+                    "tagPath": "[default]Exchange/Water/Pumps/RawWater/Pump1"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/WaterPump"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "25%",
+                  "grow": 1
+                },
+                "props": {
+                  "text": 1,
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "RWP1"
+            },
+            "position": {
+              "height": 0.7622,
+              "width": 0.19,
+              "x": 0.0097,
+              "y": 0.2021
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Pump"
+                },
+                "position": {
+                  "basis": "75%",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "popupTitle": "Raw Water #2",
+                    "pumpLabel": "",
+                    "tagPath": "[default]Exchange/Water/Pumps/RawWater/Pump2"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/WaterPump"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "25%",
+                  "grow": 1
+                },
+                "props": {
+                  "text": 2,
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "RWP2"
+            },
+            "position": {
+              "height": 0.7622,
+              "width": 0.19,
+              "x": 0.2075,
+              "y": 0.2021
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Pump"
+                },
+                "position": {
+                  "basis": "75%",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "popupTitle": "Raw Water #3",
+                    "pumpLabel": "",
+                    "tagPath": "[default]Exchange/Water/Pumps/RawWater/Pump3"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/WaterPump"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "25%",
+                  "grow": 1
+                },
+                "props": {
+                  "text": 3,
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "RWP3"
+            },
+            "position": {
+              "height": 0.7622,
+              "width": 0.19,
+              "x": 0.4053,
+              "y": 0.2021
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Pump"
+                },
+                "position": {
+                  "basis": "75%",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "popupTitle": "Raw Water #4",
+                    "pumpLabel": "",
+                    "tagPath": "[default]Exchange/Water/Pumps/RawWater/Pump4"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/WaterPump"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "25%",
+                  "grow": 1
+                },
+                "props": {
+                  "text": 4,
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "RWP4"
+            },
+            "position": {
+              "height": 0.7622,
+              "width": 0.19,
+              "x": 0.6031,
+              "y": 0.2021
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Pump"
+                },
+                "position": {
+                  "basis": "75%",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "popupTitle": "Raw Water #5",
+                    "pumpLabel": "",
+                    "tagPath": "[default]Exchange/Water/Pumps/RawWater/Pump5"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/WaterPump"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "25%",
+                  "grow": 1
+                },
+                "props": {
+                  "text": 5,
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "RWP5"
+            },
+            "position": {
+              "height": 0.7622,
+              "width": 0.1894,
+              "x": 0.8008,
+              "y": 0.2021
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "RawWaterPumps"
+        },
+        "position": {
+          "height": 0.1361,
+          "width": 0.1974,
+          "x": 0.0097,
+          "y": 0.0184
+        },
+        "props": {
+          "mode": "percent",
+          "style": {
+            "borderBottomLeftRadius": "4px",
+            "borderBottomRightRadius": "4px",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": "4px",
+            "borderTopRightRadius": "4px",
+            "borderWidth": "2px",
+            "classes": "exchange/water/primary"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Heading"
+            },
+            "position": {
+              "height": 0.1447,
+              "width": 0.9712,
+              "x": 0.0155
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.85em",
+                "fontWeight": "700",
+                "textAlign": "center"
+              },
+              "text": "Flash Mixers"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Pump"
+                },
+                "position": {
+                  "basis": "75%",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "popupTitle": "Flash Mixer #1",
+                    "pumpLabel": "",
+                    "tagPath": "[default]Exchange/Water/Mixers/Mixer1"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/WaterPump"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "25%",
+                  "grow": 1
+                },
+                "props": {
+                  "text": 1,
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "RWP1"
+            },
+            "position": {
+              "height": 0.8109,
+              "width": 0.46,
+              "x": 0.0094,
+              "y": 0.1742
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Pump"
+                },
+                "position": {
+                  "basis": "75%",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "popupTitle": "Flash Mixer #2",
+                    "pumpLabel": "",
+                    "tagPath": "[default]Exchange/Water/Mixers/Mixer2"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/WaterPump"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "25%",
+                  "grow": 1
+                },
+                "props": {
+                  "text": 2,
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "RWP2"
+            },
+            "position": {
+              "height": 0.8109,
+              "width": 0.46,
+              "x": 0.5124,
+              "y": 0.1739
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "FlashMixers"
+        },
+        "position": {
+          "height": 0.1429,
+          "width": 0.0917,
+          "x": 0.1161,
+          "y": 0.3259
+        },
+        "props": {
+          "mode": "percent",
+          "style": {
+            "borderBottomLeftRadius": "0px",
+            "borderBottomRightRadius": "4px",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": "4px",
+            "borderTopRightRadius": "4px",
+            "borderWidth": "2px",
+            "classes": "exchange/water/primary"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "meta": {
+          "name": "Valve2"
+        },
+        "position": {
+          "height": 0.09,
+          "width": 0.045,
+          "x": 0.0677,
+          "y": 0.5074
+        },
+        "props": {
+          "params": {
+            "fontSize": "30px",
+            "id": 2,
+            "tagPath": "[default]Exchange/Water/Valves/Valve24Inch"
+          },
+          "path": "Exchange/Water/EmbeddedViews/Valve"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Valve1"
+        },
+        "position": {
+          "height": 0.09,
+          "rotate": {
+            "angle": "90deg"
+          },
+          "width": 0.045,
+          "x": 0.0041,
+          "y": 0.5129
+        },
+        "props": {
+          "params": {
+            "fontSize": "30px",
+            "id": 1,
+            "tagPath": "[default]Exchange/Water/Valves/Valve36Inch"
+          },
+          "path": "Exchange/Water/EmbeddedViews/Valve"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Basin1"
+        },
+        "position": {
+          "height": 0.1077,
+          "width": 0.0938,
+          "x": 0.2406,
+          "y": 0.278
+        },
+        "propConfig": {
+          "props.params.state": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Basins/Basin1"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "borderRadius": {
+              "bottomLeft": 0,
+              "bottomRight": 0,
+              "topLeft": 4,
+              "topRight": 4
+            },
+            "id": 1,
+            "tagPath": "[default]Exchange/Water/Basins/Basin1"
+          },
+          "path": "Exchange/Water/EmbeddedViews/Basin"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Basin2"
+        },
+        "position": {
+          "height": 0.1077,
+          "width": 0.0938,
+          "x": 0.2406,
+          "y": 0.3839
+        },
+        "propConfig": {
+          "props.params.state": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Basins/Basin2"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "borderRadius": {
+              "bottomLeft": 0,
+              "bottomRight": 0,
+              "topLeft": 0,
+              "topRight": 0
+            },
+            "id": 2,
+            "tagPath": "[default]Exchange/Water/Basins/Basin3"
+          },
+          "path": "Exchange/Water/EmbeddedViews/Basin"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Basin3"
+        },
+        "position": {
+          "height": 0.1077,
+          "width": 0.0938,
+          "x": 0.2406,
+          "y": 0.4898
+        },
+        "propConfig": {
+          "props.params.state": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Basins/Basin3"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "id": 3,
+            "tagPath": "[default]Exchange/Water/Basins/Basin3"
+          },
+          "path": "Exchange/Water/EmbeddedViews/Basin"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Basin4"
+        },
+        "position": {
+          "height": 0.1077,
+          "width": 0.0938,
+          "x": 0.2406,
+          "y": 0.5956
+        },
+        "propConfig": {
+          "props.params.state": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Basins/Basin4"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "id": 4,
+            "tagPath": "[default]Exchange/Water/Basins/Basin4"
+          },
+          "path": "Exchange/Water/EmbeddedViews/Basin"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Basin5"
+        },
+        "position": {
+          "height": 0.1077,
+          "width": 0.0938,
+          "x": 0.2406,
+          "y": 0.7015
+        },
+        "propConfig": {
+          "props.params.state": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Basins/Basin5"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "borderRadius": {
+              "bottomLeft": 4,
+              "bottomRight": 4,
+              "topLeft": 0,
+              "topRight": 0
+            },
+            "id": 5,
+            "tagPath": "[default]Exchange/Water/Basins/Basin5"
+          },
+          "path": "Exchange/Water/EmbeddedViews/Basin"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Basin7"
+        },
+        "position": {
+          "height": 0.1923,
+          "width": 0.099,
+          "x": 0.0167,
+          "y": 0.7663
+        },
+        "propConfig": {
+          "props.params.state": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Basins/Basin7"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "borderRadius": {
+              "bottomLeft": 4,
+              "bottomRight": 0,
+              "topLeft": 4,
+              "topRight": 0
+            },
+            "id": 7,
+            "sludgeATagPath": "[default]Exchange/Water/Basins/SludgeScraper2A",
+            "sludgeBTagPath": "[default]Exchange/Water/Basins/SludgeScraper2B",
+            "tagPath": "[default]Exchange/Water/Basins/Basin7"
+          },
+          "path": "Exchange/Water/EmbeddedViews/SludgeBasin"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Basin6"
+        },
+        "position": {
+          "height": 0.1923,
+          "width": 0.099,
+          "x": 0.1154,
+          "y": 0.7663
+        },
+        "propConfig": {
+          "props.params.state": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Basins/Basin6"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "borderRadius": {
+              "bottomLeft": 0,
+              "bottomRight": 4,
+              "topLeft": 0,
+              "topRight": 4
+            },
+            "id": 6,
+            "sludgeATagPath": "[default]Exchange/Water/Basins/SludgeScraper1A",
+            "sludgeBTagPath": "[default]Exchange/Water/Basins/SludgeScraper1B",
+            "tagPath": "[default]Exchange/Water/Basins/Basin6"
+          },
+          "path": "Exchange/Water/EmbeddedViews/SludgeBasin"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Filter1"
+        },
+        "position": {
+          "height": 0.1381,
+          "width": 0.092,
+          "x": 0.3586,
+          "y": 0.3064
+        },
+        "propConfig": {
+          "props.params.flow": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter1/Flow"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.level": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter1/Level"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.lohLevel": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter1/LOH"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.turb": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter1/Turb"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "borderRadius": {
+              "bottomLeft": 0,
+              "bottomRight": 0,
+              "topLeft": 4,
+              "topRight": 4
+            },
+            "id": 1
+          },
+          "path": "Exchange/Water/EmbeddedViews/Filter"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Filter2"
+        },
+        "position": {
+          "height": 0.1381,
+          "width": 0.092,
+          "x": 0.3586,
+          "y": 0.4429
+        },
+        "propConfig": {
+          "props.params.flow": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter2/Flow"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.level": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter2/Level"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.lohLevel": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter2/LOH"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.turb": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter2/Turb"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "id": 2
+          },
+          "path": "Exchange/Water/EmbeddedViews/Filter"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Filter3"
+        },
+        "position": {
+          "height": 0.1381,
+          "width": 0.092,
+          "x": 0.3586,
+          "y": 0.5794
+        },
+        "propConfig": {
+          "props.params.flow": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter3/Flow"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.level": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter3/Level"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.lohLevel": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter3/LOH"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.turb": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter3/Turb"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "borderRadius": {
+              "bottomLeft": 0,
+              "bottomRight": 0,
+              "topLeft": 0,
+              "topRight": 0
+            },
+            "id": 3
+          },
+          "path": "Exchange/Water/EmbeddedViews/Filter"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Filter6"
+        },
+        "position": {
+          "height": 0.1381,
+          "width": 0.092,
+          "x": 0.4838,
+          "y": 0.5785
+        },
+        "propConfig": {
+          "props.params.flow": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter6/Flow"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.level": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter6/Level"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.lohLevel": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter6/LOH"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.turb": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter6/Turb"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "borderRadius": {
+              "bottomLeft": 0,
+              "bottomRight": 0,
+              "topLeft": 4,
+              "topRight": 4
+            },
+            "id": 6
+          },
+          "path": "Exchange/Water/EmbeddedViews/Filter"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Filter5"
+        },
+        "position": {
+          "height": 0.1381,
+          "width": 0.092,
+          "x": 0.4838,
+          "y": 0.4429
+        },
+        "propConfig": {
+          "props.params.flow": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter5/Flow"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.level": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter5/Level"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.lohLevel": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter5/LOH"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.turb": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter5/Turb"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "id": 5
+          },
+          "path": "Exchange/Water/EmbeddedViews/Filter"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Filter4"
+        },
+        "position": {
+          "height": 0.1381,
+          "width": 0.092,
+          "x": 0.4838,
+          "y": 0.3064
+        },
+        "propConfig": {
+          "props.params.flow": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter4/Flow"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.level": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter4/Level"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.lohLevel": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter4/LOH"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.turb": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter4/Turb"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "borderRadius": {
+              "bottomLeft": 0,
+              "bottomRight": 0,
+              "topLeft": 0,
+              "topRight": 0
+            },
+            "id": 4
+          },
+          "path": "Exchange/Water/EmbeddedViews/Filter"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Filter7"
+        },
+        "position": {
+          "height": 0.1381,
+          "width": 0.092,
+          "x": 0.6098,
+          "y": 0.3064
+        },
+        "propConfig": {
+          "props.params.flow": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter7/Flow"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.level": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter7/Level"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.lohLevel": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter7/LOH"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.turb": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter7/Turb"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "borderRadius": {
+              "bottomLeft": 0,
+              "bottomRight": 0,
+              "topLeft": 4,
+              "topRight": 4
+            },
+            "id": 7
+          },
+          "path": "Exchange/Water/EmbeddedViews/Filter"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Filter8"
+        },
+        "position": {
+          "height": 0.1381,
+          "width": 0.092,
+          "x": 0.6098,
+          "y": 0.4429
+        },
+        "propConfig": {
+          "props.params.flow": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter8/Flow"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.level": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter8/Level"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.lohLevel": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter8/LOH"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.turb": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter8/Turb"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "id": 8
+          },
+          "path": "Exchange/Water/EmbeddedViews/Filter"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Filter9"
+        },
+        "position": {
+          "height": 0.1381,
+          "width": 0.092,
+          "x": 0.6098,
+          "y": 0.5785
+        },
+        "propConfig": {
+          "props.params.flow": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter9/Flow"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.level": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter9/Level"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.lohLevel": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter9/LOH"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.turb": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Filters/Filter9/Turb"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "borderRadius": {
+              "bottomLeft": 0,
+              "bottomRight": 0,
+              "topLeft": 0,
+              "topRight": 0
+            },
+            "id": 9
+          },
+          "path": "Exchange/Water/EmbeddedViews/Filter"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "CombinedFilterFlow"
+        },
+        "position": {
+          "height": 0.1004,
+          "width": 0.1458,
+          "x": 0.5994,
+          "y": 0.8638
+        },
+        "propConfig": {
+          "props.params.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Flows/CombinedFilterFlow"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "fontSize": "0.85em",
+            "format": "#,###",
+            "id": "Combined Filter Flow",
+            "state": 0,
+            "tagPath": "[default]Water/Flows/CombinedFilterFlow",
+            "units": "gpm"
+          },
+          "path": "Exchange/Water/EmbeddedViews/ValueLabelDisp"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "AirPressure"
+        },
+        "position": {
+          "height": 0.1004,
+          "width": 0.1062,
+          "x": 0.7218,
+          "y": 0.7334
+        },
+        "propConfig": {
+          "props.params.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]Exchange/Water/Filters/AirPressure"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "fontSize": "1em",
+            "format": "#,###",
+            "id": "Air Pressure",
+            "state": 0,
+            "units": "psi"
+          },
+          "path": "Exchange/Water/EmbeddedViews/ValueLabelDisp"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Flow36Inch"
+        },
+        "position": {
+          "height": 0.1,
+          "width": 0.1114,
+          "x": 0.0463,
+          "y": 0.6184
+        },
+        "propConfig": {
+          "props.params.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Flows/Flow36Inch"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "format": "#,###",
+            "id": "36\" Flow",
+            "state": 0,
+            "tagPath": "[default]Exchange/Water/Flows/Flow36Inch",
+            "units": "gpm"
+          },
+          "path": "Exchange/Water/EmbeddedViews/ValueLabelDisp"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Flow24Inch"
+        },
+        "position": {
+          "height": 0.1,
+          "width": 0.1,
+          "x": 0.1163,
+          "y": 0.5023
+        },
+        "propConfig": {
+          "props.params.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Flows/Flow24Inch"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "format": "#,###",
+            "id": "24\" Flow",
+            "state": 0,
+            "tagPath": "[default]Exchange/Water/Flows/Flow24Inch",
+            "units": "gpm"
+          },
+          "path": "Exchange/Water/EmbeddedViews/ValueLabelDisp"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Heading"
+            },
+            "position": {
+              "height": 0.2174,
+              "width": 0.9686,
+              "x": 0.0143
+            },
+            "props": {
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "High Service Pumps"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Pump"
+                },
+                "position": {
+                  "basis": "75%",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "popupTitle": "High Service #4",
+                    "pumpLabel": "",
+                    "tagPath": "[default]Exchange/Water/Pumps/HighService/Pump4\t"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/WaterPump"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "25%",
+                  "grow": 1
+                },
+                "props": {
+                  "text": 4,
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "RWP4"
+            },
+            "position": {
+              "height": 0.5622,
+              "width": 0.19,
+              "x": 0.779,
+              "y": 0.1956
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Pump"
+                },
+                "position": {
+                  "basis": "75%",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "popupTitle": "High Service #3",
+                    "pumpLabel": "",
+                    "tagPath": "[default]Exchange/Water/Pumps/HighService/Pump3\t"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/WaterPump"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "25%",
+                  "grow": 1
+                },
+                "props": {
+                  "text": 3,
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "RWP3"
+            },
+            "position": {
+              "height": 0.5622,
+              "width": 0.19,
+              "x": 0.5296,
+              "y": 0.1956
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Pump"
+                },
+                "position": {
+                  "basis": "75%",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "popupTitle": "Raw Water #2",
+                    "pumpLabel": "",
+                    "tagPath": "[default]Exchange/Water/Pumps/HighService/Pump2"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/WaterPump"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "25%",
+                  "grow": 1
+                },
+                "props": {
+                  "text": 2,
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "RWP2"
+            },
+            "position": {
+              "height": 0.5622,
+              "width": 0.19,
+              "x": 0.283,
+              "y": 0.1956
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Pump"
+                },
+                "position": {
+                  "basis": "75%",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "popupTitle": "High Service #1",
+                    "pumpLabel": "",
+                    "tagPath": "[default]Exchange/Water/Pumps/HighService/Pump1"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/WaterPump"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "25%",
+                  "grow": 1
+                },
+                "props": {
+                  "text": 1,
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "RWP1"
+            },
+            "position": {
+              "height": 0.5622,
+              "width": 0.19,
+              "x": 0.0367,
+              "y": 0.1956
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "FinishedFlowLabel"
+            },
+            "position": {
+              "height": 0.1622,
+              "width": 0.4599,
+              "x": 0.0389,
+              "y": 0.7992
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.85em",
+                "fontWeight": "bold",
+                "textAlign": "left"
+              },
+              "text": "Finished Flow"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "FinishedFlow"
+            },
+            "position": {
+              "height": 0.1442,
+              "width": 0.451,
+              "x": 0.5235,
+              "y": 0.8075
+            },
+            "propConfig": {
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "Exchange/Water/Flows/HighService"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "data": {
+                  "format": "#,###"
+                },
+                "name": "Finished Water Flow",
+                "state": 0,
+                "tagPath": "[default]Exchange/Water/Flows/Finished",
+                "units": "gpm"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "HighServicePumps"
+        },
+        "position": {
+          "height": 0.1787,
+          "width": 0.2151,
+          "x": 0.7774,
+          "y": 0.5414
+        },
+        "props": {
+          "mode": "percent",
+          "style": {
+            "borderBottomLeftRadius": "4px",
+            "borderBottomRightRadius": "4px",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": "4px",
+            "borderTopRightRadius": "4px",
+            "borderWidth": "2px",
+            "classes": "exchange/water/primary"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Pump"
+                },
+                "position": {
+                  "basis": "75%",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "popupTitle": "Finished Water #1",
+                    "pumpLabel": "",
+                    "tagPath": "[default]Exchange/Water/Pumps/FinishedWater/Pump1"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/WaterPump"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "25%",
+                  "grow": 1
+                },
+                "props": {
+                  "text": 1,
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "FWP1"
+            },
+            "position": {
+              "height": 0.2216,
+              "width": 0.19,
+              "x": 0.0058,
+              "y": 0.005
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Pump"
+                },
+                "position": {
+                  "basis": "75%",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "popupTitle": "Finished Water #2",
+                    "pumpLabel": "",
+                    "tagPath": "[default]Exchange/Water/Pumps/FinishedWater/Pump2"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/WaterPump"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "25%",
+                  "grow": 1
+                },
+                "props": {
+                  "text": 2,
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "RWP2"
+            },
+            "position": {
+              "height": 0.2216,
+              "width": 0.19,
+              "x": 0.2052,
+              "y": 0.005
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Pump"
+                },
+                "position": {
+                  "basis": "75%",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "popupTitle": "Finished Water #3",
+                    "pumpLabel": "",
+                    "tagPath": "[default]Exchange/Water/Pumps/FinishedWater/Pump3\t"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/WaterPump"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "25%",
+                  "grow": 1
+                },
+                "props": {
+                  "text": 3,
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "FWP3"
+            },
+            "position": {
+              "height": 0.2216,
+              "width": 0.19,
+              "x": 0.4045,
+              "y": 0.005
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Pump"
+                },
+                "position": {
+                  "basis": "75%",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "popupTitle": "Finished Water #4",
+                    "pumpLabel": "",
+                    "tagPath": "[default]Exchange/Water/Pumps/FinishedWater/Pump4"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/WaterPump"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "25%",
+                  "grow": 1
+                },
+                "props": {
+                  "text": 4,
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "FWP4"
+            },
+            "position": {
+              "height": 0.2216,
+              "width": 0.19,
+              "x": 0.6038,
+              "y": 0.005
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "Pump"
+                },
+                "position": {
+                  "basis": "75%",
+                  "grow": 1
+                },
+                "props": {
+                  "params": {
+                    "popupTitle": "Finished Water #5",
+                    "pumpLabel": "",
+                    "tagPath": "[default]Exchange/Water/Pumps/FinishedWater/Pump5"
+                  },
+                  "path": "Exchange/Water/EmbeddedViews/WaterPump"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "25%",
+                  "grow": 1
+                },
+                "props": {
+                  "text": 5,
+                  "textStyle": {
+                    "textAlign": "center"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "FWP5"
+            },
+            "position": {
+              "height": 0.2216,
+              "width": 0.1894,
+              "x": 0.8031,
+              "y": 0.005
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "overflow": "visible"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "FinishedChlorineLabel"
+            },
+            "position": {
+              "height": 0.0676,
+              "width": 0.5377,
+              "x": 0.0369,
+              "y": 0.2358
+            },
+            "props": {
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "left"
+              },
+              "text": "Finished Chlorine"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "FinishedFlourideLabel"
+            },
+            "position": {
+              "height": 0.0663,
+              "width": 0.5377,
+              "x": 0.0369,
+              "y": 0.2996
+            },
+            "props": {
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "left"
+              },
+              "text": "Finished Flouride"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "FinishedFlowLabel"
+            },
+            "position": {
+              "height": 0.0663,
+              "width": 0.5377,
+              "x": 0.0369,
+              "y": 0.3611
+            },
+            "props": {
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "left"
+              },
+              "text": "Finished Flow"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "FinishedChlorine"
+            },
+            "position": {
+              "height": 0.0608,
+              "width": 0.4129,
+              "x": 0.5658,
+              "y": 0.2397
+            },
+            "propConfig": {
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "Exchange/Water/FinishedChlorine"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "data": {
+                  "format": "#0.00"
+                },
+                "state": 0,
+                "units": "mg/L"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "FinishedFlouride"
+            },
+            "position": {
+              "height": 0.0582,
+              "width": 0.4129,
+              "x": 0.5658,
+              "y": 0.3035
+            },
+            "propConfig": {
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "Exchange/Water/FinishedFlouride"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "data": {
+                  "format": "#0.00"
+                },
+                "state": 0,
+                "units": "mg/L"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "FinishedFlow"
+            },
+            "position": {
+              "height": 0.0581,
+              "width": 0.4129,
+              "x": 0.5658,
+              "y": 0.3659
+            },
+            "propConfig": {
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "Exchange/Water/Flows/Finished"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "data": {
+                  "format": "#,###"
+                },
+                "name": "Finished Water Flow",
+                "state": 0,
+                "tagPath": "[default]Exchange/Water/Flows/Finished",
+                "units": "gpm"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Tank1"
+            },
+            "position": {
+              "height": 0.5453,
+              "width": 0.4834,
+              "x": 0.017,
+              "y": 0.4406
+            },
+            "propConfig": {
+              "props.params.value1.data.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "Exchange/Water/Tanks/Finished1"
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.params.value2.data.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "Exchange/Water/Tanks/Finished1"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 171938.0685",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "borderRadius": {
+                  "bottomLeft": 4,
+                  "bottomRight": 0,
+                  "topLeft": 4,
+                  "topRight": 0
+                },
+                "capacityLabel": "6,017,832 gal",
+                "id": "Tank 1",
+                "max": 35,
+                "sparkline": {
+                  "DisplayHours": 24,
+                  "sparkPath": "[default]Exchange/Water/Tanks/Finished1"
+                },
+                "value1": {
+                  "data": {
+                    "format": "#.0"
+                  },
+                  "name": "Finished Tank #1",
+                  "state": 0,
+                  "tagPath": "[default]Exchange/Water/Tanks/Finished1",
+                  "units": "ft"
+                },
+                "value2": {
+                  "data": {
+                    "format": "#,###"
+                  },
+                  "state": 0,
+                  "units": "gal"
+                }
+              },
+              "path": "Exchange/Water/EmbeddedViews/Tank"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Tank2"
+            },
+            "position": {
+              "height": 0.5453,
+              "width": 0.4834,
+              "x": 0.5,
+              "y": 0.4406
+            },
+            "propConfig": {
+              "props.params.value1.data.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "Exchange/Water/Tanks/Finished2"
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.params.value2.data.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "Exchange/Water/Tanks/Finished2"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 77589.4693",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              },
+              "props.params.value2.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "Exchange/Water/Tanks/Finished1"
+                  },
+                  "transforms": [
+                    {
+                      "expression": "{value} * 77589.4693",
+                      "type": "expression"
+                    }
+                  ],
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "borderRadius": {
+                  "bottomLeft": 0,
+                  "bottomRight": 4,
+                  "topLeft": 0,
+                  "topRight": 4
+                },
+                "capacityLabel": "3,106,182 gal",
+                "id": "Tank 2",
+                "max": 40,
+                "sparkline": {
+                  "DisplayHours": 24,
+                  "sparkPath": "[default]Exchange/Water/Tanks/Finished2"
+                },
+                "value1": {
+                  "data": {
+                    "format": "#.0"
+                  },
+                  "format": "#.#",
+                  "name": "Finished Tank #2",
+                  "state": 0,
+                  "tagPath": "[default]Exchange/Water/Tanks/Finished2",
+                  "units": "ft"
+                },
+                "value2": {
+                  "data": {
+                    "format": "#,###"
+                  },
+                  "state": 0,
+                  "units": "gal"
+                }
+              },
+              "path": "Exchange/Water/EmbeddedViews/Tank"
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "FinishedWaterPumps"
+        },
+        "position": {
+          "height": 0.488,
+          "width": 0.2703,
+          "x": 0.7224,
+          "y": 0.0184
+        },
+        "props": {
+          "mode": "percent",
+          "style": {
+            "borderBottomLeftRadius": "4px",
+            "borderBottomRightRadius": "4px",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": "4px",
+            "borderTopRightRadius": "4px",
+            "borderWidth": "2px",
+            "classes": "exchange/water/primary"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Heading"
+            },
+            "position": {
+              "height": 0.1826,
+              "width": 1
+            },
+            "props": {
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Plant Flows"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "InfluentLabel"
+            },
+            "position": {
+              "height": 0.1431,
+              "width": 0.3,
+              "x": 0.0441,
+              "y": 0.3232
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.9em",
+                "fontWeight": "bold",
+                "textAlign": "left"
+              },
+              "text": "Influent"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "EffluentLabel"
+            },
+            "position": {
+              "height": 0.1431,
+              "width": 0.3,
+              "x": 0.0441,
+              "y": 0.4701
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.9em",
+                "fontWeight": "bold",
+                "textAlign": "left"
+              },
+              "text": "Effluent"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "BackwashLabel"
+            },
+            "position": {
+              "height": 0.148,
+              "width": 0.3,
+              "x": 0.0441,
+              "y": 0.6147
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.9em",
+                "fontWeight": "bold",
+                "textAlign": "left"
+              },
+              "text": "Backwash"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "InfluentDaily"
+            },
+            "position": {
+              "height": 0.1233,
+              "width": 0.3372,
+              "x": 0.3132,
+              "y": 0.3321
+            },
+            "propConfig": {
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "expression": "{Exchange/Water/Flows/PlantInfluent} / 1000000"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "data": {
+                  "format": "#.00"
+                },
+                "name": "Influent Daily",
+                "state": 0,
+                "tagPath": "[default]Exchange/Water/Flows/PlantInfluent",
+                "units": "MGD"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "InfluentTotal"
+            },
+            "position": {
+              "height": 0.1233,
+              "width": 0.3227,
+              "x": 0.6469,
+              "y": 0.3321
+            },
+            "propConfig": {
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "expression": "{Exchange/Water/Flows/PlantInfluentTotal} / 1000000"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "data": {
+                  "format": "#,##0.0"
+                },
+                "name": "Influent Total",
+                "state": 0,
+                "tagPath": "[default]Exchange/Water/Flows/PlantInfluentTotal",
+                "units": "MGal"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "DailyLabel"
+            },
+            "position": {
+              "height": 0.1431,
+              "width": 0.3,
+              "x": 0.3282,
+              "y": 0.176
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.9em",
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Current"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "TotalsLabel"
+            },
+            "position": {
+              "height": 0.1431,
+              "width": 0.3081,
+              "x": 0.6631,
+              "y": 0.176
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.9em",
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Totals"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "EffluentDaily"
+            },
+            "position": {
+              "height": 0.1233,
+              "width": 0.3372,
+              "x": 0.3132,
+              "y": 0.4813
+            },
+            "propConfig": {
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "expression": "{Exchange/Water/Flows/PlantEffluent} / 1000000"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "data": {
+                  "format": "#.00"
+                },
+                "name": "Effluent Daily",
+                "state": 0,
+                "tagPath": "[default]Exchange/Water/Flows/PlantEffluent",
+                "units": "MGD"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "EffluentTotal"
+            },
+            "position": {
+              "height": 0.1233,
+              "width": 0.3227,
+              "x": 0.6488,
+              "y": 0.4813
+            },
+            "propConfig": {
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "expression": "{Exchange/Water/Flows/PlantEffluentTotal} / 1000000"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "data": {
+                  "format": "#,##0.0"
+                },
+                "name": "Effluent Total",
+                "state": 0,
+                "tagPath": "[default]Exchange/Water/Flows/PlantEffluentTotal",
+                "units": "MGal"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "BackwashTotal"
+            },
+            "position": {
+              "height": 0.1233,
+              "width": 0.3227,
+              "x": 0.6488,
+              "y": 0.6281
+            },
+            "propConfig": {
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "expression": "{Exchange/Water/Flows/BackwashTotal} / 1000"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "data": {
+                  "format": "#,##0.0"
+                },
+                "state": 0,
+                "units": "KGal"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "BackwashDaily"
+            },
+            "position": {
+              "height": 0.1233,
+              "width": 0.3372,
+              "x": 0.3132,
+              "y": 0.6281
+            },
+            "propConfig": {
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "expression": "{Exchange/Water/Flows/Backwash}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "data": {
+                  "format": "#,###"
+                },
+                "state": 0,
+                "units": "gpm"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "custom": {
+              "enterStyle": {
+                "borderBottomLeftRadius": "4px",
+                "borderBottomRightRadius": "4px",
+                "borderColor": "--callToAction--hover",
+                "borderStyle": "dashed",
+                "borderTopLeftRadius": "4px",
+                "borderTopRightRadius": "4px",
+                "borderWidth": "2px",
+                "classes": "exchange/water/value-disp",
+                "cursor": "text",
+                "fontSize": "0.7vw"
+              },
+              "exitStyle": {
+                "borderBottomLeftRadius": "4px",
+                "borderBottomRightRadius": "4px",
+                "borderTopLeftRadius": "4px",
+                "borderTopRightRadius": "4px",
+                "classes": "exchange/water/value-disp",
+                "cursor": "text",
+                "fontSize": "0.7vw"
+              }
+            },
+            "events": {
+              "dom": {
+                "onMouseEnter": {
+                  "config": {
+                    "script": "\tself.props.style \u003d self.custom.enterStyle"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                },
+                "onMouseLeave": {
+                  "config": {
+                    "script": "\tself.props.style \u003d self.custom.exitStyle"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "TargetEffluent"
+            },
+            "position": {
+              "height": 0.1332,
+              "width": 0.2471,
+              "x": 0.5577,
+              "y": 0.825
+            },
+            "propConfig": {
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Flows/TargetEffluent"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "format": "0,0.0",
+              "inputBounds": {
+                "maximum": 20,
+                "minimum": 0
+              },
+              "spinner": {
+                "increment": 0.1
+              },
+              "style": {
+                "borderBottomLeftRadius": "4px",
+                "borderBottomRightRadius": "4px",
+                "borderTopLeftRadius": "4px",
+                "borderTopRightRadius": "4px",
+                "classes": "exchange/water/value-disp",
+                "cursor": "text",
+                "fontSize": "0.7vw"
+              }
+            },
+            "type": "ia.input.numeric-entry-field"
+          },
+          {
+            "meta": {
+              "name": "TargetEffluentLabel"
+            },
+            "position": {
+              "height": 0.1382,
+              "width": 0.5029,
+              "x": 0.0434,
+              "y": 0.8228
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.8em",
+                "fontWeight": "bold",
+                "textAlign": "left"
+              },
+              "text": "Daily Effluent Target"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "TargetEffluentUnits"
+            },
+            "position": {
+              "height": 0.1382,
+              "width": 0.1831,
+              "x": 0.8165,
+              "y": 0.8228
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.9em",
+                "fontWeight": "bold",
+                "textAlign": "left"
+              },
+              "text": "MGD"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "PlantFlows"
+        },
+        "position": {
+          "height": 0.213,
+          "width": 0.2672,
+          "x": 0.2106,
+          "y": 0.0184
+        },
+        "props": {
+          "mode": "percent",
+          "style": {
+            "borderBottomLeftRadius": "4px",
+            "borderBottomRightRadius": "4px",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": "4px",
+            "borderTopRightRadius": "4px",
+            "borderWidth": "2px",
+            "classes": "exchange/water/primary"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "meta": {
+          "name": "ClearwellTank"
+        },
+        "position": {
+          "height": 0.237,
+          "width": 0.1302,
+          "x": 0.8626,
+          "y": 0.7511
+        },
+        "propConfig": {
+          "props.params.value1.data.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]Exchange/Water/Tanks/Clearwell"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.value2.data.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Tanks/Clearwell"
+              },
+              "transforms": [
+                {
+                  "expression": "{value} * 135239.37888",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "borderRadius": {
+              "bottomLeft": 4,
+              "bottomRight": 4,
+              "topLeft": 4,
+              "topRight": 4
+            },
+            "capacityLabel": "2,419,443 gal",
+            "id": "Clearwell Tank",
+            "max": 24,
+            "sparkline": {
+              "DisplayHours": 24,
+              "sparkPath": "[default]Exchange/Water/Tanks/Clearwell"
+            },
+            "value1": {
+              "data": {
+                "format": "#.0"
+              },
+              "name": "Clearwell Tank",
+              "state": 0,
+              "tagPath": "[default]Exchange/Water/Tanks/Clearwell",
+              "units": "ft"
+            },
+            "value2": {
+              "data": {
+                "format": "#,###"
+              },
+              "state": 0,
+              "units": "gal"
+            }
+          },
+          "path": "Exchange/Water/EmbeddedViews/Tank"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "BackwashTank"
+        },
+        "position": {
+          "height": 0.237,
+          "width": 0.1302,
+          "x": 0.5664,
+          "y": 0.0184
+        },
+        "propConfig": {
+          "props.params.value1.data.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Tanks/Backwash"
+              },
+              "type": "tag"
+            }
+          },
+          "props.params.value2.data.value": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "Exchange/Water/Tanks/Backwash"
+              },
+              "transforms": [
+                {
+                  "expression": "{value} * 3124.9827",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "borderRadius": {
+              "bottomLeft": 4,
+              "bottomRight": 4,
+              "topLeft": 4,
+              "topRight": 4
+            },
+            "capacityLabel": "125,000 gal",
+            "id": "Backwash",
+            "liquidColor": "#C4A484",
+            "max": 40,
+            "sparkline": {
+              "DisplayHours": 24,
+              "sparkData": [],
+              "sparkPath": "[default]Exchange/Water/Tanks/Backwash"
+            },
+            "value1": {
+              "data": {
+                "format": "#.0"
+              },
+              "name": "Backwash Tank",
+              "state": 0,
+              "tagPath": "[default]Exchange/Water/Tanks/Backwash",
+              "units": "ft"
+            },
+            "value2": {
+              "data": {
+                "format": "#,###"
+              },
+              "state": 0,
+              "units": "gal"
+            }
+          },
+          "path": "Exchange/Water/EmbeddedViews/Tank"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "TempLabel"
+            },
+            "position": {
+              "height": 0.25,
+              "width": 0.3654,
+              "x": 0.0082,
+              "y": 0.197
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.85em",
+                "fontWeight": "bold",
+                "textAlign": "left"
+              },
+              "text": "Temperature"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "TurbLabel"
+            },
+            "position": {
+              "height": 0.2612,
+              "width": 0.3654,
+              "x": 0.0082,
+              "y": 0.459
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.85em",
+                "fontWeight": "bold",
+                "textAlign": "left"
+              },
+              "text": "Turbidity"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "FlowLabel"
+            },
+            "position": {
+              "height": 0.25,
+              "width": 0.3654,
+              "x": 0.0082,
+              "y": 0.7358
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.85em",
+                "fontWeight": "bold",
+                "textAlign": "left"
+              },
+              "text": "Flow"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "Temp"
+            },
+            "position": {
+              "height": 0.25,
+              "width": 0.5387,
+              "x": 0.4494,
+              "y": 0.2007
+            },
+            "propConfig": {
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "Exchange/Water/Temps/RawWaterTemp"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "data": {
+                  "format": "#0.0"
+                },
+                "name": "Temp",
+                "state": 0,
+                "tagPath": "[default]Exchange/Water/Temps/RawWaterTemp",
+                "units": "°F"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Turb"
+            },
+            "position": {
+              "height": 0.25,
+              "width": 0.5386,
+              "x": 0.4493,
+              "y": 0.4638
+            },
+            "propConfig": {
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "Exchange/Water/Turbs/RawWaterTurb"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "data": {
+                  "format": "#0.000"
+                },
+                "name": "RawWaterTurb",
+                "state": 0,
+                "tagPath": "[default]Exchange/Water/Turbs/RawWaterTurb",
+                "units": "ntu"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Flow"
+            },
+            "position": {
+              "height": 0.25,
+              "width": 0.5387,
+              "x": 0.4494,
+              "y": 0.7321
+            },
+            "propConfig": {
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "Exchange/Water/Flows/Raw"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "data": {
+                  "format": "#,###"
+                },
+                "name": "Raw Water Flow",
+                "tagPath": "[default]Exchange/Water/Flows/Raw",
+                "units": "gpm"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "height": 0.1866,
+              "width": 0.6546,
+              "x": 0.1755,
+              "y": 0.0099
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.88em",
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Raw Water"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "RawWaterInfo"
+        },
+        "position": {
+          "height": 0.1311,
+          "width": 0.1964,
+          "x": 0.0107,
+          "y": 0.1885
+        },
+        "props": {
+          "mode": "percent",
+          "style": {
+            "borderBottomLeftRadius": "4px",
+            "borderBottomRightRadius": "4px",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": "4px",
+            "borderTopRightRadius": "4px",
+            "borderWidth": "2px",
+            "classes": "exchange/water/primary"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Water Pump"
+            },
+            "position": {
+              "height": 0.55,
+              "width": 0.3061,
+              "x": 0.68,
+              "y": 0.025
+            },
+            "props": {
+              "params": {
+                "orientation": "right",
+                "popupTitle": "Chemical Pump #4",
+                "pumpLabel": "",
+                "tagPath": "[default]Exchange/Water/Pumps/Chem/Pump4"
+              },
+              "path": "Exchange/Water/EmbeddedViews/WaterPump"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Actual mL"
+            },
+            "position": {
+              "height": 0.3291,
+              "width": 0.9082,
+              "x": 0.0387,
+              "y": 0.6248
+            },
+            "propConfig": {
+              "props.params.data.format": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/ActualFlow4.formatString"
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/ActualFlow4"
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.params.units": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/ActualFlow4.engUnit"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "alt": false,
+                "borderRadius": {
+                  "bottomLeft": 0,
+                  "bottomRight": 0,
+                  "topLeft": 0,
+                  "topRight": 0
+                },
+                "data": {},
+                "fontSize": "0.85em",
+                "name": "ActualFlow4",
+                "state": 0,
+                "tagPath": "[default]Exchange/Water/Hypo/ActualFlow4"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "height": 0.572,
+              "width": 0.6786,
+              "x": 0.0174,
+              "y": 0.0202
+            },
+            "props": {
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Chem Pump #4",
+              "textStyle": {
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "ChemPump4"
+        },
+        "position": {
+          "height": 0.1013,
+          "width": 0.1115,
+          "x": 0.4713,
+          "y": 0.8638
+        },
+        "props": {
+          "mode": "percent",
+          "style": {
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "classes": "exchange/water/border-radius exchange/water/primary"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Water Pump"
+            },
+            "position": {
+              "height": 0.55,
+              "width": 0.3061,
+              "x": 0.68,
+              "y": 0.025
+            },
+            "props": {
+              "params": {
+                "orientation": "right",
+                "popupTitle": "Chemical Pump #3",
+                "pumpLabel": "",
+                "tagPath": "[default]Exchange/Water/Pumps/Chem/Pump3"
+              },
+              "path": "Exchange/Water/EmbeddedViews/WaterPump"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Actual mL"
+            },
+            "position": {
+              "height": 0.3291,
+              "width": 0.9082,
+              "x": 0.0387,
+              "y": 0.6248
+            },
+            "propConfig": {
+              "props.params.data.format": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/ActualFlow3.formatString"
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/ActualFlow3"
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.params.units": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/ActualFlow3.engUnit"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "alt": false,
+                "borderRadius": {
+                  "bottomLeft": 0,
+                  "bottomRight": 0,
+                  "topLeft": 0,
+                  "topRight": 0
+                },
+                "data": {},
+                "fontSize": "0.85em",
+                "name": "ActualFlow3",
+                "state": 0,
+                "tagPath": "[default]Exchange/Water/Hypo/ActualFlow3"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "height": 0.572,
+              "width": 0.6786,
+              "x": 0.0174,
+              "y": 0.0202
+            },
+            "props": {
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Chem Pump #3",
+              "textStyle": {
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "ChemPump3"
+        },
+        "position": {
+          "height": 0.1013,
+          "width": 0.1115,
+          "x": 0.3465,
+          "y": 0.8638
+        },
+        "props": {
+          "mode": "percent",
+          "style": {
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "classes": "exchange/water/border-radius exchange/water/primary"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Water Pump"
+            },
+            "position": {
+              "height": 0.55,
+              "width": 0.3061,
+              "x": 0.68,
+              "y": 0.025
+            },
+            "props": {
+              "params": {
+                "orientation": "right",
+                "popupTitle": "Chemical Pump #1",
+                "pumpLabel": "",
+                "tagPath": "[default]Exchange/Water/Pumps/Chem/Pump1"
+              },
+              "path": "Exchange/Water/EmbeddedViews/WaterPump"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Actual mL"
+            },
+            "position": {
+              "height": 0.3291,
+              "width": 0.9082,
+              "x": 0.0387,
+              "y": 0.6248
+            },
+            "propConfig": {
+              "props.params.data.format": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/ActualFlow1.formatString"
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/ActualFlow1"
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.params.units": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/ActualFlow1.engUnit"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "alt": false,
+                "borderRadius": {
+                  "bottomLeft": 0,
+                  "bottomRight": 0,
+                  "topLeft": 0,
+                  "topRight": 0
+                },
+                "data": {},
+                "fontSize": "0.85em",
+                "name": "ActualFlow1",
+                "state": 0,
+                "tagPath": "[default]Exchange/Water/Hypo/ActualFlow1"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "height": 0.572,
+              "width": 0.6786,
+              "x": 0.0174,
+              "y": 0.0202
+            },
+            "props": {
+              "style": {
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Chem Pump #1",
+              "textStyle": {
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "ChemPump1"
+        },
+        "position": {
+          "height": 0.1013,
+          "width": 0.1115,
+          "x": 0.7521,
+          "y": 0.8638
+        },
+        "props": {
+          "mode": "percent",
+          "style": {
+            "borderStyle": "solid",
+            "borderWidth": "2px",
+            "classes": "exchange/water/border-radius exchange/water/primary"
+          }
+        },
+        "type": "ia.container.coord"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Water Pump"
+            },
+            "position": {
+              "height": 0.55,
+              "width": 0.3061,
+              "x": 0.68,
+              "y": 0.025
+            },
+            "props": {
+              "params": {
+                "orientation": "right",
+                "popupTitle": "Chem Pump #2",
+                "pumpLabel": "",
+                "tagPath": "[default]Exchange/Water/Pumps/Chem/Pump2"
+              },
+              "path": "Exchange/Water/EmbeddedViews/WaterPump"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Actual mL"
+            },
+            "position": {
+              "height": 0.3291,
+              "width": 0.9082,
+              "x": 0.0387,
+              "y": 0.6248
+            },
+            "propConfig": {
+              "props.params.data.format": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/ActualFlow2.formatString"
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.params.data.value": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/ActualFlow2"
+                  },
+                  "type": "tag"
+                }
+              },
+              "props.params.units": {
+                "binding": {
+                  "config": {
+                    "fallbackDelay": 2.5,
+                    "mode": "direct",
+                    "tagPath": "[default]Exchange/Water/Hypo/ActualFlow2.engUnit"
+                  },
+                  "type": "tag"
+                }
+              }
+            },
+            "props": {
+              "params": {
+                "alt": false,
+                "borderRadius": {
+                  "bottomLeft": 0,
+                  "bottomRight": 0,
+                  "topLeft": 0,
+                  "topRight": 0
+                },
+                "data": {},
+                "fontSize": "0.85em",
+                "name": "Hypo2Flow",
+                "state": 0,
+                "tagPath": "[default]Exchange/Water/Hypo/ActualFlow2"
+              },
+              "path": "Exchange/Water/EmbeddedViews/ValueDisp"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "height": 0.572,
+              "width": 0.6786,
+              "x": 0.0174,
+              "y": 0.0202
+            },
+            "props": {
+              "style": {
+                "fontSize": "0.85em",
+                "fontWeight": "bold",
+                "textAlign": "center"
+              },
+              "text": "Chem Pump #2",
+              "textStyle": {
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "ChemPump2"
+        },
+        "position": {
+          "height": 0.1013,
+          "width": 0.1062,
+          "x": 0.0107,
+          "y": 0.3674
+        },
+        "props": {
+          "mode": "percent",
+          "style": {
+            "borderBottomRightRadius": "0px",
+            "borderStyle": "solid",
+            "borderTopRightRadius": "0px",
+            "borderWidth": "2px",
+            "classes": "exchange/water/border-radius exchange/water/primary"
+          }
+        },
+        "type": "ia.container.coord"
+      }
+    ],
+    "custom": {
+      "pipeTheme": {
+        "alum": {
+          "fill": "#B27300"
+        },
+        "raw": {
+          "fill": "#808000"
+        },
+        "settled": {
+          "fill": "var(--div-11)"
+        },
+        "water": {
+          "fill": "var(--info)"
+        }
+      },
+      "title": "Plant Overview"
+    },
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "custom.pipeTheme.alum.stroke": {
+        "binding": {
+          "config": {
+            "expression": "// \u0027Mimic\u0027 pipes include shadows at joints and corners that don\u0027t respect stroke setting\r\n// For aesthetics, force stroke to \u0027black\u0027 if \u0027mimic\u0027 appearance is selected\r\nif({session.props.pipes.autoAppearance} \u003d \u0027mimic\u0027, \u0027black\u0027, \u0027#B27300\u0027)"
+          },
+          "type": "expr"
+        }
+      },
+      "custom.pipeTheme.raw.stroke": {
+        "binding": {
+          "config": {
+            "expression": "// \u0027Mimic\u0027 pipes include shadows at joints and corners that don\u0027t respect stroke setting\r\n// For aesthetics, force stroke to \u0027black\u0027 if \u0027mimic\u0027 appearance is selected\r\nif({session.props.pipes.autoAppearance} \u003d \u0027mimic\u0027, \u0027black\u0027, \u0027#808000\u0027)"
+          },
+          "type": "expr"
+        }
+      },
+      "custom.pipeTheme.settled.stroke": {
+        "binding": {
+          "config": {
+            "expression": "// \u0027Mimic\u0027 pipes include shadows at joints and corners that don\u0027t respect stroke setting\r\n// For aesthetics, force stroke to \u0027black\u0027 if \u0027mimic\u0027 appearance is selected\r\nif({session.props.pipes.autoAppearance} \u003d \u0027mimic\u0027, \u0027black\u0027, \u0027var(--div-11)\u0027)"
+          },
+          "type": "expr"
+        }
+      },
+      "custom.pipeTheme.water.stroke": {
+        "binding": {
+          "config": {
+            "expression": "// \u0027Mimic\u0027 pipes include shadows at joints and corners that don\u0027t respect stroke setting\r\n// For aesthetics, force stroke to \u0027black\u0027 if \u0027mimic\u0027 appearance is selected\r\nif({session.props.pipes.autoAppearance} \u003d \u0027mimic\u0027, \u0027black\u0027, \u0027var(--info)\u0027)"
+          },
+          "type": "expr"
+        }
+      },
+      "props.pipes[0].fill": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.raw.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[0].stroke": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.raw.stroke"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[10].fill": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.raw.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[10].stroke": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.raw.stroke"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[11].fill": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.alum.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[11].stroke": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.alum.stroke"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[12].fill": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.raw.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[12].stroke": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.raw.stroke"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[13].fill": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.alum.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[13].stroke": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.alum.stroke"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[1].fill": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.raw.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[1].stroke": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.raw.stroke"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[2].fill": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.raw.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[2].stroke": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.raw.stroke"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[3].fill": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.raw.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[3].stroke": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.raw.stroke"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[4].fill": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.settled.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[4].stroke": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.settled.stroke"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[5].fill": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.raw.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[5].stroke": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.raw.stroke"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[6].fill": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.water.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[6].stroke": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.water.stroke"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[7].fill": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.water.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[7].stroke": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.water.stroke"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[8].fill": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.water.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[8].stroke": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.water.stroke"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[9].fill": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.water.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[9].stroke": {
+        "binding": {
+          "config": {
+            "path": "this.custom.pipeTheme.water.stroke"
+          },
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "mode": "percent",
+      "pipes": [
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "valve 24",
+          "origin": {
+            "connections": [
+              {
+                "connections": [],
+                "x": 0.131,
+                "y": 0.5528
+              }
+            ],
+            "x": 0.103,
+            "y": 0.5528
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "36\" egress",
+          "origin": {
+            "connections": [
+              {
+                "connections": [
+                  {
+                    "connections": [
+                      {
+                        "connections": [],
+                        "x": 0.1597,
+                        "y": 0.7673
+                      }
+                    ],
+                    "x": 0.1597,
+                    "y": 0.7438
+                  },
+                  {
+                    "connections": [
+                      {
+                        "connections": [],
+                        "x": 0.0714,
+                        "y": 0.7673
+                      }
+                    ],
+                    "x": 0.0714,
+                    "y": 0.7438
+                  }
+                ],
+                "x": 0.1154,
+                "y": 0.7438
+              }
+            ],
+            "x": 0.1154,
+            "y": 0.7127
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "raw water pumps",
+          "origin": {
+            "connections": [
+              {
+                "connections": [
+                  {
+                    "connections": [
+                      {
+                        "connections": [
+                          {
+                            "connections": [
+                              {
+                                "connections": [],
+                                "x": 0.1706,
+                                "y": 0.1507
+                              }
+                            ],
+                            "x": 0.1706,
+                            "y": 0.1731
+                          },
+                          {
+                            "connections": [],
+                            "x": 0.1368,
+                            "y": 0.1507
+                          }
+                        ],
+                        "x": 0.1368,
+                        "y": 0.1731
+                      },
+                      {
+                        "connections": [],
+                        "x": 0.1036,
+                        "y": 0.1507
+                      }
+                    ],
+                    "x": 0.1036,
+                    "y": 0.1731
+                  },
+                  {
+                    "connections": [
+                      {
+                        "connections": [
+                          {
+                            "connections": [],
+                            "x": 0.0381,
+                            "y": 0.1507
+                          }
+                        ],
+                        "x": 0.0381,
+                        "y": 0.1731
+                      },
+                      {
+                        "connections": [],
+                        "x": 0.0714,
+                        "y": 0.1507
+                      }
+                    ],
+                    "x": 0.0714,
+                    "y": 0.1731
+                  }
+                ],
+                "x": 0.0883,
+                "y": 0.1731
+              }
+            ],
+            "x": 0.0883,
+            "y": 0.2143
+          },
+          "start": "arrowOutward",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "alumn feedrate",
+          "origin": {
+            "connections": [
+              {
+                "connections": [
+                  {
+                    "connections": [
+                      {
+                        "connections": [],
+                        "x": 0.0857,
+                        "y": 0.5525
+                      }
+                    ],
+                    "x": 0.0614,
+                    "y": 0.5528
+                  },
+                  {
+                    "connections": [
+                      {
+                        "connections": [],
+                        "x": 0.0268,
+                        "y": 0.551
+                      }
+                    ],
+                    "x": 0.0268,
+                    "y": 0.4954
+                  }
+                ],
+                "x": 0.0614,
+                "y": 0.4954
+              }
+            ],
+            "x": 0.0614,
+            "y": 0.4467
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "arrowOutward",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "sludge basins",
+          "origin": {
+            "connections": [
+              {
+                "connections": [
+                  {
+                    "connections": [
+                      {
+                        "connections": [
+                          {
+                            "connections": [
+                              {
+                                "connections": [
+                                  {
+                                    "connections": [
+                                      {
+                                        "connections": [
+                                          {
+                                            "connections": [
+                                              {
+                                                "connections": [
+                                                  {
+                                                    "connections": [
+                                                      {
+                                                        "connections": [
+                                                          {
+                                                            "connections": [
+                                                              {
+                                                                "connections": [
+                                                                  {
+                                                                    "connections": [
+                                                                      {
+                                                                        "connections": [
+                                                                          {
+                                                                            "connections": [
+                                                                              {
+                                                                                "connections": [
+                                                                                  {
+                                                                                    "connections": [],
+                                                                                    "x": 0.5731,
+                                                                                    "y": 0.6503
+                                                                                  },
+                                                                                  {
+                                                                                    "connections": [],
+                                                                                    "x": 0.6136,
+                                                                                    "y": 0.6503
+                                                                                  }
+                                                                                ],
+                                                                                "x": 0.5988,
+                                                                                "y": 0.6503
+                                                                              },
+                                                                              {
+                                                                                "connections": [],
+                                                                                "x": 0.6136,
+                                                                                "y": 0.5077
+                                                                              },
+                                                                              {
+                                                                                "connections": [],
+                                                                                "x": 0.5731,
+                                                                                "y": 0.5077
+                                                                              }
+                                                                            ],
+                                                                            "x": 0.5988,
+                                                                            "y": 0.5077
+                                                                          },
+                                                                          {
+                                                                            "connections": [],
+                                                                            "x": 0.5731,
+                                                                            "y": 0.37
+                                                                          },
+                                                                          {
+                                                                            "connections": [],
+                                                                            "x": 0.6136,
+                                                                            "y": 0.37
+                                                                          }
+                                                                        ],
+                                                                        "x": 0.5988,
+                                                                        "y": 0.37
+                                                                      }
+                                                                    ],
+                                                                    "x": 0.5988,
+                                                                    "y": 0.2808
+                                                                  }
+                                                                ],
+                                                                "x": 0.3436,
+                                                                "y": 0.2808
+                                                              },
+                                                              {
+                                                                "connections": [],
+                                                                "x": 0.2874,
+                                                                "y": 0.3223
+                                                              }
+                                                            ],
+                                                            "x": 0.3435,
+                                                            "y": 0.3223
+                                                          },
+                                                          {
+                                                            "connections": [],
+                                                            "x": 0.3631,
+                                                            "y": 0.37
+                                                          }
+                                                        ],
+                                                        "x": 0.3435,
+                                                        "y": 0.37
+                                                      },
+                                                      {
+                                                        "connections": [],
+                                                        "x": 0.2874,
+                                                        "y": 0.4274
+                                                      }
+                                                    ],
+                                                    "x": 0.3434,
+                                                    "y": 0.4274
+                                                  },
+                                                  {
+                                                    "connections": [],
+                                                    "x": 0.3631,
+                                                    "y": 0.5077
+                                                  }
+                                                ],
+                                                "x": 0.3433,
+                                                "y": 0.5077
+                                              },
+                                              {
+                                                "connections": [],
+                                                "x": 0.2874,
+                                                "y": 0.5398
+                                              }
+                                            ],
+                                            "x": 0.3433,
+                                            "y": 0.5398
+                                          },
+                                          {
+                                            "connections": [],
+                                            "x": 0.2874,
+                                            "y": 0.6503
+                                          },
+                                          {
+                                            "connections": [],
+                                            "x": 0.3631,
+                                            "y": 0.6503
+                                          }
+                                        ],
+                                        "x": 0.3433,
+                                        "y": 0.6503
+                                      },
+                                      {
+                                        "connections": [],
+                                        "x": 0.2874,
+                                        "y": 0.7513
+                                      }
+                                    ],
+                                    "x": 0.3433,
+                                    "y": 0.7513
+                                  }
+                                ],
+                                "x": 0.3433,
+                                "y": 0.8382
+                              }
+                            ],
+                            "x": 0.2654,
+                            "y": 0.8382
+                          }
+                        ],
+                        "x": 0.2654,
+                        "y": 0.9773
+                      },
+                      {
+                        "connections": [],
+                        "x": 0.1597,
+                        "y": 0.9087
+                      }
+                    ],
+                    "x": 0.1597,
+                    "y": 0.9773
+                  }
+                ],
+                "x": 0.0714,
+                "y": 0.9773
+              }
+            ],
+            "x": 0.0714,
+            "y": 0.9087
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "arrowOutward",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "24\"",
+          "origin": {
+            "connections": [
+              {
+                "connections": [
+                  {
+                    "connections": [
+                      {
+                        "connections": [
+                          {
+                            "connections": [],
+                            "x": 0.2442,
+                            "y": 0.7513
+                          }
+                        ],
+                        "x": 0.2245,
+                        "y": 0.7513
+                      },
+                      {
+                        "connections": [],
+                        "x": 0.2442,
+                        "y": 0.6503
+                      }
+                    ],
+                    "x": 0.2245,
+                    "y": 0.6503
+                  },
+                  {
+                    "connections": [
+                      {
+                        "connections": [
+                          {
+                            "connections": [
+                              {
+                                "connections": [],
+                                "x": 0.2442,
+                                "y": 0.3223
+                              }
+                            ],
+                            "x": 0.2245,
+                            "y": 0.3223
+                          },
+                          {
+                            "connections": [],
+                            "x": 0.2442,
+                            "y": 0.4248
+                          }
+                        ],
+                        "x": 0.2245,
+                        "y": 0.4248
+                      },
+                      {
+                        "connections": [],
+                        "x": 0.2442,
+                        "y": 0.5398
+                      }
+                    ],
+                    "x": 0.2245,
+                    "y": 0.5398
+                  }
+                ],
+                "x": 0.2245,
+                "y": 0.5528
+              }
+            ],
+            "x": 0.1989,
+            "y": 0.5528
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "filter effluent",
+          "origin": {
+            "connections": [
+              {
+                "connections": [
+                  {
+                    "connections": [
+                      {
+                        "connections": [
+                          {
+                            "connections": [],
+                            "x": 0.4479,
+                            "y": 0.6503
+                          },
+                          {
+                            "connections": [],
+                            "x": 0.4877,
+                            "y": 0.6503
+                          },
+                          {
+                            "connections": [
+                              {
+                                "connections": [
+                                  {
+                                    "connections": [],
+                                    "x": 0.4479,
+                                    "y": 0.37
+                                  },
+                                  {
+                                    "connections": [],
+                                    "x": 0.4877,
+                                    "y": 0.37
+                                  }
+                                ],
+                                "x": 0.4727,
+                                "y": 0.37
+                              },
+                              {
+                                "connections": [],
+                                "x": 0.4479,
+                                "y": 0.5077
+                              },
+                              {
+                                "connections": [],
+                                "x": 0.4877,
+                                "y": 0.5077
+                              }
+                            ],
+                            "x": 0.4727,
+                            "y": 0.5077
+                          }
+                        ],
+                        "x": 0.4727,
+                        "y": 0.6503
+                      }
+                    ],
+                    "x": 0.4727,
+                    "y": 0.8457
+                  },
+                  {
+                    "connections": [
+                      {
+                        "connections": [
+                          {
+                            "connections": [
+                              {
+                                "connections": [],
+                                "x": 0.695,
+                                "y": 0.37
+                              }
+                            ],
+                            "x": 0.7126,
+                            "y": 0.37
+                          },
+                          {
+                            "connections": [],
+                            "x": 0.695,
+                            "y": 0.5077
+                          }
+                        ],
+                        "x": 0.7126,
+                        "y": 0.5077
+                      },
+                      {
+                        "connections": [],
+                        "x": 0.695,
+                        "y": 0.6506
+                      }
+                    ],
+                    "x": 0.7126,
+                    "y": 0.6506
+                  }
+                ],
+                "x": 0.7126,
+                "y": 0.8457
+              }
+            ],
+            "x": 0.9033,
+            "y": 0.8457
+          },
+          "start": "arrowOutward",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "clearwell",
+          "origin": {
+            "connections": [
+              {
+                "connections": [
+                  {
+                    "connections": [
+                      {
+                        "connections": [
+                          {
+                            "connections": [],
+                            "x": 0.8389,
+                            "y": 0.7175
+                          }
+                        ],
+                        "x": 0.8389,
+                        "y": 0.7371
+                      },
+                      {
+                        "connections": [],
+                        "x": 0.8823,
+                        "y": 0.7175
+                      }
+                    ],
+                    "x": 0.8823,
+                    "y": 0.7371
+                  },
+                  {
+                    "connections": [
+                      {
+                        "connections": [
+                          {
+                            "connections": [],
+                            "x": 0.9679,
+                            "y": 0.7175
+                          }
+                        ],
+                        "x": 0.9679,
+                        "y": 0.7371
+                      },
+                      {
+                        "connections": [],
+                        "x": 0.9256,
+                        "y": 0.7175
+                      }
+                    ],
+                    "x": 0.9256,
+                    "y": 0.7371
+                  }
+                ],
+                "x": 0.9195,
+                "y": 0.7371
+              }
+            ],
+            "x": 0.9195,
+            "y": 0.7576
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "arrowInward",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "high service pumps",
+          "origin": {
+            "connections": [
+              {
+                "connections": [
+                  {
+                    "connections": [
+                      {
+                        "connections": [
+                          {
+                            "connections": [],
+                            "x": 0.968,
+                            "y": 0.556
+                          }
+                        ],
+                        "x": 0.968,
+                        "y": 0.5252
+                      },
+                      {
+                        "connections": [],
+                        "x": 0.9255,
+                        "y": 0.556
+                      }
+                    ],
+                    "x": 0.9255,
+                    "y": 0.5252
+                  },
+                  {
+                    "connections": [
+                      {
+                        "connections": [
+                          {
+                            "connections": [],
+                            "x": 0.8388,
+                            "y": 0.556
+                          }
+                        ],
+                        "x": 0.8388,
+                        "y": 0.5252
+                      },
+                      {
+                        "connections": [],
+                        "x": 0.8822,
+                        "y": 0.556
+                      }
+                    ],
+                    "x": 0.8822,
+                    "y": 0.5252
+                  }
+                ],
+                "x": 0.9033,
+                "y": 0.5252
+              }
+            ],
+            "x": 0.9033,
+            "y": 0.5017
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "finished water",
+          "origin": {
+            "connections": [
+              {
+                "connections": [],
+                "x": 0.8872,
+                "y": 0.3752
+              }
+            ],
+            "x": 0.9872,
+            "y": 0.3995
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "raw water info",
+          "origin": {
+            "connections": [
+              {
+                "connections": [],
+                "x": 0.0883,
+                "y": 0.3733
+              }
+            ],
+            "x": 0.0883,
+            "y": 0.2925
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "arrowOutward",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "Hypo4",
+          "origin": {
+            "connections": [
+              {
+                "connections": [
+                  {
+                    "connections": [
+                      {
+                        "connections": [
+                          {
+                            "connections": [],
+                            "x": 0.6136,
+                            "y": 0.4181
+                          }
+                        ],
+                        "x": 0.5899,
+                        "y": 0.4181
+                      },
+                      {
+                        "connections": [],
+                        "x": 0.6136,
+                        "y": 0.5532
+                      },
+                      {
+                        "connections": [],
+                        "x": 0.5731,
+                        "y": 0.5532
+                      }
+                    ],
+                    "x": 0.5899,
+                    "y": 0.5532
+                  },
+                  {
+                    "connections": [],
+                    "x": 0.6136,
+                    "y": 0.6886
+                  },
+                  {
+                    "connections": [],
+                    "x": 0.5725,
+                    "y": 0.6886
+                  }
+                ],
+                "x": 0.5899,
+                "y": 0.6886
+              },
+              {
+                "connections": [],
+                "x": 0.5547,
+                "y": 0.8881
+              }
+            ],
+            "x": 0.5899,
+            "y": 0.8881
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "none",
+          "flanges": true,
+          "lineVariant": "solid",
+          "name": "36\"",
+          "origin": {
+            "connections": [
+              {
+                "connections": [
+                  {
+                    "connections": [],
+                    "x": 0.0518,
+                    "y": 0.669
+                  }
+                ],
+                "x": 0.0268,
+                "y": 0.669
+              }
+            ],
+            "x": 0.0268,
+            "y": 0.5648
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        },
+        {
+          "appearance": "auto",
+          "end": "arrowOutward",
+          "flanges": true,
+          "lineVariant": "midArrow",
+          "name": "Hypo3",
+          "origin": {
+            "connections": [
+              {
+                "connections": [
+                  {
+                    "connections": [
+                      {
+                        "connections": [
+                          {
+                            "connections": [],
+                            "x": 0.4479,
+                            "y": 0.4181
+                          },
+                          {
+                            "connections": [],
+                            "x": 0.4867,
+                            "y": 0.4181
+                          }
+                        ],
+                        "x": 0.4636,
+                        "y": 0.4181
+                      },
+                      {
+                        "connections": [],
+                        "x": 0.4479,
+                        "y": 0.5532
+                      }
+                    ],
+                    "x": 0.4636,
+                    "y": 0.5532
+                  },
+                  {
+                    "connections": [],
+                    "x": 0.4479,
+                    "y": 0.6888
+                  }
+                ],
+                "x": 0.4636,
+                "y": 0.6886
+              },
+              {
+                "connections": [],
+                "x": 0.4232,
+                "y": 0.8881
+              }
+            ],
+            "x": 0.4636,
+            "y": 0.8881
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        }
+      ],
+      "style": {
+        "fontSize": "0.93em"
+      }
+    },
+    "scripts": {
+      "customMethods": [
+        {
+          "name": "updateTitle",
+          "params": [],
+          "script": "\tsystem.perspective.sendMessage(\u0027WindowChange\u0027, {\u0027title\u0027: self.custom.title}, \u0027session\u0027)"
+        }
+      ],
+      "extensionFunctions": null,
+      "messageHandlers": []
+    },
+    "type": "ia.container.coord"
+  }
+}

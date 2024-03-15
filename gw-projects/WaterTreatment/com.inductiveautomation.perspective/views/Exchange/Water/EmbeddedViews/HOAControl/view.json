@@ -1,0 +1,308 @@
+{
+  "custom": {},
+  "params": {
+    "identifier": "",
+    "popupTitle": "Control",
+    "tagPath": "[default]Exchange/Water/Filters/Filter9/Valves/AirScour"
+  },
+  "propConfig": {
+    "params.identifier": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.popupTitle": {
+      "paramDirection": "input"
+    },
+    "params.tagPath": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 165,
+      "width": 234
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "22px",
+              "shrink": 0
+            },
+            "props": {
+              "path": "material/settings",
+              "style": {
+                "classes": "",
+                "marginLeft": "10px",
+                "marginRight": "10px"
+              }
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "hasDelegate": true,
+              "name": "Label"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "expression": "{view.params.popupTitle}"
+                  },
+                  "type": "expr"
+                }
+              }
+            },
+            "props": {
+              "textStyle": {
+                "fontWeight": "bold"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "draggable": true,
+                    "id": "{view.params.identifier}",
+                    "modal": false,
+                    "overlayDismiss": false,
+                    "resizable": true,
+                    "showCloseIcon": true,
+                    "type": "close",
+                    "viewPath": ""
+                  },
+                  "scope": "C",
+                  "type": "popup"
+                }
+              }
+            },
+            "meta": {
+              "name": "Close"
+            },
+            "position": {
+              "basis": "24px"
+            },
+            "props": {
+              "path": "material/close",
+              "style": {
+                "classes": "",
+                "cursor": "pointer",
+                "marginRight": "10px"
+              }
+            },
+            "type": "ia.display.icon"
+          }
+        ],
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "basis": "50px",
+          "shrink": 0
+        },
+        "props": {
+          "style": {
+            "classes": "exchange/water/secondary-title"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "OffAuto"
+        },
+        "position": {
+          "basis": "40px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.controlValue": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "tag": "{view.params.tagPath}"
+                },
+                "tagPath": "{tag}/Mode"
+              },
+              "type": "tag"
+            }
+          },
+          "props.indicatorValue": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "tag": "{view.params.tagPath}"
+                },
+                "tagPath": "{tag}/Mode"
+              },
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "buttonGap": 10,
+          "orientation": "row",
+          "states": [
+            {
+              "selectedStyle": {
+                "classes": "exchange/water/indicator/mode-off"
+              },
+              "text": "Off",
+              "unselectedStyle": {
+                "classes": ""
+              },
+              "value": 0
+            },
+            {
+              "selectedStyle": {
+                "classes": "exchange/water/indicator/mode-auto"
+              },
+              "text": "Auto",
+              "unselectedStyle": {
+                "classes": ""
+              },
+              "value": 1
+            }
+          ],
+          "style": {
+            "marginLeft": "10px",
+            "marginRight": "10px",
+            "marginTop": "10px"
+          }
+        },
+        "type": "ia.input.multi-state-button"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tsystem.tag.writeBlocking([self.view.params.tagPath + \"/Mode\"], [2])"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Hand"
+        },
+        "position": {
+          "basis": "40px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.controlValue": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "tag": "{view.params.tagPath}"
+                },
+                "tagPath": "{tag}/Hand"
+              },
+              "type": "tag"
+            }
+          },
+          "props.indicatorValue": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "indirect",
+                "references": {
+                  "tag": "{view.params.tagPath}"
+                },
+                "tagPath": "{tag}/Mode"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value} \u003d 2, tag({view.params.tagPath} + \u0027/Hand\u0027), 2)",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "props.states[0].text": {
+            "binding": {
+              "config": {
+                "expression": "if(indexOf(lower({view.params.tagPath}), \u0027valve\u0027) \u003e -1, \u0027Close\u0027, \u0027Stop\u0027)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.states[1].text": {
+            "binding": {
+              "config": {
+                "expression": "if(indexOf(lower({view.params.tagPath}), \u0027valve\u0027) \u003e -1, \u0027Open\u0027, \u0027Run\u0027)"
+              },
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "buttonGap": 10,
+          "orientation": "row",
+          "states": [
+            {
+              "selectedStyle": {
+                "classes": "exchange/water/indicator/mode-hand"
+              },
+              "unselectedStyle": {
+                "classes": ""
+              },
+              "value": 0
+            },
+            {
+              "selectedStyle": {
+                "classes": "exchange/water/indicator/mode-hand"
+              },
+              "unselectedStyle": {
+                "classes": ""
+              },
+              "value": 1
+            }
+          ],
+          "style": {
+            "marginLeft": "10px",
+            "marginRight": "10px",
+            "marginTop": "10px"
+          }
+        },
+        "type": "ia.input.multi-state-button"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "borderStyle": "solid",
+        "borderWidth": "2px",
+        "classes": "exchange/water/secondary"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

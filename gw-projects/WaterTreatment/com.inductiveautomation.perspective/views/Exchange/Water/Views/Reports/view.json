@@ -1,0 +1,40 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "FullView"
+        },
+        "position": {
+          "size": "large"
+        },
+        "props": {
+          "path": "Exchange/Water/Reports/FullView",
+          "style": {
+            "height": "100%"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "MobileView"
+        },
+        "props": {
+          "params": {
+            "size": "xs"
+          },
+          "path": "Exchange/Water/Reports/MobileView"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.breakpt"
+  }
+}

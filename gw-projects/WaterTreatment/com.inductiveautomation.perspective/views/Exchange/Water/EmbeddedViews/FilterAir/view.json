@@ -1,0 +1,132 @@
+{
+  "custom": {},
+  "params": {
+    "pipeTheme": {
+      "fill": "var(--callToAction--disabled)",
+      "stroke": "var(--neutral-90)"
+    }
+  },
+  "propConfig": {
+    "params.pipeTheme": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 100,
+      "width": 285
+    }
+  },
+  "root": {
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.pipes[0].fill": {
+        "binding": {
+          "config": {
+            "path": "view.params.pipeTheme.fill"
+          },
+          "type": "property"
+        }
+      },
+      "props.pipes[0].stroke": {
+        "binding": {
+          "config": {
+            "path": "view.params.pipeTheme.stroke"
+          },
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "mode": "percent",
+      "pipes": [
+        {
+          "appearance": "auto",
+          "end": "arrowOutward",
+          "flanges": true,
+          "lineVariant": "solid",
+          "name": "pipe",
+          "origin": {
+            "connections": [
+              {
+                "connections": [
+                  {
+                    "connections": [
+                      {
+                        "connections": [
+                          {
+                            "connections": [
+                              {
+                                "connections": [
+                                  {
+                                    "connections": [
+                                      {
+                                        "x": 0.9368,
+                                        "y": 0.3
+                                      }
+                                    ],
+                                    "x": 0.9368,
+                                    "y": 0.72
+                                  },
+                                  {
+                                    "x": 0.7614,
+                                    "y": 0.3
+                                  }
+                                ],
+                                "x": 0.7614,
+                                "y": 0.72
+                              },
+                              {
+                                "x": 0.586,
+                                "y": 0.3
+                              }
+                            ],
+                            "x": 0.586,
+                            "y": 0.72
+                          },
+                          {
+                            "x": 0.4106,
+                            "y": 0.3
+                          }
+                        ],
+                        "x": 0.4106,
+                        "y": 0.72
+                      },
+                      {
+                        "x": 0.2351,
+                        "y": 0.3
+                      }
+                    ],
+                    "x": 0.2351,
+                    "y": 0.72
+                  },
+                  {
+                    "x": 0.0596,
+                    "y": 0.3
+                  }
+                ],
+                "x": 0.0596,
+                "y": 0.72
+              }
+            ],
+            "x": -0.007,
+            "y": 0.72
+          },
+          "start": "none",
+          "visible": true,
+          "width": 10
+        }
+      ],
+      "style": {
+        "backgroundColor": "--neutral-50",
+        "backgroundImage": "linear-gradient(135deg, rgba(0, 0, 0, 0.5) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.5) 75%, rgba(0, 0, 0, 0.5)), \nlinear-gradient(135deg, rgba(0, 0, 0, 0.5) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.5) 75%, rgba(0, 0, 0, 0.5))",
+        "backgroundPosition": "0 0, 2px 2px",
+        "backgroundSize": "4px 4px"
+      }
+    },
+    "type": "ia.container.coord"
+  }
+}

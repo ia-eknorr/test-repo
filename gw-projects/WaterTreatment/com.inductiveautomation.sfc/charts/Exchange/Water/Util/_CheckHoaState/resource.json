@@ -1,0 +1,16 @@
+{
+  "scope": "G",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "sfc.xml"
+  ],
+  "attributes": {
+    "lastModificationSignature": "ba008c0e3d4c2d1efbe82c39d56f65d23e15a09e7bb88725100f84af49373d24",
+    "lastModification": {
+      "actor": "admin",
+      "timestamp": "2024-02-09T17:44:07Z"
+    }
+  }
+}

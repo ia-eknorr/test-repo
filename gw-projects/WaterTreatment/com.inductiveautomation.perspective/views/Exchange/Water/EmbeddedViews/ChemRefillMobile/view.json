@@ -1,0 +1,493 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 520
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "SourceTankLabel"
+                },
+                "position": {
+                  "basis": "30px"
+                },
+                "props": {
+                  "style": {
+                    "fontWeight": "bold",
+                    "paddingLeft": "3px",
+                    "paddingRight": "3px",
+                    "textAlign": "center"
+                  },
+                  "text": "Source Tank",
+                  "textStyle": {
+                    "fontSize": "14px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": {
+                  "name": "SourceBulkTank"
+                },
+                "position": {
+                  "basis": "30px",
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.options": {
+                    "binding": {
+                      "config": {
+                        "struct": {
+                          "tank1": "{[default]Exchange/Water/Tanks/HypoBulk1.InService}",
+                          "tank2": "{[default]Exchange/Water/Tanks/HypoBulk2.InService}",
+                          "tank3": "{[default]Exchange/Water/Tanks/HypoBulk3.InService}"
+                        },
+                        "waitOnAll": true
+                      },
+                      "transforms": [
+                        {
+                          "code": "\t# Build list of options\n\toptions \u003d []\n\t\n\tfor i in range(3):\n\t\ttank \u003d {\"value\": (i+1), \"label\": \"Bulk #%d\"% (i+1)}\n\t\n\t\tif not value[\u0027tank%d\u0027% (i+1)]:\n\t\t\ttank[\u0027isDisabled\u0027] \u003d True\n\t\n\t\toptions.append(tank)\n\t\n\treturn options",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "expr-struct"
+                    }
+                  },
+                  "props.value": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "fallbackDelay": 2.5,
+                        "mode": "direct",
+                        "tagPath": "[default]Exchange/Water/Hypo/HypoTransfer/SelectedBulkTank"
+                      },
+                      "type": "tag"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "cursor": "pointer"
+                  },
+                  "textAlign": "center"
+                },
+                "type": "ia.input.dropdown"
+              }
+            ],
+            "meta": {
+              "name": "Source"
+            },
+            "position": {
+              "basis": "100px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "margin": "10px",
+                "marginLeft": "0px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "ConcentrationLabel"
+                },
+                "position": {
+                  "basis": "30px"
+                },
+                "props": {
+                  "style": {
+                    "fontWeight": "bold",
+                    "paddingLeft": "3px",
+                    "paddingRight": "3px",
+                    "textAlign": "center"
+                  },
+                  "text": "Concentration",
+                  "textStyle": {
+                    "fontSize": "14px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Concentration"
+                    },
+                    "position": {
+                      "basis": "300px",
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.value": {
+                        "binding": {
+                          "config": {
+                            "bidirectional": true,
+                            "fallbackDelay": 2.5,
+                            "mode": "direct",
+                            "tagPath": "[default]Exchange/Water/Hypo/Strength"
+                          },
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "format": "0,0.#",
+                      "inputBounds": {
+                        "maximum": 20,
+                        "minimum": 1
+                      },
+                      "spinner": {
+                        "increment": 0.1
+                      },
+                      "style": {
+                        "cursor": "pointer"
+                      }
+                    },
+                    "type": "ia.input.numeric-entry-field"
+                  },
+                  {
+                    "meta": {
+                      "name": "Concentration Unit"
+                    },
+                    "position": {
+                      "basis": "100px",
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "fontWeight": "bold",
+                        "paddingLeft": "3px",
+                        "paddingRight": "3px",
+                        "textAlign": "left"
+                      },
+                      "text": "%",
+                      "textStyle": {
+                        "fontSize": "14px"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer"
+                },
+                "position": {
+                  "basis": "30px",
+                  "grow": 1
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Concentration"
+            },
+            "position": {
+              "basis": "100px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "margin": "10px"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "RefillAlarmLabel"
+                },
+                "position": {
+                  "basis": "30px"
+                },
+                "props": {
+                  "style": {
+                    "fontWeight": "bold",
+                    "paddingLeft": "3px",
+                    "paddingRight": "3px",
+                    "textAlign": "center"
+                  },
+                  "text": "Refill Alarm",
+                  "textStyle": {
+                    "fontSize": "14px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "children": [
+                  {
+                    "meta": {
+                      "name": "Refill Setpoint"
+                    },
+                    "position": {
+                      "basis": "300px",
+                      "grow": 1
+                    },
+                    "propConfig": {
+                      "props.value": {
+                        "binding": {
+                          "config": {
+                            "bidirectional": true,
+                            "fallbackDelay": 2.5,
+                            "mode": "direct",
+                            "tagPath": "[default]Exchange/Water/Hypo/HypoTransfer/AutoRefillSetPoint"
+                          },
+                          "type": "tag"
+                        }
+                      }
+                    },
+                    "props": {
+                      "format": "0,0 gal",
+                      "spinner": {
+                        "increment": 10
+                      },
+                      "style": {
+                        "cursor": "pointer"
+                      }
+                    },
+                    "type": "ia.input.numeric-entry-field"
+                  },
+                  {
+                    "meta": {
+                      "name": "Refill Unit"
+                    },
+                    "position": {
+                      "basis": "100px",
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "fontWeight": "bold",
+                        "paddingLeft": "3px",
+                        "paddingRight": "3px",
+                        "textAlign": "left"
+                      },
+                      "text": "gal.",
+                      "textStyle": {
+                        "fontSize": "14px"
+                      }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "meta": {
+                  "name": "FlexContainer"
+                },
+                "position": {
+                  "basis": "30px",
+                  "grow": 1
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Refill"
+            },
+            "position": {
+              "basis": "100px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "margin": "10px",
+                "marginRight": "0px"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "90px",
+          "shrink": 0
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\t# Retrieve name of this project\n\tproj \u003d system.util.getProjectName()\n\t\n\t# Call SFC (passing source bulk tank)\n\targs \u003d {\u0027bulkTankNum\u0027: self.getSibling(\"Source Bulk Tank\").props.value}\n\tsystem.sfc.startChart(proj, \u0027Exchange/Water/HypoTransfer\u0027, args)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "TransferButton",
+          "tooltip": {
+            "enabled": true
+          }
+        },
+        "position": {
+          "basis": "60px",
+          "shrink": 0
+        },
+        "propConfig": {
+          "meta.tooltip.text": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]Exchange/Water/Hypo/Transfer/InProcess"
+              },
+              "transforms": [
+                {
+                  "fallback": "Transfer hypo from selected bulk tank to day tank",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": true,
+                      "output": "Hypo transfer already in process"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "props.enabled": {
+            "binding": {
+              "config": {
+                "fallbackDelay": 2.5,
+                "mode": "direct",
+                "tagPath": "[default]Exchange/Water/Hypo/HypoTransfer/InProcess"
+              },
+              "transforms": [
+                {
+                  "expression": "!{value}",
+                  "type": "expression"
+                }
+              ],
+              "type": "tag"
+            }
+          }
+        },
+        "props": {
+          "image": {
+            "icon": {
+              "path": "material/double_arrow"
+            },
+            "position": "right"
+          },
+          "style": {
+            "backgroundColor": "#B27300",
+            "fontSize": "30px"
+          },
+          "text": "Manual Transfer"
+        },
+        "type": "ia.input.button"
+      },
+      {
+        "meta": {
+          "name": "FlexRepeater"
+        },
+        "position": {
+          "basis": "360px"
+        },
+        "props": {
+          "direction": "column",
+          "elementPosition": {
+            "shrink": 0
+          },
+          "instances": [
+            {
+              "borderRadius": {
+                "bottom": 0,
+                "top": "4px"
+              },
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "name": "Bulk Tank #1",
+              "tagPath": "[default]Exchange/Water/Valves/BT1"
+            },
+            {
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "name": "Bulk Tank #2",
+              "tagPath": "[default]Exchange/Water/Valves/BT2"
+            },
+            {
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "name": "Bulk Tank #3",
+              "tagPath": "[default]Exchange/Water/Valves/BT3"
+            },
+            {
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "name": "Transfer",
+              "tagPath": "[default]Exchange/Water/Valves/TP"
+            },
+            {
+              "device": "Pump",
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "name": "Transfer Pump",
+              "tagPath": "[default]Exchange/Water/pumps/ChemTransfer"
+            },
+            {
+              "borderRadius": {
+                "bottom": "4px",
+                "top": 0
+              },
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "name": "Day Tank Inlet",
+              "tagPath": "[default]Exchange/Water/Valves/DTi"
+            }
+          ],
+          "path": "Exchange/Water/EmbeddedViews/ValveDetailsMobile",
+          "style": {
+            "marginTop": "10px"
+          },
+          "useDefaultViewWidth": false
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

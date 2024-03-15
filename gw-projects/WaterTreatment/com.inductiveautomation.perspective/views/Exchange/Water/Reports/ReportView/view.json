@@ -1,0 +1,124 @@
+{
+  "custom": {},
+  "params": {
+    "headerStyle": {
+      "classes": "exchange/water/Card_Title"
+    },
+    "name": "Monthly Operating Report",
+    "params": {
+      "month": 1,
+      "year": 2019
+    },
+    "path": "Exchange/Water/MonthlyOperating",
+    "project": "OnlineDemo",
+    "reportStyle": {
+      "background": "white",
+      "classes": ""
+    }
+  },
+  "propConfig": {
+    "params.headerStyle": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.name": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.params": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.path": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.project": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.reportStyle": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "32px"
+        },
+        "propConfig": {
+          "props.style": {
+            "binding": {
+              "config": {
+                "path": "view.params.headerStyle"
+              },
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.name"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "ReportViewer"
+        },
+        "position": {
+          "basis": "700px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.params": {
+            "binding": {
+              "config": {
+                "path": "view.params.params"
+              },
+              "type": "property"
+            }
+          },
+          "props.source": {
+            "binding": {
+              "config": {
+                "path": "view.params.path"
+              },
+              "type": "property"
+            }
+          },
+          "props.style": {
+            "binding": {
+              "config": {
+                "path": "view.params.reportStyle"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "page": 1,
+          "pageCount": 1
+        },
+        "type": "ia.reporting.report-viewer"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,622 @@
+{
+  "custom": {},
+  "params": {
+    "borderRadius": {
+      "bottom": 0,
+      "top": 0
+    },
+    "device": "Valve",
+    "name": "Influent",
+    "tagPath": "[default]Water/Filters/Filter1/Valves/Influent"
+  },
+  "propConfig": {
+    "params.borderRadius": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.device": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.nam": {
+      "paramDirection": "input"
+    },
+    "params.name": {
+      "paramDirection": "input"
+    },
+    "params.tag": {
+      "paramDirection": "input"
+    },
+    "params.tagP": {
+      "paramDirection": "input"
+    },
+    "params.tagPat": {
+      "paramDirection": "input"
+    },
+    "params.tagPath": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 60,
+      "width": 400
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Heading"
+        },
+        "position": {
+          "basis": "150px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.name}"
+              },
+              "transforms": [
+                {
+                  "expression": "if({view.params.device} \u003d \u0027Valve\u0027, {value} + \" Valve\", {value})",
+                  "type": "expression"
+                }
+              ],
+              "type": "expr"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "classes": "exchange/water/filter-mobile",
+            "fontWeight": "normal",
+            "margin": "0px 10px 0px 0px",
+            "textAlign": "right"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Valve"
+        },
+        "position": {
+          "basis": "70px"
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.device} \u003d \u0027Valve\u0027"
+              },
+              "type": "expr"
+            }
+          },
+          "props.params.tagPath": {
+            "binding": {
+              "config": {
+                "path": "view.params.tagPath"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "id": "Test",
+            "noPopup": true
+          },
+          "path": "Exchange/Water/EmbeddedViews/Valve"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tsystem.tag.writeBlocking([self.view.params.tagPath + \"/Mode\"], [2])"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Hand"
+        },
+        "position": {
+          "basis": "100px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "propConfig": {
+          "custom.handModeEnabled": {
+            "binding": {
+              "config": {
+                "mode": "indirect",
+                "references": {
+                  "tag": "{view.params.tagPath}"
+                },
+                "tagPath": "{tag}/Mode"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn value \u003d\u003d 2",
+                  "type": "script"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "custom.handModeValue": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "mode": "indirect",
+                "references": {
+                  "valve": "{view.params.tagPath}"
+                },
+                "tagPath": "{valve}/Hand"
+              },
+              "type": "tag"
+            }
+          },
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.device} \u003d \u0027Valve\u0027"
+              },
+              "type": "expr"
+            }
+          },
+          "props.controlValue": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "mode": "indirect",
+                "references": {
+                  "valve": "{view.params.tagPath}"
+                },
+                "tagPath": "{valve}/Hand"
+              },
+              "type": "tag"
+            }
+          },
+          "props.indicatorValue": {
+            "binding": {
+              "config": {
+                "expression": "if({this.custom.handModeEnabled}, {this.custom.handModeValue}, -1)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.states[0].selectedStyle.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "session.custom.hmi.colors[2]"
+              },
+              "type": "property"
+            }
+          },
+          "props.states[1].selectedStyle.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "session.custom.hmi.colors[2]"
+              },
+              "type": "property"
+            }
+          },
+          "props.states[2].selectedStyle.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "session.custom.hmi.colors[1]"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "buttonGap": 5,
+          "defaultSelectedStyle": {
+            "fontSize": "1em"
+          },
+          "defaultUnselectedStyle": {
+            "fontSize": "1em",
+            "fontWeight": "normal"
+          },
+          "orientation": "row",
+          "states": [
+            {
+              "selectedStyle": {
+                "classes": ""
+              },
+              "text": "Close",
+              "unselectedStyle": {
+                "classes": ""
+              },
+              "value": 0
+            },
+            {
+              "selectedStyle": {
+                "classes": ""
+              },
+              "text": "Open",
+              "unselectedStyle": {
+                "classes": ""
+              },
+              "value": 1
+            }
+          ],
+          "style": {
+            "borderBottomLeftRadius": "4px",
+            "borderBottomRightRadius": "4px",
+            "borderColor": "--neutral-50",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": "4px",
+            "borderTopRightRadius": "4px",
+            "borderWidth": "2px",
+            "marginBottom": "6px",
+            "marginLeft": "10px",
+            "marginRight": "10px",
+            "marginTop": "6px",
+            "padding": "2px"
+          }
+        },
+        "type": "ia.input.multi-state-button"
+      },
+      {
+        "meta": {
+          "name": "Blower"
+        },
+        "position": {
+          "basis": "70px"
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.device} \u003d \u0027Blower\u0027"
+              },
+              "type": "expr"
+            }
+          },
+          "props.params.tagPath": {
+            "binding": {
+              "config": {
+                "path": "view.params.tagPath"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "popupTitle": "Blower"
+          },
+          "path": "Exchange/Water/EmbeddedViews/Blower"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "Pump"
+        },
+        "position": {
+          "basis": "70px"
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.device} \u003d \u0027Pump\u0027"
+              },
+              "type": "expr"
+            }
+          },
+          "props.params.tagPath": {
+            "binding": {
+              "config": {
+                "path": "view.params.tagPath"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "params": {
+            "noPopup": true,
+            "orientation": "right"
+          },
+          "path": "Exchange/Water/EmbeddedViews/WaterPump"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tsystem.tag.writeBlocking([self.view.params.tagPath + \"/Mode\"], [2])"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "HandBlower"
+        },
+        "position": {
+          "basis": "100px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "propConfig": {
+          "custom.handModeEnabled": {
+            "binding": {
+              "config": {
+                "mode": "indirect",
+                "references": {
+                  "tag": "{view.params.tagPath}"
+                },
+                "tagPath": "{tag}/Mode"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn value \u003d\u003d 2",
+                  "type": "script"
+                }
+              ],
+              "type": "tag"
+            }
+          },
+          "custom.handModeValue": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "mode": "indirect",
+                "references": {
+                  "valve": "{view.params.tagPath}"
+                },
+                "tagPath": "{valve}/Hand"
+              },
+              "type": "tag"
+            }
+          },
+          "position.display": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.device} !\u003d \u0027Valve\u0027"
+              },
+              "type": "expr"
+            }
+          },
+          "props.controlValue": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "mode": "indirect",
+                "references": {
+                  "valve": "{view.params.tagPath}"
+                },
+                "tagPath": "{valve}/Hand"
+              },
+              "type": "tag"
+            }
+          },
+          "props.indicatorValue": {
+            "binding": {
+              "config": {
+                "expression": "if({this.custom.handModeEnabled}, {this.custom.handModeValue}, -1)"
+              },
+              "type": "expr"
+            }
+          },
+          "props.states[2].selectedStyle.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "session.custom.hmi.colors[1]"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "buttonGap": 5,
+          "defaultSelectedStyle": {
+            "fontSize": "1em"
+          },
+          "defaultUnselectedStyle": {
+            "fontSize": "1em",
+            "fontWeight": "normal"
+          },
+          "orientation": "row",
+          "states": [
+            {
+              "selectedStyle": {
+                "classes": "exchange/water/indicator/mode-hand"
+              },
+              "text": "Stop",
+              "unselectedStyle": {
+                "classes": ""
+              },
+              "value": 0
+            },
+            {
+              "selectedStyle": {
+                "classes": "exchange/water/indicator/mode-hand"
+              },
+              "text": "Run",
+              "unselectedStyle": {
+                "classes": ""
+              },
+              "value": 1
+            }
+          ],
+          "style": {
+            "borderBottomLeftRadius": "4px",
+            "borderBottomRightRadius": "4px",
+            "borderColor": "--neutral-50",
+            "borderStyle": "solid",
+            "borderTopLeftRadius": "4px",
+            "borderTopRightRadius": "4px",
+            "borderWidth": "2px",
+            "marginBottom": "6px",
+            "marginLeft": "10px",
+            "marginRight": "10px",
+            "marginTop": "6px",
+            "padding": "2px"
+          }
+        },
+        "type": "ia.input.multi-state-button"
+      },
+      {
+        "meta": {
+          "name": "OffAuto"
+        },
+        "position": {
+          "basis": "100px",
+          "grow": 1,
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.controlValue": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "mode": "indirect",
+                "references": {
+                  "valve": "{view.params.tagPath}"
+                },
+                "tagPath": "{valve}/Mode"
+              },
+              "type": "tag"
+            }
+          },
+          "props.indicatorValue": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "mode": "indirect",
+                "references": {
+                  "valve": "{view.params.tagPath}"
+                },
+                "tagPath": "{valve}/Mode"
+              },
+              "type": "tag"
+            }
+          },
+          "props.states[2].selectedStyle.backgroundColor": {
+            "binding": {
+              "config": {
+                "path": "session.custom.hmi.colors[1]"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "buttonGap": 5,
+          "defaultSelectedStyle": {
+            "fontSize": "1em"
+          },
+          "defaultUnselectedStyle": {
+            "fontSize": "1em"
+          },
+          "orientation": "row",
+          "states": [
+            {
+              "selectedStyle": {
+                "classes": "exchange/water/indicator/mode-off"
+              },
+              "text": "Off",
+              "unselectedStyle": {
+                "classes": ""
+              },
+              "value": 0
+            },
+            {
+              "selectedStyle": {
+                "classes": "exchange/water/indicator/mode-auto"
+              },
+              "text": "Auto",
+              "unselectedStyle": {
+                "classes": ""
+              },
+              "value": 1
+            }
+          ],
+          "style": {
+            "marginBottom": "10px",
+            "marginRight": "10px",
+            "marginTop": "10px"
+          }
+        },
+        "type": "ia.input.multi-state-button"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.borderBottomLeftRadius": {
+        "binding": {
+          "config": {
+            "path": "view.params.borderRadius.bottom"
+          },
+          "type": "property"
+        }
+      },
+      "props.style.borderBottomRightRadius": {
+        "binding": {
+          "config": {
+            "path": "view.params.borderRadius.bottom"
+          },
+          "type": "property"
+        }
+      },
+      "props.style.borderBottomStyle": {
+        "binding": {
+          "config": {
+            "expression": "if({view.params.borderRadius.bottom} \u003e 0, \u0027solid\u0027, \u0027hidden\u0027)"
+          },
+          "type": "expr"
+        }
+      },
+      "props.style.borderTopLeftRadius": {
+        "binding": {
+          "config": {
+            "path": "view.params.borderRadius.top"
+          },
+          "type": "property"
+        }
+      },
+      "props.style.borderTopRightRadius": {
+        "binding": {
+          "config": {
+            "path": "view.params.borderRadius.top"
+          },
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "style": {
+        "borderBottomWidth": "0.1vw",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1vw",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1vw",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1vw",
+        "classes": "exchange/water/primary",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

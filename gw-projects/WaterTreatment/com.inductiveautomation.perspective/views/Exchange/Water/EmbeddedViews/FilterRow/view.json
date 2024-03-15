@@ -1,0 +1,583 @@
+{
+  "custom": {},
+  "params": {
+    "filter": 3
+  },
+  "propConfig": {
+    "params.data": {
+      "paramDirection": "input"
+    },
+    "params.filt": {
+      "paramDirection": "input"
+    },
+    "params.filter": {
+      "paramDirection": "input"
+    },
+    "params.key": {
+      "paramDirection": "input"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 33,
+      "width": 865
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Name"
+        },
+        "position": {
+          "basis": "250px"
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.filter} % 2"
+              },
+              "transforms": [
+                {
+                  "fallback": "exchange/water/error",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 0,
+                      "output": "exchange/water/primary"
+                    },
+                    {
+                      "input": 1,
+                      "output": "exchange/water/value-disp"
+                    }
+                  ],
+                  "outputType": "style-list",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.filter"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value} \u003e 0,\r\n\t{value},\r\n\t\u0027Filter:\u0027)",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderRightStyle": "solid",
+            "borderRightWidth": "1px",
+            "fontWeight": "500",
+            "overflow": "hidden",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Mode"
+        },
+        "position": {
+          "basis": "300px"
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "view.params.filter"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value} \u003e 0,\r\n\ttag(\"[default]Exchange/Water/Filters/Filter\" + {value} + \"/Control/Mode\"),\r\n\t-1)",
+                  "type": "expression"
+                },
+                {
+                  "fallback": "exchange/water/error",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 0,
+                      "output": "exchange/water/indicator/mode-off"
+                    },
+                    {
+                      "input": 1,
+                      "output": "exchange/water/indicator/mode-auto"
+                    },
+                    {
+                      "input": 2,
+                      "output": "exchange/water/indicator/mode-hand"
+                    },
+                    {
+                      "input": -1,
+                      "output": "exchange/water/primary"
+                    }
+                  ],
+                  "outputType": "style-list",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.filter"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value} \u003e 0,\r\n\ttag(\"[default]Exchange/Water/Filters/Filter\" + {value} + \"/Control/Mode\"),\r\n\t-1)",
+                  "type": "expression"
+                },
+                {
+                  "fallback": "Mode:",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 0,
+                      "output": "Off"
+                    },
+                    {
+                      "input": 1,
+                      "output": "Auto"
+                    },
+                    {
+                      "input": 2,
+                      "output": "Hand"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderBottomLeftRadius": 0,
+            "borderBottomRightRadius": 0,
+            "borderBottomStyle": "none",
+            "borderLeftStyle": "none",
+            "borderRightStyle": "none",
+            "borderTopLeftRadius": 0,
+            "borderTopRightRadius": 0,
+            "borderTopStyle": "none",
+            "fontWeight": "500",
+            "overflow": "hidden",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "State"
+        },
+        "position": {
+          "basis": "370px"
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "path": "view.params.filter"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value} \u003e 0,\r\n\ttag(\"[default]Exchange/Water/Filters/Filter\" + {value} + \"/Control/Value\"),\r\n\t-1)",
+                  "type": "expression"
+                },
+                {
+                  "fallback": "exchange/water/error",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 0,
+                      "output": "exchange/water/indicator/state-off"
+                    },
+                    {
+                      "input": 1,
+                      "output": "exchange/water/indicator/state-on"
+                    },
+                    {
+                      "input": 2,
+                      "output": "exchange/water/indicator/state-backwash"
+                    },
+                    {
+                      "input": -1,
+                      "output": "exchange/water/primary"
+                    }
+                  ],
+                  "outputType": "style-list",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.filter"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value} \u003e 0,\r\n\ttag(\"[default]Exchange/Water/Filters/Filter\" + {value} + \"/Control/Value\"),\r\n\t-1)",
+                  "type": "expression"
+                },
+                {
+                  "fallback": "Status:",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 0,
+                      "output": "Stopped"
+                    },
+                    {
+                      "input": 1,
+                      "output": "Running"
+                    },
+                    {
+                      "input": 2,
+                      "output": "Backwashing"
+                    }
+                  ],
+                  "outputType": "scalar",
+                  "type": "map"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderBottomStyle": "none",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "1px",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "1px",
+            "borderTopStyle": "none",
+            "fontWeight": "500",
+            "overflow": "hidden",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Flow"
+        },
+        "position": {
+          "basis": "300px"
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.filter} % 2"
+              },
+              "transforms": [
+                {
+                  "fallback": "exchange/water/error",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 0,
+                      "output": "exchange/water/primary"
+                    },
+                    {
+                      "input": 1,
+                      "output": "exchange/water/value-disp"
+                    }
+                  ],
+                  "outputType": "style-list",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.filter"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value} \u003e 0,\r\n\tnumberFormat(tag(\"[default]Exchange/Water/Filters/Filter\" + {value} + \"/Flow\"), \"#,###\"),\r\n\t\"gpm\")",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderBottomStyle": "none",
+            "borderLeftStyle": "none",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "1px",
+            "borderTopStyle": "none",
+            "fontWeight": "500",
+            "overflow": "visible",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Level"
+        },
+        "position": {
+          "basis": "300px"
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.filter} % 2"
+              },
+              "transforms": [
+                {
+                  "fallback": "exchange/water/error",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 0,
+                      "output": "exchange/water/primary"
+                    },
+                    {
+                      "input": 1,
+                      "output": "exchange/water/value-disp"
+                    }
+                  ],
+                  "outputType": "style-list",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.filter"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value} \u003e 0,\r\n\tnumberFormat(tag(\"[default]Exchange/Water/Filters/Filter\" + {value} + \"/Level\"), \"#0.0\"),\r\n\t\"inches\")",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderBottomStyle": "none",
+            "borderLeftStyle": "none",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "1px",
+            "borderTopStyle": "none",
+            "fontWeight": "500",
+            "overflow": "hidden",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "LOH"
+        },
+        "position": {
+          "basis": "320px"
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.filter} % 2"
+              },
+              "transforms": [
+                {
+                  "fallback": "exchange/water/error",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 0,
+                      "output": "exchange/water/primary"
+                    },
+                    {
+                      "input": 1,
+                      "output": "exchange/water/value-disp"
+                    }
+                  ],
+                  "outputType": "style-list",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.filter"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value} \u003e 0,\r\n\tnumberFormat(tag(\"[default]Exchange/Water/Filters/Filter\" + {value} + \"/LOH\"), \"#0.0\"),\r\n\t\"in LOH\")",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderBottomStyle": "none",
+            "borderLeftStyle": "none",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "1px",
+            "borderTopStyle": "none",
+            "fontWeight": "500",
+            "overflow": "visible",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Turb"
+        },
+        "position": {
+          "basis": "300px"
+        },
+        "propConfig": {
+          "props.style.classes": {
+            "binding": {
+              "config": {
+                "expression": "{view.params.filter} % 2"
+              },
+              "transforms": [
+                {
+                  "fallback": "exchange/water/error",
+                  "inputType": "scalar",
+                  "mappings": [
+                    {
+                      "input": 0,
+                      "output": "exchange/water/primary"
+                    },
+                    {
+                      "input": 1,
+                      "output": "exchange/water/value-disp"
+                    }
+                  ],
+                  "outputType": "style-list",
+                  "type": "map"
+                }
+              ],
+              "type": "expr"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.filter"
+              },
+              "transforms": [
+                {
+                  "expression": "if({value} \u003e 0,\r\n\tnumberFormat(tag(\"[default]Exchange/Water/Filters/Filter\" + {value} + \"/Turb\"), \"#0.000\"),\r\n\t\"ntu\")",
+                  "type": "expression"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "borderWidth": "1px",
+            "fontWeight": "500",
+            "overflow": "visible",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "script": "\tsystem.perspective.sendMessage(\"exchange.water.menuChange\", payload \u003d {\u0027page\u0027:\u0027Filters\u0027}, scope \u003d \u0027session\u0027)\n\tsystem.perspective.navigate(page \u003d \"/filters\" + \"/\" + str(self.getChild(\"Name\").props.text))"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.background": {
+        "binding": {
+          "config": {
+            "expression": "{view.params.filter} % 2"
+          },
+          "transforms": [
+            {
+              "fallback": "rgba(255, 255, 255, 1)",
+              "inputType": "scalar",
+              "mappings": [
+                {
+                  "input": 0,
+                  "output": "rgba(245, 245, 255, 1)"
+                }
+              ],
+              "outputType": "scalar",
+              "type": "map"
+            }
+          ],
+          "type": "expr"
+        }
+      }
+    },
+    "props": {
+      "style": {
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "1px",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "1px",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "1px",
+        "fontSize": "0.8em",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}
